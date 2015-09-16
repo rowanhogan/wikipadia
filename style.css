@@ -1,0 +1,292 @@
+
+@import './default.css';
+
+html {
+  font-size: 100%;
+  font-family: 'Source Serif Pro', serif;
+  line-height: 1.45em;
+  color: #444;
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+a {
+  color: dodgerblue;
+}
+
+a:visited {
+  color: mediumpurple;
+}
+
+table.infobox {
+  float: right;
+  text-align: left;
+  font-size: 90%;
+  margin-left: 2em;
+  border: 0;
+  background-color: transparent;
+}
+
+table.vertical-navbox {
+  border: 0 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.wikitable {
+  font-size: 90%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.wikitable caption {
+  margin: 0 0 .5em;
+}
+
+.wikitable td,
+.wikitable th {
+  padding: .25em .5em;
+  border: thin solid #ddd;
+}
+
+.tleft {
+  float: left;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  clear: left;
+}
+
+.tright {
+  float: right;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  clear: right;
+}
+
+.reflist {
+  font-size: 90%;
+}
+
+.mw-headline {
+  padding-top: 1em;
+  display: block;
+}
+
+.mw-editsection, .noprint {
+  display: none !important;
+}
+
+table.navbox {
+  border: 0;
+  padding: 0;
+}
+
+
+
+/* App */
+
+
+input, textarea, button {
+  font-size: 100%;
+  font-family: 'Source Serif Pro', serif;
+  color: #444;
+  -webkit-text-size-adjust: none;
+}
+
+
+#content {
+  padding: 2em;
+}
+
+#custom-styles {
+  display: none;
+  padding: 1em;
+  background-color: whitesmoke;
+  font-family: monospace;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  right: 0;
+  bottom: 0;
+  opacity: .86;
+  overflow: auto;
+  padding-top: 3em;
+}
+
+#custom-styles:before {
+  content: 'Enter your own custom styles! Changes made here will be saved locally.';
+  display: block;
+  font-family: sans-serif;
+  font-size: 75%;
+  position: absolute;
+  top: 1em;
+}
+
+#custom-styles.visible {
+  display: block;
+}
+
+#toggle-styles {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  z-index: 100;
+  background-color: transparent;
+  border: 0;
+  width: 3em;
+  height: 3em;
+  text-indent: -999px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: white;
+  border-radius: .25em;
+}
+
+#custom-styles:focus, #toggle-styles:focus {
+  outline: 0;
+}
+
+#toggle-styles:before {
+  content: '\270E';
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 1.9em;
+  text-indent: 0;
+  top: 50%;
+  left: 50%;
+  line-height: 1em;
+  width: 1em;
+  text-align: center;
+  margin: -.4em -.5em;
+  transform: rotateY(180deg);
+}
+
+#custom-styles.visible + #toggle-styles:before {
+  content: '\00D7';
+  margin: -.55em -.51em;
+}
+
+header {
+  margin: 1em 0;
+  padding: 1em 2em;
+  font-size: 90%;
+}
+
+header > a {
+  float: left;
+  width: 10%;
+  width: 4em;
+  line-height: 3em;
+}
+
+#search-form {
+  float: right;
+  width: 90%;
+  width: calc(100% - 4em);
+}
+
+#search-form input,
+#search-form button {
+  height: 3em;
+  line-height: 3em;
+
+}
+
+#search-form input {
+  float: left;
+  box-sizing: border-box;
+  width: 90%;
+  padding: 0 .75em;
+  width: calc(100% - 6em);
+  border: thin solid #eee;
+  border-right-width: 0;
+  border-radius: 0.5em 0 0 0.5em;
+}
+
+#search-form button {
+  float: right;
+  width: 10%;
+  width: 6em;
+  border: 0;
+  background: #ddd;
+  padding: 0;
+  border-radius: 0 0.5em 0.5em 0
+}
+
+
+
+
+
+
+/* Animation */
+
+.loading:before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -.5em;
+  font-size: 5em;
+  border: thin solid transparent;
+  border-radius: 50%;
+  border-right-color: #444;
+  z-index: 100;
+  background: rgba(255,255,255,.5);
+  box-shadow: 0 0 0 100000px rgba(255,255,255,.5);
+  -webkit-animation: spin .75s linear infinite;
+  animation: spin .75s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Themes */
+
+
+.dark {
+  background: black;
+  color: #bbb;
+}
+
+.dark a {
+  color: darkorange;
+}
+
+.inverted img {
+  -webkit-filter: invert();
+  opacity: .5;
+}
+
+#theme-changer-container {
+  text-align: center;
+  padding: 1em 2em 3em;
+}
+
+
+#theme-changer-container small {
+  display: block;
+  margin-top: .5em;
+}

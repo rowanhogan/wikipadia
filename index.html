@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wikireadia</title>
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <header>
+    <a href="/">Home</a>
+    <form id="search-form" type="POST">
+      <input type='search' placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+  </header>
+
+  <div id="content">
+
+    <h3>Wikipedia viewer with custom styles</h3>
+
+    <p>Coming soon: instructions!</p>
+
+  </div>
+
+  <div id="theme-changer-container">
+    <label>Theme:</label>
+    <select id="theme-changer">
+      <option value=''>Light</option>
+      <option value='dark'>Dark</option>
+      <option value='inverted'>Inverted</option>
+    </select>
+
+    <small><em>Inverted</em> normalizes images when screen is inverted &mdash; Good for night reading.</small>
+  </div>
+
+  <style id="custom-styles" type="text/css" contenteditable></style>
+
+  <button id="toggle-styles">Toggle Styles</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="./app.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700' rel='stylesheet' type='text/css'>
+</body>
+</html>
