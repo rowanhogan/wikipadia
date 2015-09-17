@@ -71,6 +71,7 @@
     $(document).on('click', '#toggle-styles', function(e) {
       e.preventDefault();
 
+      $(this).toggleClass('active');
       $('#custom-styles').toggleClass('visible');
     });
 
