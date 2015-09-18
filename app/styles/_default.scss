@@ -513,7 +513,7 @@ table.navbox + table.navbox {
 }
 
 div.listenlist {
-  background: url(//upload.wikimedia.org/wikipedia/commons/4/47/Sound-icon.svg) no-repeat scroll 0 0 transparent;
+  background: url('//upload.wikimedia.org/wikipedia/commons/4/47/Sound-icon.svg') no-repeat scroll 0 0 transparent;
   background-size: 30px;
   padding-left: 40px;
 }
@@ -556,13 +556,13 @@ div#mw_content a[href*=".pdf#"].external,
 div#mw_content a[href$=".PDF"].external,
 div#mw_content a[href*=".PDF?"].external,
 div#mw_content a[href*=".PDF#"].external {
-  background: url(//upload.wikimedia.org/wikipedia/commons/2/23/Icons-mini-file_acrobat.gif) no-repeat right;
+  background: url('//upload.wikimedia.org/wikipedia/commons/2/23/Icons-mini-file_acrobat.gif') no-repeat right;
   padding-right: 18px;
 }
 
 div#content span.PDFlink a,
 div#mw_content span.PDFlink a {
-  background: url(//upload.wikimedia.org/wikipedia/commons/2/23/Icons-mini-file_acrobat.gif) no-repeat right;
+  background: url('//upload.wikimedia.org/wikipedia/commons/2/23/Icons-mini-file_acrobat.gif') no-repeat right;
   padding-right: 18px;
 }
 
@@ -992,12 +992,12 @@ body.mediawiki .compact-ambox table.mbox-small-left {
   display: list-item;
   line-height: 1.5em;
   list-style-type: square;
-  list-style-image: url(//en.wikipedia.org/w/skins/MonoBook/bullet.gif);
+  list-style-image: url('//en.wikipedia.org/w/skins/MonoBook/bullet.gif');
 }
 
 .skin-vector .compact-ambox table .mbox-text-span {
   list-style-type: disc;
-  list-style-image: url(//en.wikipedia.org/w/skins/Vector/images/bullet-icon.png);
+  list-style-image: url('//en.wikipedia.org/w/skins/Vector/images/bullet-icon.png');
 }
 
 .compact-ambox .hide-when-compact {
@@ -1215,7 +1215,7 @@ div#content .gallerybox div.thumb {
 }
 
 .gallerybox .thumb img {
-  background: #fff url(//upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png) repeat;
+  background: #fff url('//upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png') repeat;
 }
 
 .ns-0 .gallerybox .thumb img,
@@ -1380,7 +1380,7 @@ table#mw-prefixindex-nav-table {
 }
 
 #bodyContent .letterhead {
-  background-image: url(//upload.wikimedia.org/wikipedia/commons/e/e0/Tan-page-corner.png);
+  background-image: url('//upload.wikimedia.org/wikipedia/commons/e/e0/Tan-page-corner.png');
   background-repeat: no-repeat;
   padding: 2em;
   background-color: #faf9f2;
@@ -1400,7 +1400,7 @@ table#mw-prefixindex-nav-table {
 }
 
 .treeview li li {
-  background: url(//upload.wikimedia.org/wikipedia/commons/f/f2/Treeview-grey-line.png) no-repeat 0 -2981px;
+  background: url('//upload.wikimedia.org/wikipedia/commons/f/f2/Treeview-grey-line.png') no-repeat 0 -2981px;
   padding-left: 20px;
   text-indent: 0.3em;
 }

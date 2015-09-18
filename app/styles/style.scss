@@ -1,0 +1,478 @@
+@import "./default";
+
+html {
+  font-size: 100%;
+  font-family: "freight-text-pro", 'Source Serif Pro', serif;
+  line-height: 1.45em;
+  color: #444;
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 54em;
+}
+
+a {
+  color: dodgerblue;
+
+  &:visited {
+    color: mediumpurple;
+  }
+}
+
+table {
+  &.infobox {
+    float: right;
+    text-align: left;
+    font-size: 90%;
+    margin-left: 2em;
+    border: 0;
+    background-color: transparent;
+
+    th {
+      background-color: transparent !important;
+    }
+  }
+
+  &.vertical-navbox {
+    border: 0 !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+
+  &.navbox {
+    border: 0;
+    padding: 0;
+  }
+}
+
+.wikitable {
+  font-size: 90%;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  caption {
+    margin: 0 0 .5em;
+  }
+
+  td, th {
+    padding: .25em .5em;
+    border: thin solid #ddd;
+  }
+
+  img {
+    background-color: white;
+  }
+}
+
+.tleft {
+  float: left;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  clear: left;
+}
+
+.tright {
+  float: right;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  clear: right;
+}
+
+.reflist {
+  font-size: 90%;
+}
+
+.mw-headline {
+  padding-top: 1em;
+  display: block;
+}
+
+.mw-editsection, .noprint,
+.metadata.plainlinks {
+  display: none !important;
+}
+
+code, pre {
+  background-color: whitesmoke;
+  border: 0;
+  border-radius: .5em;
+}
+
+// App
+
+img {
+  max-width: 100%;
+}
+
+input, textarea, button, select {
+  display: block;
+  font-size: 100%;
+  font-family: sans-serif;
+  color: #444;
+  box-sizing: border-box;
+  width: 100%;
+  -webkit-text-size-adjust: none;
+}
+
+button {
+  border: 0;
+  padding: 0.5em .75em;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: .25em;
+  line-height: 1.5em;
+}
+
+select {
+  display: block;
+  width: 100%;
+  height: 2.5em;
+  border: 0;
+  background-color: white;
+  text-indent: .25em;
+}
+
+textarea {
+  padding: 1em;
+  background-color: white;
+  font-family: monospace;
+  overflow: auto;
+  border-radius: .5em;
+  text-align: left;
+  min-height: 12em;
+  resize: vertical;
+  outline: 0;
+  border: 0;
+}
+
+.container {
+  position: relative;
+  padding: 2em;
+}
+
+#menu-toggle {
+  position: fixed;
+  top: 0.75em;
+  right: 0.75em;
+  z-index: 1000;
+  background: transparent;
+  text-indent: -9999px;
+  overflow: hidden;
+  width: 3em;
+  height: 3em;
+  padding: 0;
+  border-radius: 0;
+  outline: 0;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    border-top: 2px solid;
+    width: 1.5em;
+    left: 50%;
+    margin-left: -.75em;
+  }
+
+  &:before {
+    top: 1em;
+    box-shadow: 0 7px 0 black;
+  }
+
+  &:after {
+    bottom: 1em;
+  }
+
+  &.active:before {
+    transform: rotate(-45deg);
+    bottom: 1.5em;
+    top: auto;
+    box-shadow: none;
+  }
+
+  &.active:after {
+    transform: rotate(45deg);
+    top: 1.35em;
+    bottom: auto;
+  }
+}
+
+#menu {
+  background-color: whitesmoke;
+  padding: 1.5em;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  z-index: 100;
+  max-width: 100%;
+  overflow: auto;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: block;
+      margin: 1em 0;
+    }
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: 75%;
+    margin: 0 0 .5em;
+    text-transform: uppercase;
+  }
+
+  small {
+    color: #888;
+    font-size: 60%;
+    line-height: 1.45em;
+  }
+
+  input, button {
+    border: 0;
+  }
+}
+
+.search-form {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  input, button {
+    height: 2.5em;
+    line-height: 2.5em;
+  }
+
+  input {
+    float: left;
+    width: 85%;
+    padding: 0 .75em;
+    border: thin solid #ddd;
+    border-right-width: 0;
+    border-radius: 0.5em 0 0 0.5em;
+    appearance: none;
+  }
+
+  button {
+    float: right;
+    text-indent: -9999px;
+    background-image: url(../images/search.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1em;
+    width: 15%;
+    border-radius: 0 0.5em 0.5em 0;
+  }
+}
+
+small {
+  display: block;
+  margin-top: .5em;
+}
+
+.logo {
+  display: block;
+  margin: 3em 0;
+}
+
+.blurb {
+  font-size: 1.25em;
+  line-height: 1.45em;
+  margin: 0 0 .5em;
+}
+
+#content + .search-form {
+  margin: 4em 0 2em;
+}
+
+footer {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.loading {
+  body {
+    display: none;
+  }
+
+  &:before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    margin: -.5em;
+    font-size: 3em;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-right-color: #444;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 100000px rgba(255, 255, 255, 0.5);
+    animation: spin .75s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.home-link {
+  width: 1.25em;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+  background: url(../../images/logo.svg) no-repeat 1px;
+  background-size: 5em;
+  text-indent: -9999px;
+}
+
+// Themes
+
+.dark {
+  background: black;
+  color: #bbb;
+
+  input, textarea, button, select, #custom-styles {
+    background-color: black;
+    color: #bbb;
+  }
+
+  a {
+    color: darkorange;
+  }
+
+  #menu {
+    background-color: #222;
+  }
+
+  #menu-toggle {
+    background: transparent !important;
+
+    &:before {
+      box-shadow: 0 7px 0 #bbb;
+    }
+
+    &.active:before {
+      box-shadow: none;
+    }
+  }
+
+  .loading:before {
+    border-right-color: #ddd;
+    background: black;
+    box-shadow: 0 0 0 100000px black;
+  }
+
+  img {
+    opacity: .75;
+  }
+
+  .navbox-list {
+    border-color: black;
+  }
+
+  .navbox, .navbox-subgroup,
+  .navbox-abovebelow,
+  th.navbox-group,
+  .navbox-subgroup .navbox-title {
+    background: #222;
+  }
+
+  .navbox th,
+  .navbox-title {
+    background: #444;
+  }
+
+  .navbox-even {
+    background: #666;
+  }
+
+  button {
+    background-color: #333 !important;
+  }
+
+  .search-form input {
+    border-color: #333;
+  }
+}
+
+.inverted img {
+  filter: invert(100%);
+  opacity: .5;
+}
+
+.initial {
+  body {
+    max-width: 500px;
+    margin: auto;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #content form {
+    margin-bottom: 2em;
+  }
+
+  #menu-toggle,
+  footer form,
+  footer .home-link {
+    display: none;
+  }
+
+  footer {
+    margin-top: 1.5em;
+  }
+
+  @media (min-height: 768px) {
+    #menu {
+      display: none;
+    }
+
+    body {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .logo {
+    margin-top: 0.5em;
+    margin-bottom: 2.5em;
+  }
+
+  footer {
+    margin-bottom: 0;
+
+    br {
+      display: none;
+    }
+  }
+}
