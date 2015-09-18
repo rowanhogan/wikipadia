@@ -1,68 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class='initial loading'>
 <head>
-  <title>Wikireadia</title>
+  <title>WikiPadia</title>
 
   <meta charset="UTF-8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width">
-  <meta name="apple-mobile-web-app-title" content="Wikireadia">
-  <meta name="application-name" content="Wikireadia">
-  <meta name="msapplication-TileColor" content="#000000">
-  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="WikiPadia">
+  <meta name="application-name" content="WikiPadia">
   <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="57x57" href="./images/app-icons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./images/app-icons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./images/app-icons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./images/app-icons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./images/app-icons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./images/app-icons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./images/app-icons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./images/app-icons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/app-icons/apple-touch-icon-180x180.png">
+  <link rel="icon" mask href="./images/favicon.ico">
 
-  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-  <header>
-    <form id="search-form" type="POST">
+  <button id="menu-toggle" class="menu-link">Menu</button>
+
+  <div id="menu">
+    <h3>Options</h3>
+
+    <ul>
+      <li>
+        <label>Theme:</label>
+        <select id="theme-changer">
+          <option value=''>Light</option>
+          <option value='dark'>Dark</option>
+          <option value='inverted'>Inverted</option>
+        </select>
+        <small><em>Inverted</em> reverts images when screen colors are inverted.</small>
+      </li>
+
+      <li>
+        <label>Custom CSS</label>
+        <textarea id="custom-styles-input" placeholder="e.g. body { color: red; }" autocapitalize="none" spellcheck="false"></textarea>
+
+        <style id="custom-styles" type="text/css" contenteditable></style>
+        <small>Styles are applied immediately and saved locally.</small>
+      </li>
+    </ul>
+
+    <form class="search-form" type="POST">
       <input type='search' placeholder="Search...">
       <button type="submit">Search</button>
     </form>
-  </header>
-
-  <div id="content">
-
-    <h3>Wikipedia viewer with custom styles</h3>
-
-    <p>Coming soon: instructions!</p>
-
   </div>
 
-  <footer id="theme-changer-container">
-    <label>Theme:</label>
-    <select id="theme-changer">
-      <option value=''>Light</option>
-      <option value='dark'>Dark</option>
-      <option value='inverted'>Inverted</option>
-    </select>
+  <div class="container push">
+    <div id="content">
+      <img class="logo" src="./images/logo.svg" width="250">
 
-    <small><em>Inverted</em> normalizes images when screen is inverted &mdash; Good for night reading.</small>
+      <form class="search-form" type="POST">
+        <input type='search' placeholder="Search to get started...">
+        <button type="submit">Search</button>
+      </form>
 
-    <button id="toggle-styles">Toggle Styles</button>
-    <style id="custom-styles" type="text/css" contenteditable></style>
-  </footer>
+      <div class="blurb">
+        <p><em>WikiPadia</em> is a beautiful, customisable Wikipedia reader. It was specifically built for leisurely reading on an iPad.</p>
+      </div>
 
+      <p>The themes and options provide you with the ability to customize your reading experience, as well as the ability to add you own CSS which is saved locally on your device.</p>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="./app.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700' rel='stylesheet' type='text/css'>
+      <p>The inverted theme allows for better night/low-light reading by inverting and darkening images to better display when the <em>Invert Colors</em> setting is enabled — Found in <em>Settings &gt; General &gt; Accessibility &gt; Invert Colors</em> on iOS.</p>
+
+    </div>
+
+    <footer>
+      <form class="search-form" type="POST">
+        <input type='search' placeholder="Search...">
+        <button type="submit">Search</button>
+      </form>
+
+      <small class='attribution'><a href="https://github.com/rowanhogan/wikipadia">Made</a> by <a href="http://rowanhogan.com">Rowan Hogan</a>.</small>
+
+      <br>
+
+      <a class="home-link" href="/">Home</a>
+
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="./js/main.js"></script>
+  <script src="https://use.typekit.net/bqq5cix.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </body>
 </html>
