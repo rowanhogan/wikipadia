@@ -1,10 +1,13 @@
 @import "./default";
 
+$serif-stack: "PT Serif", "Lora", serif;
+$sans-stack: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
 html {
   font-size: 100%;
-  font-family: "freight-text-pro", 'Source Serif Pro', serif;
+  font-family: $serif-stack;
   line-height: 1.45em;
-  color: #444;
+  color: #222;
   -webkit-text-size-adjust: none;
 }
 
@@ -14,11 +17,20 @@ body {
   max-width: 54em;
 }
 
+h1 {
+  margin-bottom: 1.5em;
+}
+
 a {
   color: dodgerblue;
 
   &:visited {
     color: mediumpurple;
+  }
+
+  &:focus {
+    color: black;
+    outline: 0;
   }
 }
 
@@ -67,6 +79,10 @@ table {
   }
 }
 
+#coordinates {
+  position: static;
+}
+
 .tleft {
   float: left;
   margin-right: 2em;
@@ -101,6 +117,52 @@ code, pre {
   border-radius: .5em;
 }
 
+#toc li {
+  position: relative;
+  list-style: none;
+}
+
+li.toclevel-2:before,
+li.toclevel-3:before {
+  content: '';
+  border-left: thin dashed #ccc;
+  border-bottom: thin dashed #ccc;
+  position: absolute;
+  top: .25em;
+  left: -1.5em;
+  width: 1em;
+  height: .5em;
+}
+
+@media (max-width: 768px) {
+  table.infobox {
+    float: none;
+    width: 100% !important;
+    margin-left: 0;
+  }
+
+  #toc > ul {
+    -webkit-column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .tright, .tleft {
+    float: none;
+    width: 100%;
+    margin: 2em 0;
+  }
+
+  h1, .hatnote {
+    text-align: center;
+  }
+
+  .thumbinner {
+    width: auto !important;
+    text-align: center;
+  }
+}
+
 // App
 
 img {
@@ -110,11 +172,17 @@ img {
 input, textarea, button, select {
   display: block;
   font-size: 100%;
-  font-family: sans-serif;
+  font-family: $sans-stack;
   color: #444;
   box-sizing: border-box;
   width: 100%;
   -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 2px 1px dodgerblue;
+  }
 }
 
 button {
@@ -150,7 +218,7 @@ textarea {
 
 .container {
   position: relative;
-  padding: 2em;
+  padding: 2em 3em;
 }
 
 #menu-toggle {
@@ -185,6 +253,10 @@ textarea {
     bottom: 1em;
   }
 
+  &:focus {
+    box-shadow: none;
+  }
+
   &.active:before {
     transform: rotate(-45deg);
     bottom: 1.5em;
@@ -203,7 +275,7 @@ textarea {
   background-color: whitesmoke;
   padding: 1.5em;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: $sans-stack;
   z-index: 100;
   max-width: 100%;
   overflow: auto;
@@ -225,10 +297,9 @@ textarea {
 
   label {
     display: block;
-    font-weight: bold;
     font-size: 75%;
+    font-weight: 400;
     margin: 0 0 .5em;
-    text-transform: uppercase;
   }
 
   small {
@@ -237,12 +308,14 @@ textarea {
     line-height: 1.45em;
   }
 
-  input, button {
+  input, button, select {
     border: 0;
   }
 }
 
 .search-form {
+  position: relative;
+
   &:after {
     content: '';
     display: table;
@@ -252,27 +325,27 @@ textarea {
   input, button {
     height: 2.5em;
     line-height: 2.5em;
+    border-radius: 0.5em;
   }
 
   input {
     float: left;
-    width: 85%;
     padding: 0 .75em;
     border: thin solid #ddd;
-    border-right-width: 0;
-    border-radius: 0.5em 0 0 0.5em;
+    padding-right: 4em;
     appearance: none;
   }
 
   button {
-    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
     text-indent: -9999px;
     background-image: url(../images/search.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1em;
-    width: 15%;
-    border-radius: 0 0.5em 0.5em 0;
+    width: 3.5em;
   }
 }
 
@@ -292,13 +365,20 @@ small {
   margin: 0 0 .5em;
 }
 
+#content {
+  font-size: 1.1em;
+  line-height: 1.6em;
+}
+
 #content + .search-form {
   margin: 4em 0 2em;
 }
 
 footer {
-  margin: 1em 0;
+  margin: 3em 0 1em;
   text-align: center;
+
+  .search-form {}
 }
 
 .loading {
@@ -348,8 +428,16 @@ footer {
 // Themes
 
 .dark {
-  background: black;
-  color: #bbb;
+  background: #111;
+  color: #eee;
+
+  .infobox {
+    color: #eee;
+  }
+
+  table {
+    background-color: transparent !important;
+  }
 
   input, textarea, button, select, #custom-styles {
     background-color: black;
