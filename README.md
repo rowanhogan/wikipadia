@@ -1,7 +1,5 @@
 # [![WikiPadia](http://res.cloudinary.com/rowanhogan/image/upload/c_scale,w_240/v1442544833/logo_sadlam.png)](http://wikipadia.xyz)
 
----
-
 _WikiPadia_ is a beautiful, customisable Wikipedia reader. It was specifically built for leisurely, late-night reading on an iPad.
 
 The themes and options provide you with the ability to customize your reading experience, as well as the ability to add your own CSS which is saved locally to your device.
