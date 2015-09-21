@@ -76,24 +76,24 @@ table {
     img {
       background-color: white;
     }
+  }
 
-    @media (max-width: 768px) {
-      display: block;
-      float: none !important;
-      overflow: auto;
-      width: 100% !important;
-      font-size: 80%;
-      margin: 1.5em auto !important;
+  @media (max-width: 768px) {
+    display: block;
+    float: none !important;
+    overflow: auto;
+    width: 100% !important;
+    font-size: 80%;
+    margin: 1.5em auto !important;
 
-      caption {
-        text-align: left;
-      }
+    caption {
+      text-align: left;
+    }
 
-      th, td {
-        min-width: 3em;
-        line-height: 1.45em;
-        width: 500px;
-      }
+    th, td {
+      min-width: 3em;
+      line-height: 1.45em;
+      width: 500px;
     }
   }
 }
@@ -176,9 +176,17 @@ li.toclevel-3:before {
     text-align: center;
   }
 
-  .thumbinner {
+  .thumbinner, .thumbinner div {
+    display: block;
+    margin: auto;
     width: auto !important;
     text-align: center;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
