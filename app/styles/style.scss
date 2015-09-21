@@ -58,24 +58,43 @@ table {
     border: 0;
     padding: 0;
   }
-}
 
-.wikitable {
-  font-size: 90%;
-  border-spacing: 0;
-  border-collapse: collapse;
+  &.wikitable {
+    font-size: 90%;
+    border-spacing: 0;
+    border-collapse: collapse;
 
-  caption {
-    margin: 0 0 .5em;
-  }
+    caption {
+      margin: 0 0 .5em;
+    }
 
-  td, th {
-    padding: .25em .5em;
-    border: thin solid #ddd;
-  }
+    th, td {
+      padding: .25em .5em;
+      border: thin solid #ddd;
+    }
 
-  img {
-    background-color: white;
+    img {
+      background-color: white;
+    }
+
+    @media (max-width: 768px) {
+      display: block;
+      float: none !important;
+      overflow: auto;
+      width: 100% !important;
+      font-size: 80%;
+      margin: 1.5em auto !important;
+
+      caption {
+        text-align: left;
+      }
+
+      th, td {
+        min-width: 3em;
+        line-height: 1.45em;
+        width: 500px;
+      }
+    }
   }
 }
 
