@@ -1,98 +1,23 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var $ = require('jquery'),
-    bigSlide = require('../../node_modules/bigslide/dist/bigSlide.js');
+var $ = require('jquery');
+var bigSlide = require('../../node_modules/bigslide/dist/bigSlide.js');
+var handleNewPage = require('./components/handleNewPage');
+var handleTheme = require('./components/handleTheme');
+var eventHandlers = require('./components/eventHandlers');
 
-var lang = 'en';
-
-function handleData(data) {
-  var html = data.parse.text['*'];
-
-  var regex = new RegExp('href="/wiki/', 'g');
-  html = html.replace(regex, 'href="?');
-
-  // Fix for special links
-
-  $.each(['File', 'Help', 'Book'], function (i, typeString) {
-    html = html.split('?' + typeString).join('https://' + lang + '.m.wikipedia.org/wiki/wiki/' + typeString);
-  });
-
-  $('#content').html(html);
-  $('title').html(data.parse.title + " – WikiPadia");
-  $('#content').prepend("<h1>" + data.parse.title + "</h1>");
-  $(window).scrollTop(0);
-
-  if ($('ul.redirectText').length) {
-    $('ul.redirectText').find('li a').each(function (i, el) {
-      var $link = $(el);
-
-      var newHref = $link.attr('href').replace('/w/index.php?title=', '?').replace('&redirect=no', '');
-
-      $link.attr('href', newHref);
-    });
-  }
+if (window.location.hostname.split('.').length > 2) {
+  var lang = window.location.hostname.split('.')[0];
+} else {
+  var lang = 'en';
 }
-
-function handleNewPage(pageTitle) {
-  $('html').addClass('loading');
-
-  var request = $.ajax({
-    url: 'https://' + lang + '.wikipedia.org/w/api.php?callback=?',
-    data: {
-      action: "parse",
-      prop: "text",
-      page: pageTitle,
-      format: 'json'
-    },
-    xhrFields: {
-      withCredentials: true
-    },
-    dataType: 'json'
-  });
-
-  request.then(function (data, textStatus, jqXHR) {
-    handleData(data);
-    $('html').removeClass('loading');
-  }, function (jqXHR, textStatus, errorThrown) {
-    $('html').removeClass('loading');
-    console.log(jqXHR, textStatus, errorThrown);
-  });
-}
-
-function handleTheme(theme) {
-  $('html').removeClass('dark');
-  $('html').removeClass('inverted');
-  $('html').addClass(theme);
-  localStorage.setItem('theme', theme);
-}
-
-$(document).on('keyup', '#custom-styles-input', function (e) {
-  var styles = $(this).val();
-
-  $('#custom-styles').html(styles);
-  localStorage.setItem('customStyles', styles);
-});
-
-$(document).on('submit', '.search-form', function (e) {
-  e.preventDefault();
-
-  window.location.search = $(this).find('input').val().replace(' ', '_');
-});
-
-$(document).on('change', '#theme-changer', function (e) {
-  e.preventDefault();
-
-  var theme = $(this).val();
-
-  handleTheme(theme);
-});
 
 $(function () {
   if (window.location.search.length) {
     $('html').removeClass('initial');
     var pageTitle = window.location.search.substring(1, window.location.search.length);
-    handleNewPage(pageTitle);
+    handleNewPage(pageTitle, lang);
   } else {
     $('html').removeClass('loading');
   }
@@ -114,7 +39,120 @@ $(function () {
   });
 });
 
-},{"../../node_modules/bigslide/dist/bigSlide.js":2,"jquery":3}],2:[function(require,module,exports){
+},{"../../node_modules/bigslide/dist/bigSlide.js":6,"./components/eventHandlers":2,"./components/handleNewPage":4,"./components/handleTheme":5,"jquery":7}],2:[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+var handleTheme = require('./handleTheme');
+
+$(document).on('keyup', '#custom-styles-input', function (e) {
+  var styles = $(this).val();
+
+  $('#custom-styles').html(styles);
+  localStorage.setItem('customStyles', styles);
+});
+
+$(document).on('submit', '.search-form', function (e) {
+  e.preventDefault();
+
+  window.location.search = $(this).find('input').val().replace(' ', '_');
+});
+
+$(document).on('change', '#theme-changer', function (e) {
+  e.preventDefault();
+
+  var theme = $(this).val();
+  handleTheme(theme);
+});
+
+},{"./handleTheme":5,"jquery":7}],3:[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+function handleData(data, lang) {
+  var html = data.parse.text['*'];
+
+  var regex = new RegExp('href="/wiki/', 'g');
+  html = html.replace(regex, 'href="?');
+
+  // Fix for special links
+
+  $.each(['File', 'Help', 'Book'], function (i, typeString) {
+    html = html.split('?' + typeString).join('https://' + lang + '.m.wikipedia.org/wiki/' + typeString);
+  });
+
+  $('#content').html(html);
+
+  $('#content').find('a[href*="wikipedia.org"]').each(function () {
+    $(this).attr('target', '_blank');
+  });
+
+  $('title').html(data.parse.title + " – WikiPadia");
+  $('#content').prepend("<h1>" + data.parse.title + "</h1>");
+  $(window).scrollTop(0);
+
+  if ($('ul.redirectText').length) {
+    $('ul.redirectText').find('li a').each(function (i, el) {
+      var $link = $(el);
+      var newHref = $link.attr('href').replace('/w/index.php?title=', '?').replace('&redirect=no', '');
+
+      $link.attr('href', newHref);
+    });
+  }
+}
+
+module.exports = handleData;
+
+},{"jquery":7}],4:[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+var handleData = require('./handleData');
+
+function handleNewPage(pageTitle, lang) {
+  $('html').addClass('loading');
+
+  var request = $.ajax({
+    url: 'https://' + lang + '.wikipedia.org/w/api.php?callback=?',
+    data: {
+      action: "parse",
+      prop: "text",
+      page: pageTitle,
+      format: 'json'
+    },
+    xhrFields: {
+      withCredentials: true
+    },
+    dataType: 'json'
+  });
+
+  request.then(function (data, textStatus, jqXHR) {
+    handleData(data, lang);
+    $('html').removeClass('loading');
+  }, function (jqXHR, textStatus, errorThrown) {
+    $('html').removeClass('loading');
+    console.log(jqXHR, textStatus, errorThrown);
+  });
+}
+
+module.exports = handleNewPage;
+
+},{"./handleData":3,"jquery":7}],5:[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+function handleTheme(theme) {
+  $('html').removeClass('dark');
+  $('html').removeClass('inverted');
+  $('html').addClass(theme);
+  localStorage.setItem('theme', theme);
+}
+
+module.exports = handleTheme;
+
+},{"jquery":7}],6:[function(require,module,exports){
 /*! bigSlide - v0.9.0 - 2015-06-20
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
@@ -340,7 +378,7 @@ $(function () {
 
 }));
 
-},{"jquery":3}],3:[function(require,module,exports){
+},{"jquery":7}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
