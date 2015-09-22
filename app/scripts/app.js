@@ -1,6 +1,5 @@
 
-var $ = require('jquery');
-var bigSlide = require('../../node_modules/bigslide/dist/bigSlide.js');
+var attachFastClick = require('fastclick');
 var handleNewPage = require('./components/handleNewPage');
 var handleTheme = require('./components/handleTheme');
 var eventHandlers = require('./components/eventHandlers')
@@ -11,7 +10,9 @@ if (window.location.hostname.split('.').length > 2) {
   var lang = 'en';
 }
 
-$(function() {
+(function() {
+  attachFastClick(document.body);
+
   var htmlEl = document.body.parentElement;
 
   if (window.location.search.length) {
@@ -29,12 +30,8 @@ $(function() {
 
   if (localStorage.getItem('customStyles')) {
     var styles = localStorage.getItem('customStyles');
-    document.getElementById('custom-styles').innerHTML(styles);
+    document.getElementById('custom-styles').innerHTML = styles;
     document.getElementById('custom-styles-input').value = styles;
   }
 
-  $('.menu-link').bigSlide({
-    side: 'right',
-    menuWidth: '22em'
-  });
-});
+})();

@@ -21,3 +21,12 @@ $(document).on('change', '#theme-changer', function(e) {
   var theme = $(this).val();
   handleTheme(theme);
 });
+
+$(document).on('click', '#menu-toggle', function(e) {
+  e.preventDefault();
+
+  $(this).toggleClass('active');
+  $('body').toggleClass('sidebar-active');
+});
+
+
