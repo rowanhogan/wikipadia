@@ -1,10 +1,14 @@
 
-var $ = require('jquery');
-
 function handleTheme (theme) {
-  $('html').removeClass('dark');
-  $('html').removeClass('inverted');
-  $('html').addClass(theme);
+  var htmlEl = document.body.parentElement;
+
+  htmlEl.classList.remove('dark');
+  htmlEl.classList.remove('inverted');
+
+  if (theme.length) {
+    htmlEl.classList.add(theme);
+  }
+
   localStorage.setItem('theme', theme);
 }
 

@@ -12,23 +12,25 @@ if (window.location.hostname.split('.').length > 2) {
 }
 
 $(function() {
+  var htmlEl = document.body.parentElement;
+
   if (window.location.search.length) {
-    $('html').removeClass('initial');
+    htmlEl.classList.remove('initial');
     var pageTitle = window.location.search.substring(1, window.location.search.length)
     handleNewPage(pageTitle, lang);
   } else {
-    $('html').removeClass('loading');
+    htmlEl.classList.remove('loading');
   }
 
   if (localStorage.getItem('theme')) {
-    $('#theme-changer').val(localStorage.getItem('theme'));
+    document.getElementById('theme-changer').value = localStorage.getItem('theme');
     handleTheme(localStorage.getItem('theme'));
   }
 
   if (localStorage.getItem('customStyles')) {
     var styles = localStorage.getItem('customStyles');
-    $('#custom-styles').html(styles);
-    $('#custom-styles-input').val(styles);
+    document.getElementById('custom-styles').innerHTML(styles);
+    document.getElementById('custom-styles-input').value = styles;
   }
 
   $('.menu-link').bigSlide({

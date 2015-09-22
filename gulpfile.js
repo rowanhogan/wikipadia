@@ -41,7 +41,7 @@ gulp.task('ghpages', function() {
 });
 
 gulp.task('sass', function () {
-  gulp.src('./app/styles/*.scss')
+  gulp.src('./app/styles/**/*')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass({outputStyle: 'compressed'}))
     .pipe(plugins.autoprefixer())

@@ -3,7 +3,9 @@ var $ = require('jquery');
 var handleData = require('./handleData');
 
 function handleNewPage (pageTitle, lang) {
-  $('html').addClass('loading');
+  var htmlEl = document.body.parentElement;
+
+  htmlEl.classList.add('loading');
 
   var request = $.ajax({
       url: `https://${lang}.wikipedia.org/w/api.php?callback=?`,
@@ -21,9 +23,9 @@ function handleNewPage (pageTitle, lang) {
 
   request.then(function( data, textStatus, jqXHR ) {
     handleData(data, lang);
-    $('html').removeClass('loading');
+    htmlEl.classList.remove('loading');
   }, function( jqXHR, textStatus, errorThrown ) {
-    $('html').removeClass('loading');
+    htmlEl.classList.remove('loading');
     console.log(jqXHR, textStatus, errorThrown);
   });
 }

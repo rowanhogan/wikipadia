@@ -3,24 +3,31 @@ var $ = require('jquery');
 
 function handleData (data, lang) {
   var html = data.parse.text['*'];
-
+  var title = data.parse.title;
+  var contentEl = document.getElementById('content');
   var regex = new RegExp('href="/wiki/', 'g');
+
   html = html.replace(regex, 'href="?');
 
   // Fix for special links
 
-  $.each(['File', 'Help', 'Book'], function(i, typeString) {
+  ['File', 'Help', 'Book'].forEach(function(typeString, i) {
     html = html.split('?' + typeString).join(`https://${lang}.m.wikipedia.org/wiki/${typeString}`);
   });
 
-  $('#content').html(html);
+  contentEl.innerHTML = html;
 
-  $('#content').find('a[href*="wikipedia.org"]').each(function() {
-    $(this).attr('target', '_blank');
+  var remoteLinks = document.querySelectorAll('a[href*="wikipedia.org"]');
+  Array.prototype.forEach.call(remoteLinks, function(el, i){
+    el.target = '_blank';
   });
 
-  $('title').html(data.parse.title + " – WikiPadia");
-  $('#content').prepend("<h1>" + data.parse.title + "</h1>");
+  var titleEl = document.createElement('h1');
+  titleEl.innerHTML = title;
+
+  contentEl.parentElement.insertBefore(titleEl, contentEl.parentElement.firstChild);
+
+  document.title = title + " – WikiPadia";
   $(window).scrollTop(0);
 
   if ($('ul.redirectText').length) {
