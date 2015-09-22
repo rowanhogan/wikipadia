@@ -14,23 +14,25 @@ if (window.location.hostname.split('.').length > 2) {
 }
 
 $(function () {
+  var htmlEl = document.body.parentElement;
+
   if (window.location.search.length) {
-    $('html').removeClass('initial');
+    htmlEl.classList.remove('initial');
     var pageTitle = window.location.search.substring(1, window.location.search.length);
     handleNewPage(pageTitle, lang);
   } else {
-    $('html').removeClass('loading');
+    htmlEl.classList.remove('loading');
   }
 
   if (localStorage.getItem('theme')) {
-    $('#theme-changer').val(localStorage.getItem('theme'));
+    document.getElementById('theme-changer').value = localStorage.getItem('theme');
     handleTheme(localStorage.getItem('theme'));
   }
 
   if (localStorage.getItem('customStyles')) {
     var styles = localStorage.getItem('customStyles');
-    $('#custom-styles').html(styles);
-    $('#custom-styles-input').val(styles);
+    document.getElementById('custom-styles').innerHTML(styles);
+    document.getElementById('custom-styles-input').value = styles;
   }
 
   $('.menu-link').bigSlide({
@@ -72,24 +74,31 @@ var $ = require('jquery');
 
 function handleData(data, lang) {
   var html = data.parse.text['*'];
-
+  var title = data.parse.title;
+  var contentEl = document.getElementById('content');
   var regex = new RegExp('href="/wiki/', 'g');
+
   html = html.replace(regex, 'href="?');
 
   // Fix for special links
 
-  $.each(['File', 'Help', 'Book'], function (i, typeString) {
+  ['File', 'Help', 'Book'].forEach(function (typeString, i) {
     html = html.split('?' + typeString).join('https://' + lang + '.m.wikipedia.org/wiki/' + typeString);
   });
 
-  $('#content').html(html);
+  contentEl.innerHTML = html;
 
-  $('#content').find('a[href*="wikipedia.org"]').each(function () {
-    $(this).attr('target', '_blank');
+  var remoteLinks = document.querySelectorAll('a[href*="wikipedia.org"]');
+  Array.prototype.forEach.call(remoteLinks, function (el, i) {
+    el.target = '_blank';
   });
 
-  $('title').html(data.parse.title + " – WikiPadia");
-  $('#content').prepend("<h1>" + data.parse.title + "</h1>");
+  var titleEl = document.createElement('h1');
+  titleEl.innerHTML = title;
+
+  contentEl.parentElement.insertBefore(titleEl, contentEl.parentElement.firstChild);
+
+  document.title = title + " – WikiPadia";
   $(window).scrollTop(0);
 
   if ($('ul.redirectText').length) {
@@ -111,7 +120,9 @@ var $ = require('jquery');
 var handleData = require('./handleData');
 
 function handleNewPage(pageTitle, lang) {
-  $('html').addClass('loading');
+  var htmlEl = document.body.parentElement;
+
+  htmlEl.classList.add('loading');
 
   var request = $.ajax({
     url: 'https://' + lang + '.wikipedia.org/w/api.php?callback=?',
@@ -129,9 +140,9 @@ function handleNewPage(pageTitle, lang) {
 
   request.then(function (data, textStatus, jqXHR) {
     handleData(data, lang);
-    $('html').removeClass('loading');
+    htmlEl.classList.remove('loading');
   }, function (jqXHR, textStatus, errorThrown) {
-    $('html').removeClass('loading');
+    htmlEl.classList.remove('loading');
     console.log(jqXHR, textStatus, errorThrown);
   });
 }
@@ -141,18 +152,22 @@ module.exports = handleNewPage;
 },{"./handleData":3,"jquery":7}],5:[function(require,module,exports){
 'use strict';
 
-var $ = require('jquery');
-
 function handleTheme(theme) {
-  $('html').removeClass('dark');
-  $('html').removeClass('inverted');
-  $('html').addClass(theme);
+  var htmlEl = document.body.parentElement;
+
+  htmlEl.classList.remove('dark');
+  htmlEl.classList.remove('inverted');
+
+  if (theme.length) {
+    htmlEl.classList.add(theme);
+  }
+
   localStorage.setItem('theme', theme);
 }
 
 module.exports = handleTheme;
 
-},{"jquery":7}],6:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*! bigSlide - v0.9.0 - 2015-06-20
 * http://ascott1.github.io/bigSlide.js/
 * Copyright (c) 2015 Adam D. Scott; Licensed MIT */
