@@ -4,6 +4,7 @@
 var attachFastClick = require('fastclick');
 var handleNewPage = require('./components/handleNewPage');
 var handleTheme = require('./components/handleTheme');
+var handleFont = require('./components/handleFont');
 var eventHandlers = require('./components/eventHandlers');
 
 if (window.location.hostname.split('.').length > 2) {
@@ -26,8 +27,23 @@ if (window.location.hostname.split('.').length > 2) {
   }
 
   if (localStorage.getItem('theme')) {
-    document.getElementById('theme-changer').value = localStorage.getItem('theme');
-    handleTheme(localStorage.getItem('theme'));
+    var theme = localStorage.getItem('theme'),
+        input = document.getElementById('theme-changer').querySelectorAll('input[value=' + theme + ']');
+
+    input[0].checked = true;
+    handleTheme(theme);
+  } else {
+    document.getElementById('theme-changer').querySelectorAll('input')[0].checked = true;
+  }
+
+  if (localStorage.getItem('font')) {
+    var font = localStorage.getItem('font'),
+        input = document.getElementById('font-changer').querySelectorAll('input[value=' + font + ']');
+
+    input[0].checked = true;
+    handleFont(font);
+  } else {
+    document.getElementById('font-changer').querySelectorAll('input')[0].checked = true;
   }
 
   if (localStorage.getItem('customStyles')) {
@@ -37,11 +53,12 @@ if (window.location.hostname.split('.').length > 2) {
   }
 })();
 
-},{"./components/eventHandlers":2,"./components/handleNewPage":4,"./components/handleTheme":5,"fastclick":6}],2:[function(require,module,exports){
+},{"./components/eventHandlers":2,"./components/handleFont":4,"./components/handleNewPage":5,"./components/handleTheme":6,"fastclick":7}],2:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery');
 var handleTheme = require('./handleTheme');
+var handleFont = require('./handleFont');
 
 $(document).on('keyup', '#custom-styles-input', function (e) {
   var styles = $(this).val();
@@ -56,21 +73,35 @@ $(document).on('submit', '.search-form', function (e) {
   window.location.search = $(this).find('input').val().replace(' ', '_');
 });
 
-$(document).on('change', '#theme-changer', function (e) {
+$(document).on('change', '#theme-changer input', function (e) {
   e.preventDefault();
 
   var theme = $(this).val();
   handleTheme(theme);
 });
 
-$(document).on('click', '#menu-toggle', function (e) {
+$(document).on('change', '#font-changer input', function (e) {
   e.preventDefault();
 
-  $(this).toggleClass('active');
+  var font = $(this).val();
+  handleFont(font);
+});
+
+$(document).on('click', '.menu-toggle', function (e) {
+  e.preventDefault();
+
+  $('.menu-toggle').toggleClass('active');
   $('body').toggleClass('sidebar-active');
 });
 
-},{"./handleTheme":5,"jquery":7}],3:[function(require,module,exports){
+$(document).on('keyup', function (e) {
+  if (e.which == 27) {
+    $('body').removeClass('sidebar-active');
+    $('.menu-toggle').removeClass('active');
+  }
+});
+
+},{"./handleFont":4,"./handleTheme":6,"jquery":8}],3:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery');
@@ -116,7 +147,24 @@ function handleData(data, lang) {
 
 module.exports = handleData;
 
-},{"jquery":7}],4:[function(require,module,exports){
+},{"jquery":8}],4:[function(require,module,exports){
+'use strict';
+
+function handleFont(font) {
+  var htmlEl = document.body.parentElement;
+
+  htmlEl.classList.remove('sans');
+
+  if (font.length) {
+    htmlEl.classList.add(font);
+  }
+
+  localStorage.setItem('font', font);
+}
+
+module.exports = handleFont;
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery');
@@ -152,7 +200,7 @@ function handleNewPage(pageTitle, lang) {
 
 module.exports = handleNewPage;
 
-},{"./handleData":3,"jquery":7}],5:[function(require,module,exports){
+},{"./handleData":3,"jquery":8}],6:[function(require,module,exports){
 'use strict';
 
 function handleTheme(theme) {
@@ -170,7 +218,7 @@ function handleTheme(theme) {
 
 module.exports = handleTheme;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 ;(function () {
 	'use strict';
 
@@ -1013,7 +1061,7 @@ module.exports = handleTheme;
 	}
 }());
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/

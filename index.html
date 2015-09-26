@@ -23,20 +23,47 @@
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-  <button id="menu-toggle" class="menu-link">Menu</button>
+  <button id="menu-toggle" class="menu-toggle">Menu</button>
 
   <div id="menu">
     <h3>Options</h3>
 
     <ul>
-      <li>
-        <label>Theme:</label>
-        <select id="theme-changer">
-          <option value=''>Light</option>
-          <option value='dark'>Dark</option>
-          <option value='inverted'>Inverted</option>
-        </select>
+      <li id="theme-changer">
+        <label>Theme</label>
+
+        <fieldset class="radio">
+          <span>
+            <input type='radio' name="theme" value='' />
+            <label>Light</label>
+          </span>
+          <span>
+            <input type='radio' name="theme" value='dark' />
+            <label>Dark</label>
+          </span>
+          <span>
+            <input type='radio' name="theme" value='inverted' />
+            <label>Inverted</label>
+          </span>
+        </fieldset>
+
         <small><em>Inverted</em> reverts images when screen colors are inverted.</small>
+      </li>
+
+      <li id="font-changer">
+        <label>Font</label>
+
+        <fieldset class="radio">
+          <span>
+            <input type='radio' name="font" value="" />
+            <label class='serif-stack'>Serif</label>
+          </span>
+
+          <span>
+            <input type='radio' name="font" value="sans" />
+            <label>Sans</label>
+          </span>
+        </fieldset>
       </li>
 
       <li>
@@ -90,8 +117,11 @@
     </footer>
   </div>
 
+  <button class="menu-toggle menu-overlay">Menu</button>
+
   <script type="text/javascript" src="./js/main.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Cardo:400,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link href='https://fonts.googleapis.com/css?family=Cardo:400,400italic,700|Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
