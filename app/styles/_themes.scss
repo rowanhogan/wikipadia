@@ -1,0 +1,103 @@
+
+html.sans {
+  font-family: $sans-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  background: #111;
+  color: #eee;
+
+  .radio span {
+    label {
+      background: #333;
+      border-left-color: white;
+    }
+
+    input:checked + label {
+      background: #eee;
+      color: black;
+    }
+  }
+
+  .infobox {
+    color: #eee;
+  }
+
+  code, pre {
+    background-color: #333;
+  }
+
+  table {
+    background-color: transparent !important;
+  }
+
+  input, textarea, button, select, #custom-styles {
+    background-color: black;
+    color: #bbb;
+  }
+
+  a {
+    color: darkorange;
+  }
+
+  #menu {
+    background-color: #222;
+  }
+
+  #menu-toggle {
+    background: transparent !important;
+
+    &:before {
+      box-shadow: 0 7px 0 #bbb;
+    }
+
+    &.active:before {
+      box-shadow: none;
+    }
+  }
+
+  .loading:before {
+    border-right-color: #ddd;
+    background: black;
+    box-shadow: 0 0 0 100000px black;
+  }
+
+  img {
+    opacity: .75;
+  }
+
+  .navbox-list {
+    border-color: black;
+  }
+
+  .navbox, .navbox-subgroup,
+  .navbox-abovebelow,
+  th.navbox-group,
+  .navbox-subgroup .navbox-title {
+    background: #222;
+  }
+
+  .navbox th,
+  .navbox-title {
+    background: #444;
+  }
+
+  .navbox-even {
+    background: #666;
+  }
+
+  button {
+    background-color: #333;
+  }
+
+  .search-form input {
+    border-color: #333;
+  }
+}
+
+.inverted img {
+  filter: invert(100%);
+  opacity: .5;
+}

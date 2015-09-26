@@ -6,6 +6,16 @@ html {
   -webkit-text-size-adjust: none;
 }
 
+.serif-stack {
+  font-family: $serif-stack;
+}
+
+.sans-stack {
+  font-family: $sans-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   padding: 0;
   margin: 0 auto;
@@ -205,6 +215,7 @@ td.MainPageBG, td.MainPageBG table,
   border: 0 !important;
   padding: 0 !important;
   margin: 0 0 .25em !important;
+  color: inherit !important;
 }
 
 #content table h2 {
