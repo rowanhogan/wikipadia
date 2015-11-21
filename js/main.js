@@ -70,7 +70,7 @@ $(document).on('keyup', '#custom-styles-input', function (e) {
 $(document).on('submit', '.search-form', function (e) {
   e.preventDefault();
 
-  window.location.search = $(this).find('input').val().replace(' ', '_');
+  window.location.search = $(this).find('input').val().replace(/ /g, "_");
 });
 
 $(document).on('change', '#theme-changer input', function (e) {
@@ -107,9 +107,16 @@ $(document).on('keyup', function (e) {
 var $ = require('jquery');
 
 function handleData(data, lang) {
+  var contentEl = document.getElementById('content');
+
+  if (data.error) {
+    // debugger
+    contentEl.innerHTML = data.error.info;
+    return false;
+  }
+
   var html = data.parse.text['*'];
   var title = data.parse.title;
-  var contentEl = document.getElementById('content');
   var regex = new RegExp('href="/wiki/', 'g');
 
   html = html.replace(regex, 'href="?');
@@ -171,7 +178,8 @@ var $ = require('jquery');
 var handleData = require('./handleData');
 
 function handleNewPage(pageTitle, lang) {
-  var htmlEl = document.body.parentElement;
+  var htmlEl = document.body.parentElement,
+      decodedPageTitle = decodeURIComponent(pageTitle);
 
   htmlEl.classList.add('loading');
 
@@ -180,7 +188,7 @@ function handleNewPage(pageTitle, lang) {
     data: {
       action: "parse",
       prop: "text",
-      page: pageTitle,
+      page: decodedPageTitle,
       format: 'json'
     },
     xhrFields: {
