@@ -13,7 +13,7 @@ $(document).on('keyup', '#custom-styles-input', function(e) {
 $(document).on('submit', '.search-form', function(e) {
   e.preventDefault();
 
-  window.location.search = $(this).find('input').val().replace(' ', '_');
+  window.location.search = $(this).find('input').val().replace(/ /g, "_")
 });
 
 $(document).on('change', '#theme-changer input', function(e) {
@@ -43,5 +43,3 @@ $(document).on('keyup', function(e) {
     $('.menu-toggle').removeClass('active');
   }
 });
-
-

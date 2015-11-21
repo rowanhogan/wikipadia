@@ -3,7 +3,8 @@ var $ = require('jquery');
 var handleData = require('./handleData');
 
 function handleNewPage (pageTitle, lang) {
-  var htmlEl = document.body.parentElement;
+  var htmlEl = document.body.parentElement,
+      decodedPageTitle = decodeURIComponent(pageTitle);
 
   htmlEl.classList.add('loading');
 
@@ -12,7 +13,7 @@ function handleNewPage (pageTitle, lang) {
       data: {
         action: "parse",
         prop: "text",
-        page: pageTitle,
+        page: decodedPageTitle,
         format: 'json'
       },
       xhrFields: {

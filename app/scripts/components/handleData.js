@@ -2,9 +2,16 @@
 var $ = require('jquery');
 
 function handleData (data, lang) {
+  var contentEl = document.getElementById('content');
+
+  if (data.error) {
+    // debugger
+    contentEl.innerHTML = data.error.info;
+    return false
+  }
+
   var html = data.parse.text['*'];
   var title = data.parse.title;
-  var contentEl = document.getElementById('content');
   var regex = new RegExp('href="/wiki/', 'g');
 
   html = html.replace(regex, 'href="?');
