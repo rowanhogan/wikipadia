@@ -1,9 +1,24 @@
 html {
   font-size: 100%;
   font-family: $serif-stack;
-  line-height: 1.45em;
+  line-height: 1.5em;
   color: #222;
   -webkit-text-size-adjust: none;
+}
+
+#content {
+  font-size: 1.125em;
+  line-height: 1.75em;
+
+  > .hatnote:first-child {
+    margin-top: -3em;
+    margin-bottom: 3em;
+  }
+
+  @supports (-webkit-hyphens: auto) {
+    text-align: justify;
+    -webkit-hyphens: auto;
+  }
 }
 
 .serif-stack {
@@ -16,14 +31,33 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  padding: 0;
-  margin: 0 auto;
-  max-width: 60em;
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 2em 0;
+  position: relative;
+  line-height: 1.333em;
+  text-align: center;
+  font-family: "Playfair Display", $serif-stack;
 }
 
-h1 {
-  margin-bottom: 1.5em;
+.page-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 1em 0 2em;
+}
+
+div.hatnote {
+  padding: 0;
+  margin: 1em auto;
+  line-height: 1.5em;
+  text-align: center;
+  max-width: 450px;
+}
+
+h1, h2 {
+  + div.hatnote {
+    margin-top: -2em;
+  }
 }
 
 a {
@@ -43,9 +77,31 @@ img {
   max-width: 100%;
 }
 
+#coordinates {
+  position: static;
+}
+
+h2 .mw-headline {
+  position: relative;
+  padding: 0 0 .5em;
+  margin: 3em 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1.5em;
+    margin-left: -0.75em;
+    border-bottom: thin solid;
+  }
+}
+
+
 table {
   &.infobox {
-    float: right;
+    display: none;
+    position: fixed;
     text-align: left;
     font-size: 90%;
     margin-left: 2em;
@@ -106,10 +162,6 @@ table {
   }
 }
 
-#coordinates {
-  position: static;
-}
-
 .tleft {
   float: left;
   margin-right: 2em;
@@ -145,13 +197,42 @@ code, pre {
 }
 
 #toc {
+  margin: 2em auto;
+  padding: 1em 2em;
+  max-width: 400px;
+
   ul {
-    margin: 0;
+    margin: 1em 0;
     padding: 0 0 0 1em;
   }
 
+  #toctitle {
+    opacity: .75;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+
+    h2 {
+      font-size: 90%;
+      font-weight: normal;
+      font-family: $serif-stack;
+      margin: 0;
+    }
+  }
+
   > ul {
+    display: none;
     padding: 0;
+  }
+
+  &.active {
+    > ul {
+      display: block;
+    }
+
+    #toctitle {
+      opacity: 1;
+    }
   }
 
   li {
@@ -227,11 +308,21 @@ td.MainPageBG, td.MainPageBG table,
   padding: 0;
 }
 
-@media (max-width: 768px) {
-  table.infobox {
+
+.thumb {
+  &.tright, &.tleft {
     float: none;
-    width: 100% !important;
-    margin-left: 0;
+    text-align: center;
+    margin: 2em auto;
+  }
+
+  .thumbinner {
+    margin: auto;
+  }
+
+  .thumbcaption {
+    font-size: 75%;
+    line-height: 1.5em;
   }
 }
 
@@ -240,10 +331,6 @@ td.MainPageBG, td.MainPageBG table,
     float: none;
     width: 100%;
     margin: 2em 0;
-  }
-
-  h1, .hatnote {
-    text-align: center;
   }
 
   .thumbinner, .thumbinner div {

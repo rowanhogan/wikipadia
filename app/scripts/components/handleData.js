@@ -5,7 +5,6 @@ function handleData (data, lang) {
   var contentEl = document.getElementById('content');
 
   if (data.error) {
-    // debugger
     contentEl.innerHTML = data.error.info;
     return false
   }
@@ -30,6 +29,7 @@ function handleData (data, lang) {
   });
 
   var titleEl = document.createElement('h1');
+  titleEl.classList.add('page-title')
   titleEl.innerHTML = title;
 
   contentEl.parentElement.insertBefore(titleEl, contentEl.parentElement.firstChild);

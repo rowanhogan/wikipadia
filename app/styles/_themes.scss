@@ -33,7 +33,12 @@ html.sans {
     background-color: transparent !important;
   }
 
-  input, textarea, button, select, #custom-styles {
+  .page-header {
+    border-color: #333;
+  }
+
+  .page-header, #custom-styles,
+  input, textarea, button, select {
     background-color: black;
     color: #bbb;
   }

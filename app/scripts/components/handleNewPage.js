@@ -12,7 +12,7 @@ function handleNewPage (pageTitle, lang) {
       url: `https://${lang}.wikipedia.org/w/api.php?callback=?`,
       data: {
         action: "parse",
-        prop: "text",
+        prop: "text|sections|images",
         page: decodedPageTitle,
         format: 'json'
       },

@@ -2,6 +2,28 @@
 var $ = require('jquery');
 var handleTheme = require('./handleTheme');
 var handleFont = require('./handleFont');
+var lastScrollTop = 0;
+
+$(document).on('scroll', function(e) {
+  var st = $(window).scrollTop();
+
+  var header = $("#page-header");
+
+  if (st > lastScrollTop) {
+    header.addClass('scrolled');
+  } else {
+    header.removeClass('scrolled');
+  }
+
+  lastScrollTop = st;
+});
+
+
+$(document).on('click', '#toctitle', function(e) {
+  e.preventDefault();
+
+  $('#toc').toggleClass('active');
+});
 
 $(document).on('keyup', '#custom-styles-input', function(e) {
   var styles = $(this).val();
