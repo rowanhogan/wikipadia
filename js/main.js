@@ -59,6 +59,27 @@ if (window.location.hostname.split('.').length > 2) {
 var $ = require('jquery');
 var handleTheme = require('./handleTheme');
 var handleFont = require('./handleFont');
+var lastScrollTop = 0;
+
+$(document).on('scroll', function (e) {
+  var st = $(window).scrollTop();
+
+  var header = $("#page-header");
+
+  if (st > lastScrollTop) {
+    header.addClass('scrolled');
+  } else {
+    header.removeClass('scrolled');
+  }
+
+  lastScrollTop = st;
+});
+
+$(document).on('click', '#toctitle', function (e) {
+  e.preventDefault();
+
+  $('#toc').toggleClass('active');
+});
 
 $(document).on('keyup', '#custom-styles-input', function (e) {
   var styles = $(this).val();
@@ -110,7 +131,6 @@ function handleData(data, lang) {
   var contentEl = document.getElementById('content');
 
   if (data.error) {
-    // debugger
     contentEl.innerHTML = data.error.info;
     return false;
   }
@@ -135,6 +155,7 @@ function handleData(data, lang) {
   });
 
   var titleEl = document.createElement('h1');
+  titleEl.classList.add('page-title');
   titleEl.innerHTML = title;
 
   contentEl.parentElement.insertBefore(titleEl, contentEl.parentElement.firstChild);
@@ -187,7 +208,7 @@ function handleNewPage(pageTitle, lang) {
     url: 'https://' + lang + '.wikipedia.org/w/api.php?callback=?',
     data: {
       action: "parse",
-      prop: "text",
+      prop: "text|sections|images",
       page: decodedPageTitle,
       format: 'json'
     },
