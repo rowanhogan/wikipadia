@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class='initial loading'>
 <head>
-  <title>WikiPadia</title>
+  <title>WikiPadia - A beautiful Wikipedia reader</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -24,6 +24,8 @@
 </head>
 <body>
   <header id="page-header" class="page-header">
+    <button id="toc-toggle" class="toc-toggle">Table of contents</button>
+
     <form class="search-form" type="POST">
       <input type='search' placeholder="Search...">
       <button type="submit">Search</button>
@@ -68,7 +70,7 @@
 
           <span>
             <input type='radio' name="font" value="sans" />
-            <label>Sans</label>
+            <label class="sans-stack">Sans</label>
           </span>
         </fieldset>
       </li>
@@ -89,8 +91,6 @@
     <div id="content">
       <h1 class='logo'>Wikip<em>a</em>dia</h1>
 
-      <a href="/?Main_Page" class="main-page-link">Main Page</a>
-
       <div class="blurb">
         <p><em>WikiPadia</em> is a beautiful, customisable Wikipedia reader. It was specifically built for leisurely reading on an iPad.</p>
       </div>
@@ -103,16 +103,15 @@
 
     <footer>
       <a class="home-link" href="/">Home</a>
-      <small class='attribution'><a href="https://github.com/rowanhogan/wikipadia">Made</a> by <a href="http://rowanhogan.com">Rowan Hogan</a>.</small>
+      <a href="/?Main_Page">Main Page</a>
     </footer>
   </div>
 
-  <button class="menu-toggle menu-overlay">Menu</button>
-
-  <script type="text/javascript" src="./js/main.js"></script>
+  <button class="sidebar-toggle menu-overlay"></button>
 
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,400italic|Playfair+Display:700|PT+Serif:400,400italic,700' rel='stylesheet' type='text/css'>
 
+  <script type="text/javascript" src="./js/main.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -121,7 +120,6 @@
 
     ga('create', 'UA-67932330-1', 'auto');
     ga('send', 'pageview');
-
   </script>
 </body>
 </html>
