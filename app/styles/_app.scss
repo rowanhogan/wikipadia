@@ -11,7 +11,7 @@ body {
   left: 0;
   right: 0;
   padding: 0;
-  padding-right: 3.5em;
+  padding: 0 $header-height;
   z-index: 100;
   background: white;
   border-bottom: thin solid #ddd;
@@ -21,96 +21,61 @@ body {
     transform: translateY(-100%);
   }
 
+  button {
+    width: $header-height;
+    height: $header-height;
+    line-height: $header-height;
+    text-indent: -9999px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    outline: 0;
+    overflow: hidden;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .75;
+
+    &:active {
+      opacity: 1;
+    }
+  }
+
   .search-form {
     position: relative;
 
-    &:after {
-      content: '';
-      display: table;
-      clear: both;
-    }
-
-    input, button {
-      height: 3.5em;
-      line-height: 3.5em;
-      border-radius: 0;
-    }
-
     input {
-      float: left;
-      padding: 0 3em 0 1em;
+      height: $header-height;
+      border-radius: 0;
+      padding: 0 $header-height 0 0;
       border: 0;
       appearance: none;
-
-      &:focus {
-        box-shadow: none;
-      }
     }
 
     button {
       position: absolute;
       top: 0;
       right: 0;
-      text-indent: -9999px;
-      background: url(../images/search.svg) no-repeat center;
-      background-size: 1em;
-      width: 3em;
+      background-image: url(../images/search.svg);
     }
   }
 
-
-  #menu-toggle {
+  .toc-toggle,
+  .menu-toggle {
     position: absolute;
     top: 50%;
-    right: .75em;
-    margin-top: -1.5em;
-    z-index: 1000;
-    background: transparent;
-    text-indent: -9999px;
-    overflow: hidden;
-    width: 3em;
-    height: 3em;
-    padding: 0;
-    border-radius: 0;
-    outline: 0;
-
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      border-top: 2px solid;
-      width: 1.5em;
-      left: 50%;
-      margin-left: -.75em;
-      transition: transform 200ms ease;
-    }
-
-    &:before {
-      top: 1em;
-      box-shadow: 0 7px 0 black;
-    }
-
-    &:after {
-      bottom: 1em;
-    }
-
-    &:focus {
-      box-shadow: none;
-    }
-
-    &.active:before {
-      transform: rotate(45deg);
-      bottom: 1.5em;
-      top: auto;
-      box-shadow: none;
-    }
-
-    &.active:after {
-      transform: rotate(135deg);
-      top: 1.35em;
-      bottom: auto;
-    }
+    margin-top: -1.75em;
   }
 
+  .toc-toggle {
+    left: 0;
+    background-image: url(../images/menu.svg);
+  }
+
+  .menu-toggle {
+    right: 0;
+    background-image: url(../images/settings.svg);
+  }
 }
 
 .logo {
@@ -129,7 +94,7 @@ body {
 input, textarea, button, select {
   display: block;
   font-size: 100%;
-  font-family: $sans-stack;
+  font-family: inherit;
   color: #444;
   box-sizing: border-box;
   width: 100%;
@@ -138,7 +103,6 @@ input, textarea, button, select {
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 2px 1px dodgerblue;
   }
 }
 
@@ -147,7 +111,6 @@ button {
   padding: 0.5em .75em;
   background: #ddd;
   cursor: pointer;
-  border-radius: .25em;
   line-height: 1.5em;
 }
 
@@ -162,10 +125,9 @@ select {
 
 textarea {
   padding: 1em;
-  background-color: white;
+  background-color: whitesmoke;
   font-family: monospace;
   overflow: auto;
-  border-radius: .5em;
   text-align: left;
   min-height: 12em;
   resize: vertical;
@@ -225,14 +187,13 @@ fieldset {
 
 .container {
   position: relative;
-  padding: 4em;
+  padding: 2em 4em 4em;
 }
 
 #menu {
-  background-color: whitesmoke;
+  background-color: white;
   padding: 1.5em;
   box-sizing: border-box;
-  font-family: $sans-stack;
   max-width: 100%;
   overflow: auto;
   display: none;
@@ -284,15 +245,18 @@ fieldset {
   }
 }
 
-#menu, .push {
+#menu, #toc, .push {
   transition: transform 300ms ease;
 }
 
-.sidebar-active {
-  #menu {
-    transform: translateX(0);
-    box-shadow: -1px 0 1em 0 rgba(black, 0.2);
-  }
+.toc-active #toc {
+  transform: translateX(0);
+  box-shadow: 1px 0 1em 0 rgba(black, 0.2);
+}
+
+.menu-active #menu {
+  transform: translateX(0);
+  box-shadow: -1px 0 1em 0 rgba(black, 0.2);
 }
 
 .menu-overlay {
@@ -312,24 +276,21 @@ fieldset {
   z-index: 500;
 }
 
-.sidebar-active .menu-overlay {
-  opacity: 1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  right: 0;
-  width: 100%;
+.toc-active, .menu-active {
+  .menu-overlay {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    right: 0;
+    width: 100%;
+  }
 }
 
 small {
   display: block;
   margin-top: .5em;
-}
-
-.main-page-link {
-  display: block;
-  text-align: center;
 }
 
 .blurb {
@@ -339,8 +300,15 @@ small {
 }
 
 footer {
-  margin: 3em 0 1em;
+  max-width: 100px;
+  margin: 3em auto 1em;
+  padding-top: 2em;
+  border-top: thin solid rgba(black, 0.2);
   text-align: center;
+
+  a {
+
+  }
 
   small {
     margin-top: 1.5em;
@@ -386,11 +354,12 @@ footer {
   width: 1.25em;
   overflow: hidden;
   display: block;
-  margin: auto;
+  margin: 0 auto 1em;
   background-size: 5em;
   text-indent: -9999px;
   position: relative;
   font-size: 1.5em;
+  font-family: $serif-stack;
 
   &:before {
     content: 'W';
@@ -407,8 +376,7 @@ footer {
   body {
     max-width: 500px;
     margin: auto;
-    text-align: justify;
-    hyphens: auto;
+    text-align: center;
   }
 
   .page-header {
@@ -416,6 +384,8 @@ footer {
     transform: none !important;
     border: 0;
     padding-right: 0;
+    max-width: 400px;
+    margin: auto;
 
     input, button {
       height: 3em;
@@ -423,13 +393,12 @@ footer {
     }
 
     input {
-      padding-left: 0.5em;
-      border: thin solid rgba(black, 0.2);
-      border-radius: 2em;
+      padding-left: 0;
+      border-bottom: thin solid rgba(black, 0.2);
     }
 
     button {
-      right: .25em;
+      right: -0.25em;
     }
   }
 
@@ -437,6 +406,7 @@ footer {
     margin-bottom: 2em;
   }
 
+  #toc-toggle,
   #menu-toggle,
   footer form,
   footer .home-link {

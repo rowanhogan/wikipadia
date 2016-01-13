@@ -67,7 +67,8 @@ body.action-info:target,
 ol.references,
 div.reflist,
 div.refbegin {
-  font-size: 90%;
+  font-size: 80%;
+  line-height: 1.75em;
   margin-bottom: 0.5em;
 }
 
@@ -274,38 +275,9 @@ th.navbox-group {
   text-align: right;
 }
 
-.navbox,
-.navbox-subgroup {
-  background: #fdfdfd;
-}
-
 .navbox-list {
   line-height: 1.5em;
   border-color: #fdfdfd;
-}
-
-.navbox th,
-.navbox-title {
-  background: #ccccff;
-}
-
-.navbox-abovebelow,
-th.navbox-group,
-.navbox-subgroup .navbox-title {
-  background: #ddddff;
-}
-
-.navbox-subgroup .navbox-group,
-.navbox-subgroup .navbox-abovebelow {
-  background: #e6e6ff;
-}
-
-.navbox-even {
-  background: #f7f7f7;
-}
-
-.navbox-odd {
-  background: transparent;
 }
 
 table.navbox {
@@ -390,37 +362,30 @@ table.navbox + table.navbox {
 }
 
 .infobox {
-  border: 1px solid #aaa;
-  border-spacing: 3px;
-  background-color: #f9f9f9;
   color: black;
-  margin: 0.5em 0 0.5em 1em;
-  padding: 0.2em;
-  float: right;
-  clear: right;
-  font-size: 88%;
+  margin: 1em auto;
+  clear: both;
   line-height: 1.5em;
-}
 
-.infobox caption {
-  font-size: 125%;
-  font-weight: bold;
-  padding: 0.2em;
-}
+  caption {
+    font-size: 125%;
+    font-weight: bold;
+    padding: 0.2em;
+  }
 
-.infobox td,
-.infobox th {
-  vertical-align: top;
-  text-align: left;
-}
+  td, th {
+    vertical-align: top;
+    text-align: left;
+  }
 
-.infobox.bordered {
-  border-collapse: collapse;
-}
+  &.bordered {
+    border: thin solid gray;
+    border-collapse: collapse;
 
-.infobox.bordered td,
-.infobox.bordered th {
-  border: 1px solid #aaa;
+    td, th {
+      border: 1px solid #aaa;
+    }
+  }
 }
 
 .infobox.bordered .borderless td,
@@ -1870,11 +1835,16 @@ blockquote {
 }
 
 dl {
-  margin-left: 1em;
-}
+  margin: 1em 0;
 
-dl dt {
-  font-weight: bold;
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .hlist > ul li,
@@ -2197,15 +2167,5 @@ sup {
 
   #mw-mf-last-modified {
     padding: 5px 0;
-  }
-}
-
-@media all and (min-width: 768px) {
-  table.infobox {
-    margin: .5em 0 1em 35px !important;
-    max-width: 320px;
-    width: auto !important;
-    float: right !important;
-    clear: right !important;
   }
 }

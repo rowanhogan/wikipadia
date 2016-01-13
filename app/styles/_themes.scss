@@ -3,6 +3,10 @@ html.sans {
   font-family: $sans-stack;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+  }
 }
 
 .dark {
@@ -47,20 +51,18 @@ html.sans {
     color: darkorange;
   }
 
-  #menu {
+  #menu, #toc {
     background-color: #222;
   }
 
-  #menu-toggle {
-    background: transparent !important;
+  .menu-overlay {
+    background: rgba(0,0,0,0.5) !important;
+  }
 
-    &:before {
-      box-shadow: 0 7px 0 #bbb;
-    }
-
-    &.active:before {
-      box-shadow: none;
-    }
+  #menu-toggle, #toc-toggle,
+  .page-header .search-form button {
+    background-color: transparent;
+    filter: invert(100%);
   }
 
   .loading:before {
@@ -105,4 +107,9 @@ html.sans {
 .inverted img {
   filter: invert(100%);
   opacity: .5;
+
+  &.mwe-math-fallback-image-inline {
+    filter: none;
+    opacity: 1;
+  }
 }
