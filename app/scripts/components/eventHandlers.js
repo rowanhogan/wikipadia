@@ -9,7 +9,7 @@ $(document).on('scroll', function(e) {
 
   var header = $("#page-header");
 
-  if (st > lastScrollTop) {
+  if (st >= lastScrollTop) {
     header.addClass('scrolled');
   } else {
     header.removeClass('scrolled');

@@ -37,6 +37,30 @@ function handleData (data, lang) {
   document.title = title + " – WikiPadia";
   $(window).scrollTop(0);
 
+  if ($('#coordinates').length) {
+    $.getScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js').done(function() {
+      $('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">')
+      var geo = $('#coordinates').find('.geo');
+
+      if (geo.length) {
+        var latlng = L.latLng( geo.text().split(';'))
+
+        $('body > .container').before('<div id="map" />');
+
+        var map = L.map('map', {
+          zoomControl: false,
+          scrollWheelZoom: false,
+          zoom: 12,
+          center: latlng,
+          attributionControl: false
+        });
+
+        var tileLayer = new L.TileLayer('//{s}.tile.stamen.com/{style}/{z}/{x}/{y}.png', { style: 'toner-lines' });
+        tileLayer.addTo(map);
+      }
+    });
+  }
+
   if ($('ul.redirectText').length) {
     $('ul.redirectText').find('li a').each(function (i, el) {
       var $link = $(el);

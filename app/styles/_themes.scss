@@ -13,6 +13,14 @@ html.sans {
   background: #111;
   color: #eee;
 
+  #map {
+    opacity: .1;
+
+    &:before {
+      background: linear-gradient(rgba(#111, 0), #111);
+    }
+  }
+
   .radio span {
     label {
       background: #333;
