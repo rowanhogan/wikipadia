@@ -112,12 +112,34 @@ html.sans {
   }
 }
 
-.inverted img {
-  filter: invert(100%);
-  opacity: .5;
+.inverted {
+  img {
+    filter: invert(100%);
+    opacity: .5;
 
-  &.mwe-math-fallback-image-inline {
-    filter: none;
-    opacity: 1;
+    &.mwe-math-fallback-image-inline {
+      filter: none;
+      opacity: 1;
+    }
+  }
+
+  &.main_page {
+    #mp-tfa > #mp-tfa-img {
+      -webkit-filter: invert(100%);
+      opacity: .4;
+    }
+
+    #mp-tfa > p {
+      background-image: -webkit-linear-gradient(#222 50%, transparent);
+    }
+
+    #mp-left {
+      color: #222 !important;
+      background: white !important;
+    }
+
+    #mp-left a {
+      color: black !important;
+    }
   }
 }

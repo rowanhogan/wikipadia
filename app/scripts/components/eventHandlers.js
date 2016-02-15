@@ -2,7 +2,7 @@
 var $ = require('jquery');
 var handleTheme = require('./handleTheme');
 var handleFont = require('./handleFont');
-var lastScrollTop = 0;
+var lastScrollTop = 40;
 
 $(document).on('scroll', function(e) {
   var st = $(window).scrollTop();
@@ -15,14 +15,18 @@ $(document).on('scroll', function(e) {
     header.removeClass('scrolled');
   }
 
-  lastScrollTop = st;
+  if (lastScrollTop > 40) {
+    lastScrollTop = st;
+  } else {
+    lastScrollTop = 40;
+  }
 });
 
 
 $(document).on('click', '.page-title', function(e) {
   e.preventDefault();
 
-  $('.infobox').eq(0).toggleClass('active');
+  $('.infobox').toggleClass('active');
 });
 
 $(document).on('click', '#toc ul a', function(e) {

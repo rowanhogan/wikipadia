@@ -1,5 +1,5 @@
 
-var $ = require('jquery');
+window.$ = require('jquery');
 
 function handleData (data, lang) {
   var contentEl = document.getElementById('content');
@@ -8,6 +8,8 @@ function handleData (data, lang) {
     contentEl.innerHTML = data.error.info;
     return false
   }
+
+  window.data = data.parse;
 
   var html = data.parse.text['*'];
   var title = data.parse.title;
@@ -27,6 +29,16 @@ function handleData (data, lang) {
   Array.prototype.forEach.call(remoteLinks, function(el, i){
     el.target = '_blank';
   });
+
+  var pageTitle = title.replace(/ /g, '_').toLowerCase();
+
+  $('html').addClass( pageTitle );
+
+  if (pageTitle === 'main_page') {
+    // Assumes thumb size of 100px
+    var imgSrc = $('#mp-tfa-img img').attr('src').split('/100px')[0].replace('thumb/', '');
+    $('#mp-tfa-img').css({ 'background-image' : 'url("' + imgSrc + '")' })
+  }
 
   var titleEl = document.createElement('h1');
   titleEl.classList.add('page-title')

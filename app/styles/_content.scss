@@ -71,13 +71,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+$title-stack: "Playfair Display", $serif-stack;
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
   margin: 2em 0 1em;
   position: relative;
   line-height: 1.333em;
-  font-family: "Playfair Display", $serif-stack;
+  font-family: $title-stack;
 }
 
 h1, h2 {
@@ -93,7 +94,7 @@ h1, h2 {
 .page-title {
   text-align: center;
   font-size: 2.5em;
-  margin: 1em 0;
+  margin: 1em 0 2em;
   cursor: pointer;
 }
 
@@ -161,13 +162,15 @@ table {
     border: 0;
     background-color: transparent;
 
+    &.active {
+      display: block;
+    }
 
     &.geography,
     &.vcard,
     &.active {
       max-width: 100% !important;
       margin: 2em auto;
-      display: block;
     }
 
     th {
@@ -331,85 +334,18 @@ code, pre {
   }
 }
 
-// Main Page
-
-#mp-other,
-#mp-sister, #mp-lang {
-  display: none;
-}
-
-#mp-topbanner {
-  background: transparent !important;
-  border: 0 !important;
-
-  td {
-
-    &:first-child {
-      display: none;
-    }
-  }
-}
-
-#mp-tfa ul,
-#mp-tfp ul {
-  text-align: center !important;
-  padding: 0;
-}
-
-td.MainPageBG,
-table#mp-upper,
-table#mp-upper tbody,
-table#mp-upper tr,
-table#mp-upper tr td,
-#mp-tfp table,
-#mp-tfp table tbody,
-#mp-tfp table tr,
-#mp-tfp table tr td,
-table#mp-middle,
-table#mp-middle tbody,
-table#mp-middle tr,
-table#mp-middle tr td,
-table#mp-lower,
-table#mp-lower tbody,
-table#mp-lower tr,
-table#mp-lower tr td {
-  display: block;
-  width: 100% !important;
-
-  .mw-headline {
-    text-align: center;
-    &:before {
-      display: none;
-    }
-  }
-}
-
-#mp-tfp td img {
-  height: auto;
-  display: block;
-  margin: 1em auto;
-}
-
-#mp-upper table,
-#mp-upper td,
-table#mp-middle td, table#mp-middle td table,
-td.MainPageBG, td.MainPageBG table,
-
 #content table h2 {
   background-color: transparent !important;
   border: 0 !important;
   padding: 0 !important;
   margin: 0 0 .25em !important;
   color: inherit !important;
-}
-
-#content table h2 {
   margin: 0 0 .25em !important;
-}
 
-#content table h2 span {
-  margin: 0;
-  padding: 0;
+  span {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 
@@ -448,5 +384,24 @@ td.MainPageBG, td.MainPageBG table,
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+
+table.infobox.vcard a.image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 2em auto;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
   }
 }
