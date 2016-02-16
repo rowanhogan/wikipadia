@@ -1,5 +1,6 @@
 
-window.$ = require('jquery');
+var $ = require('jquery');
+var handleMainPage = require('./handleMainPage');
 
 function handleData (data, lang) {
   var contentEl = document.getElementById('content');
@@ -34,15 +35,7 @@ function handleData (data, lang) {
 
   $('html').addClass( pageTitle );
 
-  if (pageTitle === 'main_page') {
-    // Assumes thumb size of 100px
-    var imgSrc = $('#mp-tfa-img img').attr('src').split('/100px')[0].replace('thumb/', ''),
-        arr = imgSrc.split('/')
-
-    arr.splice(arr.length - 1);
-
-    $('#mp-tfa-img').css({ 'background-image' : 'url("' + arr.join('/') + '")' });
-  }
+  if (pageTitle === 'main_page') handleMainPage();
 
   var titleEl = document.createElement('h1');
   titleEl.classList.add('page-title')

@@ -9,6 +9,7 @@
 
   .container {
     padding: 0;
+    padding-bottom: $padding;
     max-width: 100%;
     padding-left: $left-column-width;
   }
@@ -177,7 +178,6 @@
 
   #mp-itn, #mp-otd, #mp-dyk {
     padding: 2em $padding;
-    padding-bottom: 0;
 
     i {
       display: none;
@@ -207,10 +207,55 @@
           padding-top: 0;
         }
       }
+    }
 
-      &.hlist li {
+    .hlist li {
+      border: 0 !important;
+      padding: 0;
+    }
+  }
+
+  #mp-dyk {
+    ul li {
+      border: 0 !important;
+      text-align: center;
+      padding: 1em !important;
+    }
+
+    ul.slick-dots {
+      text-align: center;
+
+      li {
+        display: inline-block;
+        padding: 0 !important;
         border: 0;
-        padding: 0;
+
+        button {
+          position: relative;
+          display: block;
+          text-indent: -9999px;
+          width: 20px;
+          height: 20px;
+          overflow: hidden;
+          padding: 0;
+          background: transparent;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #aaa;
+          }
+        }
+      }
+
+      li.slick-active button:before {
+        background: black;
       }
     }
   }

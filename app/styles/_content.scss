@@ -11,6 +11,23 @@ html {
   line-height: 1.75em;
   counter-reset: section;
 
+  table.vertical-navbox {
+    display: none;
+  }
+
+  p:first-of-type {
+    b {
+      font-family: "Playfair Display","PT Serif","Lora",Georgia,serif;
+    }
+    
+    // &:first-letter {
+    //   font-size: 4em;
+    //   float: left;
+    //   margin: .1667em .05em 0 0;
+    //   font-family: "Playfair Display","PT Serif","Lora",Georgia,serif;
+    // }
+  }
+
   h2 {
     margin: 0;
     counter-increment: section;
