@@ -15,7 +15,7 @@ $(document).on('scroll', function(e) {
     header.removeClass('scrolled');
   }
 
-  if (lastScrollTop > 55) {
+  if (st > 55) {
     lastScrollTop = st;
   } else {
     lastScrollTop = 55;
