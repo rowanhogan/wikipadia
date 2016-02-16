@@ -2,7 +2,7 @@
 var $ = require('jquery');
 var handleTheme = require('./handleTheme');
 var handleFont = require('./handleFont');
-var lastScrollTop = 40;
+var lastScrollTop = 55;
 
 $(document).on('scroll', function(e) {
   var st = $(window).scrollTop();
@@ -15,10 +15,10 @@ $(document).on('scroll', function(e) {
     header.removeClass('scrolled');
   }
 
-  if (lastScrollTop > 40) {
+  if (lastScrollTop > 55) {
     lastScrollTop = st;
   } else {
-    lastScrollTop = 40;
+    lastScrollTop = 55;
   }
 });
 

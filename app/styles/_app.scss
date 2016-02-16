@@ -20,13 +20,14 @@ body {
     transform: translateY(-100%);
   }
 
-  button {
+  button, a {
     width: $header-height;
     height: $header-height;
     line-height: $header-height;
     text-indent: -9999px;
     background: transparent;
     border-radius: 0;
+    margin: 0;
     padding: 0;
     outline: 0;
     overflow: hidden;
@@ -40,8 +41,13 @@ body {
     }
   }
 
+  .toc-toggle.hidden + .search-form {
+    margin-left: 0.667em;
+  }
+
   .search-form {
     position: relative;
+    margin-left: 3.5em;
 
     input {
       height: $header-height;
@@ -60,14 +66,30 @@ body {
   }
 
   .toc-toggle,
-  .menu-toggle {
+  .menu-toggle,
+  .home-link {
     position: absolute;
     top: 50%;
     margin-top: -1.75em;
   }
 
-  .toc-toggle {
+  .home-link {
     left: 0;
+    color: inherit;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      height: 2em;
+      margin-top: -1em;
+      border-right: thin solid #ddd;
+    }
+  }
+
+  .toc-toggle {
+    left: 3.5em;
     background-image: url(../images/menu.svg);
   }
 
@@ -354,21 +376,20 @@ footer {
 }
 
 .home-link {
-  width: 1.25em;
+  width: 2em;
   overflow: hidden;
   display: block;
   margin: 0 auto 1em;
-  background-size: 5em;
   text-indent: -9999px;
   position: relative;
-  font-size: 1.5em;
-  font-family: $serif-stack;
+  font-family: "Playfair Display","PT Serif","Lora",Georgia,serif;
 
   &:before {
     content: 'W';
     position: absolute;
     top: 0;
     left: 50%;
+    font-size: 1.5em;
     margin-left: -.5em;
     width: 1em;
     text-indent: 0;
@@ -395,6 +416,10 @@ footer {
     max-width: 400px;
     margin: auto;
 
+    .search-form {
+      margin: 0;
+    }
+
     input, button {
       height: 3em;
       line-height: 3em;
@@ -414,6 +439,7 @@ footer {
     margin-bottom: 2em;
   }
 
+  #home-link,
   #toc-toggle,
   #menu-toggle,
   footer form,

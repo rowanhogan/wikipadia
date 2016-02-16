@@ -129,17 +129,18 @@ html.sans {
       opacity: .4;
     }
 
-    #mp-tfa > p {
-      background-image: -webkit-linear-gradient(#222 50%, transparent);
-    }
 
-    #mp-left {
+    #mp-tfa {
       color: #222 !important;
       background: white !important;
-    }
 
-    #mp-left a {
-      color: black !important;
+      > p {
+        background-image: -webkit-linear-gradient(#222 50%, transparent);
+      }
+      
+      a {
+        color: black !important;
+      }
     }
   }
 }

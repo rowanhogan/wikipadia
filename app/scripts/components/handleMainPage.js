@@ -3,7 +3,7 @@ const $ = require('jquery');
 require('slick-carousel');
 
 function handleMainPage () {
-  var imgSrc = $('#mp-tfa-img img').attr('src').split('/100px')[0].replace('thumb/', ''),
+  var imgSrc = $('#mp-tfa-img img').attr('src').replace('thumb/', ''),
       arr = imgSrc.split('/')
 
   arr.splice(arr.length - 1);

@@ -37,6 +37,23 @@ function handleData (data, lang) {
 
   if (pageTitle === 'main_page') handleMainPage();
 
+  if ( !$('#toc').length ) {
+    $('#toc-toggle').addClass('hidden');
+  } else {
+    $('#toc-toggle').removeClass('hidden');
+  }
+
+  // if ($('.image').eq(0).find('img').length) {
+  //   var imgSrc = $('.image').eq(0).find('img').attr('src').replace('thumb/', ''),
+  //       arr = imgSrc.split('/')
+  //
+  //   arr.splice(arr.length - 1);
+  //
+  //   var $header = $('<div id="header-image" class="header-image" style="background-image: url(' + arr.join("/") + ')"></div>');
+  //
+  //   $('.container').before($header);
+  // }
+
   var titleEl = document.createElement('h1');
   titleEl.classList.add('page-title')
   titleEl.innerHTML = title;
