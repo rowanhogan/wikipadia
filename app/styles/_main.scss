@@ -1,6 +1,6 @@
 
 .main_page {
-  $left-column-width: 40%;
+  $left-column-width: 33.333%;
   $padding: 3em;
 
   .page-title, footer {
@@ -64,9 +64,14 @@
     width: $left-column-width !important;
     color: white !important;
     background: black !important;
+    overflow: hidden;
 
     a {
       color: white !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     > * {
@@ -91,7 +96,6 @@
     b:first-of-type {
       font-size: 1.25em;
       font-variant: small-caps;
-
     }
 
     > p {
@@ -109,10 +113,10 @@
     }
 
     > #mp-tfa-img {
-      position: fixed;
-      top: 56px;
+      position: absolute;
+      top: 0;
       left: 0;
-      width: $left-column-width;
+      width: 100%;
       bottom: 0;
       margin: 0 !important;
       z-index: 0;
@@ -183,7 +187,7 @@
       float: left;
       width: 50% !important;
       overflow: auto;
-      height: 50vh;
+      height: calc(50vh - 27.5px);
       box-sizing: border-box;
     }
 
@@ -203,6 +207,11 @@
           padding-top: 0;
         }
       }
+
+      &.hlist li {
+        border: 0;
+        padding: 0;
+      }
     }
   }
 
@@ -215,8 +224,8 @@
   @media (min-width: 900px) {
     #mp-dyk {
       position: fixed;
-      left: 40%;
-      width: 30% !important;
+      left: $left-column-width;
+      width: $left-column-width !important;
       height: calc(50vh - 27.5px);
       bottom: 0;
       z-index: 1000;
@@ -275,10 +284,12 @@
     right: 0;
     color: white !important;
     text-align: left;
+    text-shadow: 0 1px 30px rgba(black, .5);
 
     .mw-headline {
       font-size: 16px;
       padding: 2em;
+      text-align: center;
     }
   }
 
@@ -288,13 +299,11 @@
       height: auto;
     }
 
-    tr:first-child a,
-    tr:first-child a img {
+    tr a img {
       display: block;
     }
 
-    tr:last-child {
-      text-align: left;
+    p {
       padding: .5em 2em !important;
     }
   }
@@ -334,30 +343,22 @@
 
   @media (max-width: 900px) {
 
-    #mp-tfa {
-      height: 480px;
-      width: 100% !important;
-      overflow: hidden;
-
-      > #mp-tfa-img {
-        width: 100%;
-        bottom: auto;
-        height: 480px;
-        position: absolute;
-        top: 0;
-      }
-
-      > p {
-        max-height: 256px;
-      }
-    }
-
     #mp-tfa, #mp-right {
       position: relative;
       width: 100% !important;
       left: auto;
       right: auto;
       height: auto !important;
+    }
+
+    #mp-tfa {
+      height: 480px !important;
+      width: 100% !important;
+      overflow: hidden;
+
+      > p {
+        max-height: 256px;
+      }
     }
 
     .container {

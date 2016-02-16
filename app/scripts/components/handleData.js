@@ -36,8 +36,12 @@ function handleData (data, lang) {
 
   if (pageTitle === 'main_page') {
     // Assumes thumb size of 100px
-    var imgSrc = $('#mp-tfa-img img').attr('src').split('/100px')[0].replace('thumb/', '');
-    $('#mp-tfa-img').css({ 'background-image' : 'url("' + imgSrc + '")' })
+    var imgSrc = $('#mp-tfa-img img').attr('src').split('/100px')[0].replace('thumb/', ''),
+        arr = imgSrc.split('/')
+
+    arr.splice(arr.length - 1);
+
+    $('#mp-tfa-img').css({ 'background-image' : 'url("' + arr.join('/') + '")' });
   }
 
   var titleEl = document.createElement('h1');
