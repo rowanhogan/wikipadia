@@ -258,6 +258,9 @@ table.mbox-small {
   font-style: italic;
 }
 
+#content > div[style="width:70%"] {
+  width: auto !important;
+}
 
 .tleft {
   float: left;
