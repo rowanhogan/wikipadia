@@ -79,10 +79,6 @@ $(document).on('scroll', function (e) {
   }
 });
 
-if (!!window.navigator.standalone) {
-  $('body').css({ 'background-color': 'red' });
-}
-
 $(document).on('click', '.page-title', function (e) {
   e.preventDefault();
 
