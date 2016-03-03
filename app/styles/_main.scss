@@ -63,13 +63,64 @@
     left: 0;
     height: calc(100vh - 55px);
     width: $left-column-width !important;
-    color: white !important;
-    background: black !important;
     overflow: hidden;
 
-    a {
+    &.has-bg-image {
       color: white !important;
+      background: #334 !important;
 
+      a {
+        color: white !important;
+      }
+
+      > p {
+        max-height: 50vh;
+        max-width: 480px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 3em;
+        line-height: 1.667em;
+        text-align: justify;
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(white 50%, transparent);
+        -webkit-background-clip: text;
+        // max-width: 600px;
+        margin: 1em auto;
+      }
+
+      > #mp-tfa-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        margin: 0 !important;
+        z-index: 0;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        opacity: .6;
+
+        a {
+          display: none;
+          pointer-events: none;
+        }
+
+        img {
+          display: block;
+          height: 100vh;
+          width: auto !important;
+          max-width: 10000000px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: .5;
+        }
+      }
+    }
+
+    a {
       &:hover {
         text-decoration: underline;
       }
@@ -97,52 +148,6 @@
     b:first-of-type {
       font-size: 1.25em;
       font-variant: small-caps;
-    }
-
-    > p {
-      max-height: 50vh;
-      max-width: 480px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 3em;
-      line-height: 1.667em;
-      text-align: justify;
-      -webkit-text-fill-color: transparent;
-      background: -webkit-linear-gradient(white 50%, transparent);
-      -webkit-background-clip: text;
-      // max-width: 600px;
-      margin: 1em auto;
-    }
-
-    > #mp-tfa-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      bottom: 0;
-      margin: 0 !important;
-      z-index: 0;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      opacity: .6;
-
-      a {
-        display: none;
-        pointer-events: none;
-      }
-
-      img {
-        display: block;
-        height: 100vh;
-        width: auto !important;
-        max-width: 10000000px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: .5;
-      }
     }
   }
 
