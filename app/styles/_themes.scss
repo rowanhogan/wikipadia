@@ -110,6 +110,23 @@ html.sans {
   .search-form input {
     border-color: #333;
   }
+
+  &.main_page {
+    #mp-tfa.has-bg-image {
+      background: #111 !important;
+
+      > #mp-tfa-img {
+        opacity: .25;
+      }
+    }
+
+
+    #mp-itn ul li,
+    #mp-otd ul li,
+    #mp-dyk ul li {
+      border-color: #333;
+    }
+  }
 }
 
 .inverted {
@@ -129,15 +146,14 @@ html.sans {
       opacity: .4;
     }
 
-
     #mp-tfa {
       color: #222 !important;
       background: white !important;
 
       > p {
-        background-image: -webkit-linear-gradient(#222 50%, transparent);
+        background: -webkit-linear-gradient(#222, transparent 60%);
       }
-      
+
       a {
         color: black !important;
       }
