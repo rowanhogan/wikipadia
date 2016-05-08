@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "fastclick": "^1.0.6",
-    "jquery": "^2.1.4",
-    "slick-carousel": "^1.5.9"
+    "jquery": "^2.1.4"
   }
 }
