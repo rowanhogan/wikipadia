@@ -10,7 +10,6 @@ body {
   left: 0;
   right: 0;
   padding: 0;
-  padding: 0 $header-height;
   z-index: 100;
   background: white;
   border-bottom: thin solid #ddd;
@@ -18,6 +17,13 @@ body {
 
   &.scrolled {
     transform: translateY(-100%);
+  }
+
+  .page-header-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 $header-height;
   }
 
   button, a {

@@ -248,13 +248,15 @@ div.columns dd dd {
 }
 
 .navbox {
-  border: 1px solid #aaa;
+  border: 0;
   width: 100%;
+  max-width: 100%;
   margin: auto;
   clear: both;
   font-size: 88%;
   text-align: center;
   padding: 1px;
+  overflow: auto;
 }
 
 .navbox-inner,
@@ -1881,6 +1883,8 @@ a.external {
   background-repeat: no-repeat;
   background-position: center right;
   padding-right: 13px;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 
 .content .return-link,
