@@ -21,8 +21,6 @@ body {
 
   .page-header-container {
     position: relative;
-    max-width: 1000px;
-    margin: auto;
     padding: 0 $header-height;
   }
 
@@ -68,6 +66,55 @@ body {
       top: 0;
       right: 0;
       background-image: url(../images/search.svg);
+    }
+
+    &.loading:before {
+      box-shadow: none;
+      top: 50%;
+      right: 26px;
+      margin: -12px;
+      width: 20px;
+      height: 20px;
+      left: auto;
+      position: absolute;
+      opacity: .75;
+    }
+
+    &.loading button {
+      opacity: 0;
+    }
+
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      z-index: 1000;
+      box-shadow: 0 1px 5px rgba(0,0,0,.5);
+
+      ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          a {
+            display: block;
+            padding: 0 20px;
+            width: auto;
+            text-indent: 0;
+            line-height: 3em;
+            height: auto;
+
+            &:hover, &.active {
+              background: #ddd;
+              color: black;
+              text-decoration: none;
+            }
+          }
+        }
+      }
     }
   }
 

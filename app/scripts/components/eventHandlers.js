@@ -1,7 +1,9 @@
 
 var $ = require('jquery');
 var handleTheme = require('./handleTheme');
+var handleSearch = require('./handleSearch');
 var handleFont = require('./handleFont');
+var debounce = require('./debounce');
 var lastScrollTop = 55;
 
 $(document).on('scroll', function(e) {
@@ -55,8 +57,22 @@ $(document).on('keyup', '#custom-styles-input', function(e) {
 $(document).on('submit', '.search-form', function(e) {
   e.preventDefault();
 
-  window.location.search = $(this).find('input').val().replace(/ /g, "_")
+  if (false) {
+    // Do nothing
+  } else {
+    window.location.search = $(this).find('input').val().replace(/ /g, "_")
+  }
 });
+
+var searchForm = debounce(function(e) {
+  e.preventDefault();
+
+  var query = $('.search-form').find('input').val();
+  handleSearch(query, 'en');
+}, 300)
+
+$(document).on('keyup', '.search-form', searchForm);
+
 
 $(document).on('change', '#theme-changer input', function(e) {
   e.preventDefault();
