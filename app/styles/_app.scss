@@ -106,12 +106,12 @@ body {
             text-indent: 0;
             line-height: 3em;
             height: auto;
+          }
 
-            &:hover, &.active {
-              background: #ddd;
-              color: black;
-              text-decoration: none;
-            }
+          &:hover a, &.active a {
+            background: #ddd;
+            color: black;
+            text-decoration: none;
           }
         }
       }
