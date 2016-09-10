@@ -84,6 +84,49 @@ var handleFont = require('./handleFont');
 var debounce = require('./debounce');
 var lastScrollTop = 55;
 
+var searchForm = debounce(function (e) {
+  e.preventDefault();
+  var query = $('.search-form').find('input').val();
+  handleSearch(query, 'en');
+}, 300);
+
+$(document).on('keyup', '.search-form', function (e) {
+  var keyPressed = e.which;
+
+  if (keyPressed === 38 || keyPressed === 40) {
+    e.preventDefault();
+
+    var $form = $('.search-form'),
+        $activeLi = $form.find('.search-results li.active');
+
+    if ($activeLi.length) {
+      $activeLi.removeClass('active');
+
+      if (keyPressed === 38) {
+        $activeLi.prev().addClass('active');
+      } else {
+        $activeLi.next().addClass('active');
+      }
+    } else {
+      $form.find('.search-results li:first-child').addClass('active');
+    }
+  } else {
+    searchForm(e);
+  }
+});
+
+$(document).on('submit', '.search-form', function (e) {
+  e.preventDefault();
+
+  var $activeLi = $('.search-form .search-results li.active');
+
+  if ($activeLi.length) {
+    window.location.assign($activeLi.find('a').attr('href'));
+  } else {
+    window.location.search = $(this).find('input').val().replace(/ /g, "_");
+  }
+});
+
 $(document).on('scroll', function (e) {
   var st = $(window).scrollTop();
 
@@ -130,25 +173,6 @@ $(document).on('keyup', '#custom-styles-input', function (e) {
   $('#custom-styles').html(styles);
   localStorage.setItem('customStyles', styles);
 });
-
-$(document).on('submit', '.search-form', function (e) {
-  e.preventDefault();
-
-  if (false) {
-    // Do nothing
-  } else {
-      window.location.search = $(this).find('input').val().replace(/ /g, "_");
-    }
-});
-
-var searchForm = debounce(function (e) {
-  e.preventDefault();
-
-  var query = $('.search-form').find('input').val();
-  handleSearch(query, 'en');
-}, 300);
-
-$(document).on('keyup', '.search-form', searchForm);
 
 $(document).on('change', '#theme-changer input', function (e) {
   e.preventDefault();
