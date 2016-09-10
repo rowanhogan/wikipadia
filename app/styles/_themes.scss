@@ -4,7 +4,8 @@ html.sans {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6,
+  #content p:first-of-type b {
     font-family: inherit;
   }
 }
@@ -107,8 +108,22 @@ html.sans {
     background-color: #333;
   }
 
-  .search-form input {
-    border-color: #333;
+  .search-form {
+    input {
+      border-color: #333;
+    }
+
+    .search-results {
+      background: #111;
+      box-shadow: none;
+
+      ol li a {
+        &:hover, &.active {
+          background: #222;
+          color: white;
+        }
+      }
+    }
   }
 
   &.main_page {
@@ -119,7 +134,6 @@ html.sans {
         opacity: .25;
       }
     }
-
 
     #mp-itn ul li,
     #mp-otd ul li,
@@ -150,8 +164,10 @@ html.sans {
       color: #222 !important;
       background: white !important;
 
-      > p {
-        background: -webkit-linear-gradient(#222, transparent 60%);
+      @media (max-width: 768px) {
+        > p {
+          background-image: -webkit-linear-gradient(#222, transparent 60%);
+        }
       }
 
       a {
