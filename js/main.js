@@ -91,13 +91,18 @@ var searchForm = debounce(function (e) {
 }, 300);
 
 $(document).on('keyup', '.search-form', function (e) {
-  var keyPressed = e.which;
+  var keyPressed = e.which,
+      $form = $('.search-form');
+
+  if (keyPressed === 27) {
+    e.preventDefault();
+    $form.find('.search-results').remove();
+  }
 
   if (keyPressed === 38 || keyPressed === 40) {
     e.preventDefault();
 
-    var $form = $('.search-form'),
-        $activeLi = $form.find('.search-results li.active');
+    var $activeLi = $form.find('.search-results li.active');
 
     if ($activeLi.length) {
       $activeLi.removeClass('active');
@@ -368,6 +373,7 @@ function handleNewPage(pageTitle, lang) {
     url: 'https://' + lang + '.wikipedia.org/w/api.php?callback=?',
     data: {
       action: "parse",
+      redirects: true,
       prop: "text|sections|images",
       page: decodedPageTitle,
       format: 'json'
