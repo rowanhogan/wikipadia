@@ -1,5 +1,5 @@
 
-const $ = require('jquery');
+var $ = require('jquery');
 
 function handleMainPage () {
   var $img = $('#mp-tfa-img img');
