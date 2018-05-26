@@ -1,6 +1,6 @@
-# [![WikiPadia](https://res.cloudinary.com/rowanhogan/image/upload/c_scale,h_60/v1456251436/logo_z2plre.png)](http://wikipadia.xyz)
+# [![Wikipadia](https://res.cloudinary.com/rowanhogan/image/upload/c_scale,h_60/v1456251436/logo_z2plre.png)](http://wikipadia.xyz)
 
-_WikiPadia_ is a beautiful, customisable Wikipedia reader. It was specifically built for leisurely, late-night reading on an iPad.
+_Wikipadia_ is a beautiful, customisable Wikipedia reader. It was built specifically for leisurely, late-night reading on an iPad.
 
 The themes and options provide you with the ability to customize your reading experience, as well as the ability to add your own CSS which is saved locally to your device.
 
@@ -14,4 +14,4 @@ The inverted theme allows for better night/low-light reading by re-inverting and
 
 The compiled app runs entirely client side, but to run it in development you'll need NPM & Gulp.
 
-Simply `npm install` and then `npm start` to run the server.
+Simply `yarn install` and then `yarn` to run the server.

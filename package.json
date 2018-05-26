@@ -1,40 +1,24 @@
 {
   "name": "wikipadia",
-  "version": "1.0.0",
-  "description": "WikiPadia is a beautiful, customisable Wikipedia reader built for iPad.",
-  "main": "app/scripts/app.js",
-  "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "deploy": "gulp deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rowanhogan/wikipadia.git"
-  },
+  "version": "2.0.0",
+  "description": "Wikipadia is a beautiful, customisable Wikipedia reader.",
   "author": "Rowan Hogan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rowanhogan/wikipadia/issues"
-  },
-  "homepage": "https://github.com/rowanhogan/wikipadia#readme",
-  "devDependencies": {
-    "babelify": "^6.3.0",
-    "browserify": "^11.0.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-connect": "^2.2.0",
-    "gulp-gh-pages": "^0.5.2",
-    "gulp-load-plugins": "^1.0.0-rc.1",
-    "gulp-sass": "^2.0.4",
-    "gulp-sequence": "^0.4.1",
-    "gulp-sourcemaps": "^1.5.2",
-    "mkdirp": "^0.5.1",
-    "vinyl-source-stream": "^1.1.0"
-  },
+  "homepage": "https://wikipadia.xyz",
+  "private": true,
   "dependencies": {
-    "fastclick": "^1.0.6",
-    "jquery": "^2.1.4"
+    "axios": "^0.18.0",
+    "gh-pages": "^1.1.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }

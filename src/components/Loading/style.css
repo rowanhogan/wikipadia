@@ -1,0 +1,23 @@
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -0.5em;
+  font-size: 3em;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-right-color: #444;
+  z-index: 100;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
