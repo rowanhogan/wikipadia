@@ -14,6 +14,4 @@ The inverted theme allows for better night/low-light reading by re-inverting and
 
 The compiled app runs entirely client side, but to run it in development you'll need NPM & Gulp.
 
-Simply `npm install` and then `gulp` to run the server.
-
-**This is still in very early development — contributions and ideas are welcome!**
+Simply `npm install` and then `npm start` to run the server.
