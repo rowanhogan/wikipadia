@@ -1,40 +1,27 @@
 {
   "name": "wikipadia",
-  "version": "1.0.0",
-  "description": "WikiPadia is a beautiful, customisable Wikipedia reader built for iPad.",
-  "main": "app/scripts/app.js",
-  "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "deploy": "gulp deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rowanhogan/wikipadia.git"
-  },
+  "version": "2.0.0",
+  "description": "Wikipadia is a beautiful, customisable Wikipedia reader.",
+  "homepage": "https://wikipadia.xyz",
   "author": "Rowan Hogan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rowanhogan/wikipadia/issues"
-  },
-  "homepage": "https://github.com/rowanhogan/wikipadia#readme",
-  "devDependencies": {
-    "babelify": "^6.3.0",
-    "browserify": "^11.0.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-connect": "^2.2.0",
-    "gulp-gh-pages": "^0.5.2",
-    "gulp-load-plugins": "^1.0.0-rc.1",
-    "gulp-sass": "^2.0.4",
-    "gulp-sequence": "^0.4.1",
-    "gulp-sourcemaps": "^1.5.2",
-    "mkdirp": "^0.5.1",
-    "vinyl-source-stream": "^1.1.0"
+  "license": "MIT",
+  "scripts": {
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "serve": "serve dist -p 3000"
   },
   "dependencies": {
-    "fastclick": "^1.0.6",
-    "jquery": "^2.1.4"
+    "axios": "^0.16.2",
+    "lodash": "^4.17.10",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router": "^4.2.0",
+    "react-static": "^5.9.5",
+    "wtf_wikipedia": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-react-tools": "1.x.x",
+    "serve": "^6.1.0"
   }
 }
