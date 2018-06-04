@@ -245,14 +245,14 @@ function handleData(data, lang) {
     html = html.split('?' + typeString).join('https://' + lang + '.m.wikipedia.org/wiki/' + typeString);
   });
 
-  contentEl.innerHTML = html;
+  var pageTitle = title.replace(/ /g, '_').toLowerCase();
+
+  contentEl.innerHTML = pageTitle === 'main_page' ? html.replace(/style="[^"]*"/g, "") : html;
 
   var remoteLinks = document.querySelectorAll('a[href*="wikipedia.org"]');
   Array.prototype.forEach.call(remoteLinks, function (el, i) {
     el.target = '_blank';
   });
-
-  var pageTitle = title.replace(/ /g, '_').toLowerCase();
 
   $('html').addClass(pageTitle);
 
@@ -282,7 +282,6 @@ function handleData(data, lang) {
   contentEl.parentElement.insertBefore(titleEl, contentEl.parentElement.firstChild);
 
   document.title = title + " – WikiPadia";
-  $(window).scrollTop(0);
 
   if ($('#coordinates').length) {
     $.getScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js').done(function () {
@@ -387,6 +386,15 @@ function handleNewPage(pageTitle, lang) {
   request.then(function (data, textStatus, jqXHR) {
     handleData(data, lang);
     htmlEl.classList.remove('loading');
+
+    setTimeout(function () {
+      if (window.location.hash) {
+        var el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView();
+      } else {
+        $(window).scrollTop(0);
+      }
+    }, 1000);
   }, function (jqXHR, textStatus, errorThrown) {
     htmlEl.classList.remove('loading');
     console.log(jqXHR, textStatus, errorThrown);
