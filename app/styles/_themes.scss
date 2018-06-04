@@ -145,18 +145,24 @@ html.sans {
 
 .inverted {
   img {
-    filter: invert(100%);
+    // filter: invert(100%);
     opacity: .5;
 
     &.mwe-math-fallback-image-inline {
-      filter: none;
+      // filter: none;
       opacity: 1;
     }
   }
 
+  .wikitable td[style*=background] {
+    filter: invert(100%);
+    opacity: 0.666;
+  }
+
+
   &.main_page {
     #mp-tfa > #mp-tfa-img {
-      -webkit-filter: invert(100%);
+      // -webkit-filter: invert(100%);
       opacity: .4;
     }
 
@@ -164,11 +170,11 @@ html.sans {
       color: #222 !important;
       background: white !important;
 
-      @media (max-width: 768px) {
-        > p {
-          background-image: -webkit-linear-gradient(#222, transparent 60%);
-        }
-      }
+      // @media (max-width: 768px) {
+      //   > p {
+      //     background-image: -webkit-linear-gradient(#222, transparent 60%);
+      //   }
+      // }
 
       a {
         color: black !important;

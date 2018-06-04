@@ -24,14 +24,15 @@ function handleData (data, lang) {
     html = html.split('?' + typeString).join(`https://${lang}.m.wikipedia.org/wiki/${typeString}`);
   });
 
-  contentEl.innerHTML = html;
+  var pageTitle = title.replace(/ /g, '_').toLowerCase();
+
+  contentEl.innerHTML = pageTitle === 'main_page' ? html.replace(/style="[^"]*"/g, "") : html;
 
   var remoteLinks = document.querySelectorAll('a[href*="wikipedia.org"]');
   Array.prototype.forEach.call(remoteLinks, function(el, i){
     el.target = '_blank';
   });
 
-  var pageTitle = title.replace(/ /g, '_').toLowerCase();
 
   $('html').addClass( pageTitle );
 
@@ -61,7 +62,6 @@ function handleData (data, lang) {
   contentEl.parentElement.insertBefore(titleEl, contentEl.parentElement.firstChild);
 
   document.title = title + " – WikiPadia";
-  $(window).scrollTop(0);
 
   if ($('#coordinates').length) {
     $.getScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js').done(function() {

@@ -26,6 +26,16 @@ function handleNewPage (pageTitle, lang) {
   request.then(function( data, textStatus, jqXHR ) {
     handleData(data, lang);
     htmlEl.classList.remove('loading');
+
+    setTimeout(function () {
+      if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView();
+      } else {
+        $(window).scrollTop(0);
+      }
+    }, 1000);
+
   }, function( jqXHR, textStatus, errorThrown ) {
     htmlEl.classList.remove('loading');
     console.log(jqXHR, textStatus, errorThrown);
