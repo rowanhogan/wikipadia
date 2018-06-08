@@ -1,11 +1,18 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 
-import Home from "./Home";
-import Page from "./Page";
-import Media from "./Media";
+import Home from "../home";
+import Page from "../page";
+import Media from "../media";
 
-const PageNotFound = () => <div>😢 Not Found</div>;
+const PageNotFound = () => (
+  <div>
+    <span role="img" aria-label="Sad face">
+      😢
+    </span>
+    Not Found
+  </div>
+);
 
 export default () => (
   <div>

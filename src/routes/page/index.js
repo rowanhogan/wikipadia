@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { fetchPage } from "../lib/api";
-import Loading from "../components/Loading";
+import { fetchPage } from "../../lib/api";
+import Loading from "../../components/Loading";
 
 export default class extends Component {
   constructor(props) {

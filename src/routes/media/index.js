@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchMedia } from "../lib/api";
+import { fetchMedia } from "../../lib/api";
 
 export default class extends Component {
   constructor(props) {
