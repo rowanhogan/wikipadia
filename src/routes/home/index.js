@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 
 export default () => (
-  <div>
+  <div class="container">
     <h1 class="logo">Wikipadia</h1>
 
     <div class="blurb">

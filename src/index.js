@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
+import initReactFastclick from "react-fastclick";
 import App from "./routes/app";
-import "./index.css";
+import "./styles/index.css";
+
+initReactFastclick();
 
 ReactDOM.render(
   <BrowserRouter>

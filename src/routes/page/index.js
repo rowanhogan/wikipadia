@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { fetchPage } from "../../lib/api";
-import Loading from "../../components/Loading";
+
+import Loading from "../../components/loading";
 
 export default class extends Component {
   constructor(props) {
@@ -22,9 +23,9 @@ export default class extends Component {
   fetchPage = title => {
     this.setState({ loading: true });
 
-    return fetchPage(decodeURIComponent(title))
+    return fetchPage(title)
       .then(({ title, content, sections }) => {
-        document.title = title;
+        document.title = `${title} - Wikipadia`;
 
         this.setState(
           {
@@ -54,7 +55,7 @@ export default class extends Component {
     const { loading, title, content, error } = this.state;
 
     return (
-      <div>
+      <div class="container">
         {loading && <Loading />}
         {content ? (
           <div>

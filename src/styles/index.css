@@ -1,3 +1,5 @@
+@import url("./page.css");
+
 html {
   font-family: Cardo, Georgia, serif;
   font-size: 100%;
@@ -45,7 +47,7 @@ h6 {
   font-family: Playfair Display, Cardo, Georgia, serif;
 }
 
-.root {
+.container {
   max-width: 42rem;
   margin: auto;
   padding: 1.5rem;

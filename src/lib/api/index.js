@@ -1,59 +1,108 @@
 import axios from "axios";
 
-export const fetchMedia = (title, lang = "en") =>
-  new Promise((resolve, reject) =>
-    axios
-      .get(`https://${lang}.wikipedia.org/w/api.php`, {
-        params: {
-          action: "query",
-          format: "json",
-          iiprop: "timestamp|url|size|mime|mediatype|extmetadata",
-          origin: "*",
-          prop: "imageinfo",
-          titles: title
-        }
-      })
-      .then(({ data: { error, query } }) => {
-        if (error) {
-          return reject(error);
-        } else {
-          return resolve(query.pages[-1]);
-        }
-      })
+const lang = "en";
+const baseUrl = `https://${lang}.wikipedia.org/w/api.php`;
+const defaultParams = {
+  format: "json",
+  origin: "*"
+};
+
+export const fetch = params =>
+  axios.get(
+    baseUrl,
+    {
+      params: {
+        ...defaultParams,
+        ...params
+      }
+    },
+    {
+      withCredentials: true
+    }
   );
 
-export const fetchPage = (title, lang = "en") =>
+export const fetchMedia = title =>
   new Promise((resolve, reject) =>
-    axios
-      .get(`https://${lang}.wikipedia.org/w/api.php`, {
-        params: {
-          action: "parse",
-          disableeditsection: true,
-          disablestylededuplication: true,
-          format: "json",
-          // mainpage: title === "Main_page",
-          mobileformat: true,
-          origin: "*",
-          page: title,
-          prop: "text|sections|images|displaytitle",
-          redirects: true,
-          wrapoutputclass: "root"
-        }
-      })
-      .then(({ data: { error, parse } }) => {
-        if (error) {
-          return reject(error);
-        } else {
-          const { displaytitle, images, sections, text } = parse;
+    fetch({
+      params: {
+        action: "query",
+        iiprop: "timestamp|url|size|mime|mediatype|extmetadata",
+        prop: "imageinfo",
+        titles: title
+      }
+    }).then(({ data: { error, query } }) => {
+      if (error) {
+        return reject(error);
+      } else {
+        return resolve(query.pages[-1]);
+      }
+    })
+  );
 
-          return resolve({
-            title: displaytitle,
-            images,
-            sections,
-            content: formatHtml(text["*"])
-          });
-        }
-      })
+export const fetchRandom = () =>
+  new Promise((resolve, reject) =>
+    fetch({
+      action: "query",
+      list: "random",
+      rnnamespace: 0,
+      rnlimit: 1
+    }).then(({ data: { error, query } }) => {
+      if (error) {
+        return reject(error);
+      } else {
+        return resolve(query.random[0]);
+      }
+    })
+  );
+
+export const fetchPages = query =>
+  new Promise((resolve, reject) =>
+    fetch({
+      prop: "pageprops|pageimages|pageterms",
+      format: "json",
+      generator: "prefixsearch",
+      ppprop: "displaytitle",
+      piprop: "thumbnail",
+      pithumbsize: 160,
+      pilimit: 10,
+      wbptterms: "description",
+      gpssearch: decodeURIComponent(query),
+      gpsnamespace: 0,
+      gpslimit: 10
+    }).then(({ data: { error, query } }) => {
+      if (error) {
+        return reject(error);
+      } else {
+        return resolve(query.pages);
+      }
+    })
+  );
+
+export const fetchPage = title =>
+  new Promise((resolve, reject) =>
+    fetch({
+      action: "parse",
+      disableeditsection: true,
+      disablestylededuplication: true,
+      mobileformat: true,
+      page: decodeURIComponent(title),
+      prop: "text|sections|images|displaytitle",
+      redirects: true,
+      wrapoutputclass: "root"
+    }).then(({ data: { error, parse } }) => {
+      if (error) {
+        return reject(error);
+      } else {
+        const { displaytitle, images, sections, text } = parse;
+
+        return resolve({
+          title: displaytitle,
+          images,
+          sections,
+          content: formatHtml(text["*"])
+        });
+      }
+    })
   );
 
 export const formatHtml = html =>
