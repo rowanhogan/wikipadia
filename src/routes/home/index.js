@@ -1,16 +1,17 @@
-import React from "react";
-import { Route, Link } from "react-router-dom";
+import React from 'react'
+import Page from '../../components/page'
 
 export default () => (
-  <div class="container">
-    <h1 class="logo">Wikipadia</h1>
+  <div className="container">
+    <h1 className="logo">Wikipadia</h1>
 
-    <div class="blurb">
+    <div className="blurb">
       <p>
         <em>WikiPadia</em> is a beautiful, customisable Wikipedia reader. It was
         specifically built for leisurely reading on an iPad.
       </p>
     </div>
-    <Link to="/Main_page">Main Page</Link>
+
+    <Page title="Main_page" />
   </div>
-);
+)

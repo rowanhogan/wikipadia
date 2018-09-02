@@ -1,46 +1,48 @@
-import React, { Component } from "react";
-import { fetchMedia } from "../../lib/api";
+import React, { Component } from 'react'
+import { fetchMedia } from '../../lib/api'
 
 export default class extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       loading: false,
       title: props.title,
       content: undefined,
       sections: undefined
-    };
+    }
   }
 
   componentDidMount() {
-    const { match: { params: { title } } } = this.props;
-    return this.fetchPage(title);
+    const { match: { params: { title } } } = this.props
+    return this.fetchPage(title)
   }
 
   fetchPage = title => {
-    this.setState({ loading: true });
+    this.setState({ loading: true })
 
     return fetchMedia(`File:${decodeURIComponent(title)}`)
       .then(({ title, content }) => {
-        document.title = title;
+        document.title = title
 
         this.setState({
           loading: false,
           title,
           content
-        });
+        })
       })
       .catch(({ info }) =>
         this.setState({
           loading: false,
           error: info
         })
-      );
-  };
+      )
+  }
 
   render() {
-    const { loading, title, content, error } = this.state;
+    const { loading, title, content, error } = this.state
+
+    console.log(content)
 
     return (
       <div>
@@ -59,6 +61,6 @@ export default class extends Component {
           <h1>{title}</h1>
         )}
       </div>
-    );
+    )
   }
 }

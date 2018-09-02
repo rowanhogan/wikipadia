@@ -1,0 +1,320 @@
+@import 'thumbs';
+
+$sidebar-width: 20rem;
+
+.root {
+  counter-reset: section;
+
+  // table.vertical-navbox {
+  //   display: none;
+  // }
+
+  p:first-of-type {
+    b {
+      font-family: 'Playfair Display', 'PT Serif', 'Lora', Georgia, serif;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    counter-increment: section;
+
+    .mw-headline {
+      display: block;
+      position: relative;
+      padding: 1em 0;
+      margin: 2em 0;
+
+      &:before {
+        content: counter(section) '.';
+        display: block;
+        font-size: 75%;
+        font-weight: normal;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 1.5em;
+        margin-left: -0.75em;
+        border-bottom: thin solid;
+      }
+    }
+  }
+
+  h3 {
+    margin: 1em 0 2em;
+
+    .mw-headline {
+      display: block;
+      text-align: center;
+      padding-top: 1em;
+    }
+  }
+
+  > .hatnote:first-child,
+  > .hatnote:first-child + div.hatnote {
+    text-align: center;
+    font-size: 0.75em;
+    margin-bottom: 0.75em;
+    opacity: 0.75;
+  }
+
+  @supports (-webkit-hyphens: auto) {
+    text-align: justify;
+    -webkit-hyphens: auto;
+  }
+}
+
+.serif-stack {
+  font-family: $serif-stack;
+}
+
+.sans-stack {
+  font-family: $sans-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  clear: both;
+  margin: 2em 0 1em;
+  position: relative;
+  line-height: 1.333em;
+  font-family: $title-stack;
+}
+
+h1,
+h2 {
+  text-align: center;
+
+  + div.hatnote {
+    margin: 1em auto;
+    text-align: center;
+    max-width: 450px;
+  }
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2em;
+  margin: 0.75em 0 1.5em;
+  cursor: pointer;
+}
+
+div.hatnote {
+  padding: 0;
+  line-height: 1.5em;
+}
+
+a {
+  color: dodgerblue;
+
+  &:visited {
+    color: mediumpurple;
+  }
+
+  &:focus {
+    color: black;
+    outline: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  &.infobox {
+    font-size: 90%;
+    margin: auto;
+    border: 0;
+    background-color: transparent;
+
+    &.geography,
+    &.vcard,
+    &.active {
+      max-width: 100%;
+      margin: 2em auto;
+    }
+
+    th {
+      background-color: transparent;
+    }
+  }
+
+  &.vertical-navbox {
+    margin: 1em auto;
+    float: none;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+
+    th {
+      background-color: transparent;
+    }
+  }
+
+  &.navbox {
+    border: 0;
+    padding: 0;
+
+    th {
+      background-color: transparent;
+    }
+  }
+
+  &.wikitable {
+    font-size: 90%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-right: thin solid #ddd;
+
+    caption {
+      margin: 0 0 0.5em;
+    }
+
+    th,
+    td {
+      padding: 0.25em 0.5em;
+      border: thin solid #ddd;
+    }
+
+    img {
+      background-color: white;
+    }
+  }
+}
+
+table.wikitable,
+table.navbox {
+  overflow-y: hidden;
+  overflow-x: auto;
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+table.mbox-small {
+  background: transparent;
+  border: 0;
+  font-style: italic;
+}
+
+.root > div[style='width:70%'] {
+  width: auto;
+}
+
+.mw-editsection,
+.noprint,
+.metadata.plainlinks {
+  display: none;
+}
+
+code,
+pre {
+  background-color: whitesmoke;
+  border: 0;
+  border-radius: 0.5em;
+}
+
+#toc {
+  // display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+  font-size: 1rem;
+  line-height: 1.5em;
+  background-color: white;
+  padding: 1.5em;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: $sidebar-width;
+  max-width: 100%;
+  z-index: 1000;
+  transform: translateX(-$sidebar-width);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media screen {
+    display: block;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.2em;
+    text-align: left;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  ul {
+    margin: 1em 0;
+    padding: 0 0 0 1em;
+
+    ul {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
+  > ul {
+    padding: 0;
+  }
+
+  &.active {
+    display: block;
+    transform: translateX(0);
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+
+    &.toclevel-1 {
+      margin: 0 0 0.5em;
+    }
+  }
+
+  .tocnumber {
+    font-size: 75%;
+
+    &:after {
+      content: '. ';
+    }
+  }
+}
+
+.root table h2 {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.25em;
+  color: inherit;
+  margin: 0 0 0.25em;
+
+  span {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.reflist {
+  font-size: 75%;
+  column-count: 2;
+}

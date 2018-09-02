@@ -1,0 +1,55 @@
+.loading {
+  position: relative;
+
+  .page-title {
+    animation: loading 1s linear infinite;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    height: 40vh;
+  }
+
+  &:before {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      transparent 50%,
+      currentColor 50%,
+      currentColor
+    );
+    background-size: 100% 2.333em;
+    animation: loadingLines 2s linear infinite;
+    opacity: 0.25;
+  }
+
+  &:after {
+    background: linear-gradient(rgba(white, 0), white),
+      linear-gradient(90deg, rgba(white, 0), rgba(white, 0.5));
+  }
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes loadingLines {
+  0%,
+  100% {
+    opacity: 0.333;
+  }
+  50% {
+    opacity: 0.125;
+  }
+}

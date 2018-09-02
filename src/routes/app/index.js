@@ -1,9 +1,10 @@
-import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import React from 'react'
+import { Switch, Redirect, Route } from 'react-router-dom'
 
-import Home from "../home";
-import Page from "../page";
-import Media from "../media";
+import Home from '../home'
+import Page from '../page'
+import Media from '../media'
+import Header from '../../components/header'
 
 const PageNotFound = () => (
   <div>
@@ -12,19 +13,17 @@ const PageNotFound = () => (
     </span>
     Not Found
   </div>
-);
+)
 
 export default () => (
   <div>
-    <header className="header">
-      <Link to="/">Wikipadia</Link>
-    </header>
-
+    <Header />
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/Main_page" render={() => <Redirect to="/" />} />
       <Route path="/File::title" component={Media} />
       <Route path="/:title" component={Page} />
       <Route component={PageNotFound} />
     </Switch>
   </div>
-);
+)

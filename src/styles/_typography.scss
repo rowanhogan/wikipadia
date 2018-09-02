@@ -1,0 +1,53 @@
+:root {
+  color: $color-dark;
+  font-family: $serif-stack;
+  font-size: 110%;
+  line-height: 1.666;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+
+  @media (min-width: 36rem) {
+    font-size: 120%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: dodgerblue;
+
+  &:visited {
+    color: mediumpurple;
+  }
+
+  &:focus {
+    color: black;
+    outline: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $title-stack;
+  margin: 2em 0 1em;
+  position: relative;
+  line-height: 1.333;
+  clear: both;
+}
+
+h1,
+h2 {
+  text-align: center;
+}

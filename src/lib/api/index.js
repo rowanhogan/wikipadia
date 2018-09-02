@@ -24,12 +24,13 @@ export const fetch = params =>
 export const fetchMedia = title =>
   new Promise((resolve, reject) =>
     fetch({
-      params: {
-        action: "query",
-        iiprop: "timestamp|url|size|mime|mediatype|extmetadata",
-        prop: "imageinfo",
-        titles: title
-      }
+      action: "query",
+      iiprop: "timestamp|url|size|mime|mediatype|extmetadata",
+      iiextmetadatafilter:
+        "DateTime|ImageDescription|License|Credit|Artist|GPSLatitude|GPSLongitude|Attribution",
+      iiextmetadatalanguage: "en",
+      prop: "imageinfo",
+      titles: title
     }).then(({ data: { error, query } }) => {
       if (error) {
         return reject(error);
@@ -106,4 +107,8 @@ export const fetchPage = title =>
   );
 
 export const formatHtml = html =>
-  html.replace(/style="[^"]*"/g, "").replace(/href="\/wiki\//g, 'href="/');
+  html
+    .replace(/style="[^"]*"/g, "")
+    .replace(/href="\/wiki\//g, `href="/`)
+    .replace(/width="[^"]*"/g, "")
+    .replace(/height="[^"]*"/g, "");
