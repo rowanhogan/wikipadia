@@ -31,10 +31,16 @@ class Sections extends Component {
                   key={index}
                   href={`#${section.anchor}`}
                   onClick={() => this.setState({ open: false })}>
-                  <span className={`section-level-${section.toclevel}`}>
+                  <span
+                    className={`section-level section-level-${
+                      section.toclevel
+                    }`}>
                     {section.number}.
                   </span>
-                  <label dangerouslySetInnerHTML={{ __html: section.line }} />
+                  <span
+                    className="section-label"
+                    dangerouslySetInnerHTML={{ __html: section.line }}
+                  />
                 </a>
               ))}
             </nav>

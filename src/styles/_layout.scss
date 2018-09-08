@@ -211,7 +211,6 @@ $bar-height: 0.166rem;
   top: 85%;
   right: 0.75rem;
   background-color: white;
-  width: 16rem;
   max-width: calc(100vw - 1.5rem);
   max-height: calc(95vh - #{$header-height});
   overflow: auto;
@@ -225,6 +224,10 @@ $bar-height: 0.166rem;
     color: currentColor;
     text-decoration: none;
     border-top: thin solid rgba(black, 0.1);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 36rem;
 
     &:first-child {
       border-top-width: 0;
@@ -239,7 +242,7 @@ $bar-height: 0.166rem;
       background-color: rgba(black, 0.075);
     }
 
-    span {
+    .section-level {
       opacity: 0.5;
       font-size: 80%;
     }
@@ -254,7 +257,7 @@ $bar-height: 0.166rem;
       margin-left: 1rem;
     }
 
-    label {
+    .section-label {
       font-family: $title-stack;
       margin-left: 0.5rem;
     }

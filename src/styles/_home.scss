@@ -52,12 +52,14 @@
     }
   }
 
-  #mp-upper {
-    tr {
-      display: flex;
+  @media (min-width: 48rem) {
+    #mp-upper {
+      tr {
+        display: flex;
 
-      td {
-        flex: 50%;
+        td {
+          flex: 50%;
+        }
       }
     }
   }
