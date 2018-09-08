@@ -1,11 +1,7 @@
+.mp-thumb,
 .thumb {
   margin: 2em auto;
   text-align: center;
-
-  .thumbinner {
-    margin: auto;
-    width: auto;
-  }
 
   .thumbcaption {
     font-size: 75%;
@@ -16,7 +12,13 @@
   }
 }
 
+.thumbinner {
+  margin: auto;
+  width: auto;
+}
+
 .infobox :only-child > .image,
+.mp-thumb .image,
 .thumb {
   display: block;
 
