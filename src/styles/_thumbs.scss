@@ -11,8 +11,27 @@
     font-size: 75%;
     line-height: 1.5em;
   }
+}
 
-  .thumbimage {
-    display: inline-block;
+.infobox .image,
+.thumb {
+  display: block;
+
+  img {
+    display: block;
+    min-width: 50%;
+    margin: 1rem auto;
+  }
+
+  @media (max-width: 36rem) {
+    margin: 0 -1.5rem;
+
+    .thumbcaption {
+      padding: 0 1rem;
+    }
+
+    img {
+      width: 100%;
+    }
   }
 }

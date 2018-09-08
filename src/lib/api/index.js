@@ -1,11 +1,14 @@
-import axios from "axios";
+import axios from 'axios'
+import lodashGet from 'lodash/get'
+import sortBy from 'lodash/sortBy'
+import values from 'lodash/values'
 
-const lang = "en";
-const baseUrl = `https://${lang}.wikipedia.org/w/api.php`;
+const lang = 'en'
+const baseUrl = `https://${lang}.wikipedia.org/w/api.php`
 const defaultParams = {
-  format: "json",
-  origin: "*"
-};
+  format: 'json',
+  origin: '*'
+}
 
 export const fetch = params =>
   axios.get(
@@ -19,96 +22,102 @@ export const fetch = params =>
     {
       withCredentials: true
     }
-  );
+  )
 
 export const fetchMedia = title =>
   new Promise((resolve, reject) =>
     fetch({
-      action: "query",
-      iiprop: "timestamp|url|size|mime|mediatype|extmetadata",
+      action: 'query',
+      iiprop: 'timestamp|url|size|mime|mediatype|extmetadata',
       iiextmetadatafilter:
-        "DateTime|ImageDescription|License|Credit|Artist|GPSLatitude|GPSLongitude|Attribution",
-      iiextmetadatalanguage: "en",
-      prop: "imageinfo",
+        'DateTime|ImageDescription|License|Credit|Artist|GPSLatitude|GPSLongitude|Attribution',
+      iiextmetadatalanguage: 'en',
+      prop: 'imageinfo',
       titles: title
     }).then(({ data: { error, query } }) => {
       if (error) {
-        return reject(error);
+        return reject(error)
       } else {
-        return resolve(query.pages[-1]);
+        return resolve(query.pages[-1])
       }
     })
-  );
+  )
 
 export const fetchRandom = () =>
   new Promise((resolve, reject) =>
     fetch({
-      action: "query",
-      list: "random",
+      action: 'query',
+      list: 'random',
       rnnamespace: 0,
       rnlimit: 1
     }).then(({ data: { error, query } }) => {
       if (error) {
-        return reject(error);
+        return reject(error)
       } else {
-        return resolve(query.random[0]);
+        return resolve(query.random[0])
       }
     })
-  );
+  )
 
 export const fetchPages = query =>
   new Promise((resolve, reject) =>
     fetch({
-      prop: "pageprops|pageimages|pageterms",
-      format: "json",
-      generator: "prefixsearch",
-      ppprop: "displaytitle",
-      piprop: "thumbnail",
-      pithumbsize: 160,
-      pilimit: 10,
-      wbptterms: "description",
-      gpssearch: decodeURIComponent(query),
+      action: 'query',
+      generator: 'prefixsearch',
+      gpslimit: 8,
       gpsnamespace: 0,
-      gpslimit: 10
+      gpssearch: query,
+      pilimit: 8,
+      ppprop: 'displaytitle',
+      prop: 'pageprops|pageterms',
+      wbptterms: 'description'
     }).then(({ data: { error, query } }) => {
-      if (error) {
-        return reject(error);
+      if (error || !query) {
+        return reject(error)
       } else {
-        return resolve(query.pages);
+        const { pages = [] } = query
+        const results = sortBy(values(pages), 'index')
+        const deserializeResult = result => ({
+          description: lodashGet(result, 'terms.description[0]'),
+          link: '/' + encodeURIComponent(result.title.replace(' ', '_')),
+          title: result.title
+        })
+
+        return resolve(results.map(deserializeResult))
       }
     })
-  );
+  )
 
 export const fetchPage = title =>
   new Promise((resolve, reject) =>
     fetch({
-      action: "parse",
+      action: 'parse',
       disableeditsection: true,
       disablestylededuplication: true,
       mobileformat: true,
       page: decodeURIComponent(title),
-      prop: "text|sections|images|displaytitle",
+      prop: 'text|sections|images|displaytitle',
       redirects: true,
-      wrapoutputclass: "root"
+      wrapoutputclass: 'root'
     }).then(({ data: { error, parse } }) => {
       if (error) {
-        return reject(error);
+        return reject(error)
       } else {
-        const { displaytitle, images, sections, text } = parse;
+        const { displaytitle, images, sections, text } = parse
 
         return resolve({
           title: displaytitle,
           images,
           sections,
-          content: formatHtml(text["*"])
-        });
+          content: formatHtml(text['*'])
+        })
       }
     })
-  );
+  )
 
 export const formatHtml = html =>
   html
-    .replace(/style="[^"]*"/g, "")
+    .replace(/style="[^"]*"/g, '')
     .replace(/href="\/wiki\//g, `href="/`)
-    .replace(/width="[^"]*"/g, "")
-    .replace(/height="[^"]*"/g, "");
+    .replace(/width="[^"]*"/g, '')
+    .replace(/height="[^"]*"/g, '')

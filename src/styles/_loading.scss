@@ -2,7 +2,7 @@
   position: relative;
 
   .page-title {
-    animation: loading 1s linear infinite;
+    animation: loading 1.5s linear infinite;
   }
 
   &:before,
@@ -10,8 +10,8 @@
     content: '';
     position: absolute;
     top: 5rem;
-    left: 0;
-    right: 0;
+    left: 10%;
+    right: 10%;
     height: 40vh;
   }
 
@@ -34,22 +34,55 @@
   }
 }
 
+.spinner {
+  position: relative;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+  height: 1.5rem;
+  padding: 4rem 0;
+  opacity: 0.5;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: translate(-50%, -50%);
+    border: thin solid transparent;
+    border-radius: 50%;
+    border-right-color: currentColor;
+    animation: spin 500ms linear infinite;
+  }
+}
+
 @keyframes loading {
   0%,
   100% {
-    opacity: 0.75;
+    opacity: 0.5;
   }
   50% {
-    opacity: 0.25;
+    opacity: 0.3;
   }
 }
 
 @keyframes loadingLines {
   0%,
   100% {
-    opacity: 0.333;
+    opacity: 0.2;
   }
   50% {
-    opacity: 0.125;
+    opacity: 0.1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

@@ -58,7 +58,8 @@ $sidebar-width: 20rem;
   > .hatnote:first-child + div.hatnote {
     text-align: center;
     font-size: 0.75em;
-    margin-bottom: 0.75em;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
     opacity: 0.75;
   }
 
@@ -105,7 +106,7 @@ h2 {
 .page-title {
   text-align: center;
   font-size: 2em;
-  margin: 0.75em 0 1.5em;
+  margin: 0 0 1.5em;
   cursor: pointer;
 }
 
@@ -132,21 +133,36 @@ img {
 }
 
 table {
+  margin: 1.5rem auto;
+  border-spacing: 0;
+
   &.infobox {
     font-size: 90%;
-    margin: auto;
     border: 0;
-    background-color: transparent;
+    table-layout: fixed;
 
     &.geography,
     &.vcard,
     &.active {
       max-width: 100%;
-      margin: 2em auto;
     }
 
-    th {
-      background-color: transparent;
+    .adr,
+    .fn {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    th,
+    td {
+      padding: 0.25rem;
+
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
     }
   }
 

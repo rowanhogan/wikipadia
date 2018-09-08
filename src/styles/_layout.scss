@@ -1,7 +1,7 @@
 .container {
   max-width: 48rem;
   margin: auto;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
   text-align: left;
 
   @media (min-width: 32rem) {
@@ -14,13 +14,18 @@
   top: 0;
   height: $header-height;
   background-color: white;
-  box-shadow: 0 0 1rem rgba(black, 0.125);
-  z-index: 5;
+  border-bottom: thin solid rgba(black, 0.1);
   transition: all 350ms ease;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
 
   &.hidden {
-    opacity: 0;
     transform: translateY(-100%);
+  }
+
+  div {
+    flex: 1;
   }
 
   .logo {
@@ -53,4 +58,95 @@
       opacity: 0.175;
     }
   }
+}
+
+.search-form {
+  position: relative;
+
+  input {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    appearance: none;
+    height: $header-height;
+    line-height: $header-height;
+    padding: 0 1rem;
+    font-size: 1rem;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: thin solid rgba(black, 0.1);
+  max-height: calc(100vh - #{$header-height});
+  overflow: auto;
+  z-index: 2;
+  box-shadow: 0 100vh 0 100vh rgba(black, 0.5),
+    0 0.5rem 0.5rem rgba(black, 0.125);
+}
+
+.search-result {
+  display: block;
+  padding: 1rem;
+  line-height: 1;
+  font-size: 0.75rem;
+  border-top: thin solid rgba(black, 0.1);
+  color: inherit;
+  text-decoration: none;
+
+  &:first-child {
+    border-top-width: 0;
+  }
+
+  &:visited {
+    color: currentColor;
+  }
+
+  &:hover,
+  &.active {
+    background-color: rgba(black, 0.075);
+  }
+}
+
+.search-result-title,
+.search-result-description {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.search-result-title {
+  font-size: inherit;
+  font-family: $title-stack;
+  margin: 0;
+}
+
+.search-result-description {
+  margin: 0.5rem 0 0;
+  opacity: 0.5;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.search-error {
+  text-align: center;
+  padding: 3rem 1rem;
+  opacity: 0.5;
 }

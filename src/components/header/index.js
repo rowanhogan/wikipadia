@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import debounce from 'lodash/debounce'
+import Search from '../search'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -23,6 +23,11 @@ class Header extends Component {
   handleScroll() {
     const { scrollY } = window
     const { scroll } = this.state
+    const searchOpen = this.refs.header.querySelector('.search-results')
+
+    if (searchOpen) {
+      return
+    }
 
     this.setState({ scroll: scrollY, hidden: scrollY > scroll })
   }
@@ -31,10 +36,13 @@ class Header extends Component {
     const { hidden } = this.state
 
     return window === window.top ? (
-      <header className={['header', hidden ? 'hidden' : undefined].join(' ')}>
+      <header
+        ref="header"
+        className={['header', hidden ? 'hidden' : undefined].join(' ')}>
         <Link className="logo" to="/">
           Home
         </Link>
+        <Search />
       </header>
     ) : null
   }
