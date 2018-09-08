@@ -9,11 +9,14 @@
 
   .thumbcaption {
     font-size: 75%;
+    margin: 1rem auto;
     line-height: 1.5em;
+    max-width: 32rem;
+    opacity: 0.75;
   }
 }
 
-.infobox .image,
+.infobox :only-child > .image,
 .thumb {
   display: block;
 

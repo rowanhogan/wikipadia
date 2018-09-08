@@ -38,7 +38,12 @@ export const fetchMedia = title =>
       if (error) {
         return reject(error)
       } else {
-        return resolve(query.pages[-1])
+        const data = lodashGet(query, 'pages[-1]')
+
+        return resolve({
+          title: data.title,
+          content: lodashGet(data, 'imageinfo[0]')
+        })
       }
     })
   )

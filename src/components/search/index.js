@@ -105,8 +105,7 @@ class Search extends Component {
                     'search-result',
                     selected === index ? 'active' : undefined
                   ].join(' ')}
-                  key={index}
-                  onClick={() => this.setState({ open: false })}>
+                  key={index}>
                   <h3 className="search-result-title">{result.title}</h3>
                   <p className="search-result-description">
                     {result.description}

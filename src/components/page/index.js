@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { fetchPage } from '../../lib/api'
-import Loading from '../../components/loading'
+
+import Loading from '../loading'
+import Sections from '../sections'
 
 class Page extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class Page extends Component {
       loading: false,
       title: '',
       content: undefined,
-      sections: undefined
+      sections: []
     }
   }
 
@@ -52,10 +54,11 @@ class Page extends Component {
   }
 
   render() {
-    const { loading, title, content, error } = this.state
+    const { content, error, loading, sections, title } = this.state
 
     return (
       <div className="container">
+        {sections.length ? <Sections sections={sections} /> : null}
         {loading && <Loading {...this.props} />}
         {content ? (
           <div className="page">
@@ -67,12 +70,10 @@ class Page extends Component {
           </div>
         ) : error ? (
           <div>
-            <h1>Error</h1>
+            <h1 className="page-title">Error</h1>
             <div>{error}</div>
           </div>
-        ) : (
-          <h1>{title}</h1>
-        )}
+        ) : null}
       </div>
     )
   }
