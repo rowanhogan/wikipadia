@@ -1,16 +1,20 @@
 sudo: false
 language: node_js
-branches:
-  only:
-    - master
-notifications:
-  email: false
-install:
-  - npm install
+cache:
+  directories:
+  - node_modules
 before_script:
   - git config --global user.email $GH_EMAIL
   - git config --global user.name $GH_USERNAME
-  - git remote set-url origin https://$GH_TOKEN@github.com/rowanhogan/wikipadia.git
-  - npm install
 script:
-  - npm run deploy
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  github_token: $GH_TOKEN
+  local_dir: build
+  fqdn: wikipadia.xyz
+  verbose: true
+  on:
+    branch: master
