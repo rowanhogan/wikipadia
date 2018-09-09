@@ -111,31 +111,15 @@ div.hatnote {
   line-height: 1.5em;
 }
 
-a {
-  color: dodgerblue;
-
-  &:visited {
-    color: mediumpurple;
-  }
-
-  &:focus {
-    color: black;
-    outline: 0;
-  }
-}
-
-img {
-  max-width: 100%;
-}
-
 table {
   margin: 1.5rem auto;
+  table-layout: fixed;
   border-spacing: 0;
+  border-collapse: collapse;
 
   &.infobox {
     font-size: 90%;
     border: 0;
-    table-layout: fixed;
 
     &.geography,
     &.vcard,
@@ -196,9 +180,7 @@ table {
 
   &.wikitable {
     font-size: 90%;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border-right: thin solid #ddd;
+    // border-right: thin solid #ddd;
 
     caption {
       margin: 0 0 0.5em;
@@ -239,6 +221,12 @@ table.mbox-small {
 .noprint,
 .metadata.plainlinks {
   display: none;
+}
+
+.plainlist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 code,

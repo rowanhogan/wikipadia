@@ -24,12 +24,13 @@ class Header extends Component {
     const { scrollY } = window
     const { scroll } = this.state
     const searchOpen = this.refs.header.querySelector('.search-results')
+    const hidden = scrollY > scroll
 
     if (searchOpen) {
       return
     }
 
-    this.setState({ scroll: scrollY, hidden: scrollY > scroll })
+    this.setState({ scroll: Math.max(scrollY, 0), hidden })
   }
 
   render() {

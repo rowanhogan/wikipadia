@@ -7,8 +7,9 @@ export default () => (
       <h1 className="page-title">Wikipadia</h1>
       <div className="blurb">
         <p>
-          <em>WikiPadia</em> is a beautiful, customisable Wikipedia reader. It
-          was specifically built for leisurely reading on an iPad.
+          <em>Wikipadia</em> is a beautiful, minimal{' '}
+          <a href="http://www.wikipedia.org">Wikipedia</a> reader. It was
+          specifically built for leisurely reading on an iPad.
         </p>
         <p>
           <a href="https://github.com/rowanhogan/wikipadia">Source code</a>

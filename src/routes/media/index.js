@@ -71,6 +71,9 @@ export default class extends Component {
                   )
                 })}
               </dl>
+              <a href={content.descriptionshorturl} target="_blank">
+                View more
+              </a>
             </div>
           </div>
         ) : error ? (

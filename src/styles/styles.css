@@ -212,11 +212,11 @@ body {
   padding: 0; }
 
 a {
-  color: dodgerblue; }
+  color: #1565c0; }
   a:visited {
-    color: mediumpurple; }
-  a:focus {
-    color: black;
+    color: #673ab7; }
+  a:focus, a:active {
+    color: #0d47a1;
     outline: 0; }
 
 img {
@@ -252,6 +252,9 @@ dt {
 sup.reference {
   font-size: x-small; }
 
+abbr {
+  cursor: help; }
+
 .home-page .blurb {
   text-align: center; }
 
@@ -284,7 +287,7 @@ sup.reference {
     .home-page #mp-topbanner ul li a {
       padding: 0.25rem; }
 
-@media (min-width: 48rem) {
+@media (min-width: 52rem) {
   .home-page #mp-upper tr {
     display: flex; }
     .home-page #mp-upper tr td {
@@ -306,6 +309,10 @@ sup.reference {
 
 .home-page #mp-otd p:first-child {
   text-align: center; }
+
+.home-page #mp-tfa-img img {
+  display: block;
+  margin: auto; }
 
 .home-page #mp-tfp img {
   width: 100%; }
@@ -452,24 +459,14 @@ div.hatnote {
   padding: 0;
   line-height: 1.5em; }
 
-a {
-  color: dodgerblue; }
-  a:visited {
-    color: mediumpurple; }
-  a:focus {
-    color: black;
-    outline: 0; }
-
-img {
-  max-width: 100%; }
-
 table {
   margin: 1.5rem auto;
-  border-spacing: 0; }
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse; }
   table.infobox {
     font-size: 90%;
-    border: 0;
-    table-layout: fixed; }
+    border: 0; }
     table.infobox.geography, table.infobox.vcard, table.infobox.active {
       max-width: 100%; }
     table.infobox th[colspan='2'],
@@ -506,10 +503,7 @@ table {
     table.navbox th {
       background-color: transparent; }
   table.wikitable {
-    font-size: 90%;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border-right: thin solid #ddd; }
+    font-size: 90%; }
     table.wikitable caption {
       margin: 0 0 0.5em; }
     table.wikitable th,
@@ -539,6 +533,11 @@ table.mbox-small {
 .noprint,
 .metadata.plainlinks {
   display: none; }
+
+.plainlist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
 
 code,
 pre {

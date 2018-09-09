@@ -18,14 +18,15 @@ body {
 }
 
 a {
-  color: dodgerblue;
+  color: #1565c0;
 
   &:visited {
-    color: mediumpurple;
+    color: #673ab7;
   }
 
-  &:focus {
-    color: black;
+  &:focus,
+  &:active {
+    color: #0d47a1;
     outline: 0;
   }
 }
@@ -67,4 +68,8 @@ dt {
 
 sup.reference {
   font-size: x-small;
+}
+
+abbr {
+  cursor: help;
 }

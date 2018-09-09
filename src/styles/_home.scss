@@ -52,7 +52,7 @@
     }
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 52rem) {
     #mp-upper {
       tr {
         display: flex;
@@ -85,6 +85,11 @@
 
   #mp-otd p:first-child {
     text-align: center;
+  }
+
+  #mp-tfa-img img {
+    display: block;
+    margin: auto;
   }
 
   #mp-tfp img {
