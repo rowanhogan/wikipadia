@@ -71,8 +71,6 @@ $sidebar-width: 20rem;
 
 .sans-stack {
   font-family: $sans-stack;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -111,11 +109,6 @@ div.hatnote {
 }
 
 table {
-  margin: 1.5rem auto;
-  table-layout: fixed;
-  border-spacing: 0;
-  border-collapse: collapse;
-
   &.infobox {
     font-size: 90%;
     border: 0;
@@ -329,5 +322,18 @@ pre {
 
   @media (min-width: 48rem) {
     column-count: 2;
+  }
+}
+
+.media {
+  text-align: center;
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  img {
+    display: block;
+    margin: auto;
   }
 }

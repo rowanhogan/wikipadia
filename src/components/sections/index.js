@@ -34,7 +34,9 @@ class Sections extends Component {
               <a
                 key={index}
                 href={`#${section.anchor}`}
-                onClick={() => this.setState({ open: false })}>
+                onClick={() =>
+                  setTimeout(() => this.setState({ open: false }), 100)
+                }>
                 <span
                   className={`section-level section-level-${section.toclevel}`}>
                   {section.number}.

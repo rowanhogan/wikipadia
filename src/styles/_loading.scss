@@ -1,5 +1,6 @@
 .loading {
   position: relative;
+  height: calc(100vh - #{$header-height});
 
   .page-title {
     animation: loading 1.5s linear infinite;

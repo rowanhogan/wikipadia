@@ -43,8 +43,6 @@ export default class extends Component {
   render() {
     const { loading, title, content, error } = this.state
 
-    console.log(content)
-
     return (
       <div className="media container">
         {loading ? (
