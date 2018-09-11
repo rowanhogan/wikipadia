@@ -13,7 +13,7 @@
   position: sticky;
   top: 0;
   height: $header-height;
-  background-color: white;
+  background-color: rgba(white, 0.975);
   border-bottom: thin solid rgba(black, 0.1);
   transition: all 350ms ease;
   display: flex;
@@ -21,7 +21,13 @@
   z-index: 5;
   padding-right: $header-height - 0.5rem;
 
+  &.scrolled {
+    box-shadow: 0 0 1rem rgba(black, 0.1);
+    border-color: transparent;
+  }
+
   &.hidden {
+    box-shadow: none;
     transform: translateY(-100%);
   }
 
@@ -71,8 +77,8 @@
     background: transparent;
     appearance: none;
     height: $header-height;
-    line-height: $header-height;
-    padding: 0 1rem;
+    line-height: $header-height / 2;
+    padding: ($header-height / 4) 1rem;
     font-size: 1rem;
 
     &:focus {
@@ -261,5 +267,18 @@ $bar-height: 0.166rem;
       font-family: $title-stack;
       margin-left: 0.5rem;
     }
+  }
+}
+
+.media {
+  text-align: center;
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  img {
+    display: block;
+    margin: auto;
   }
 }

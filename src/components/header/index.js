@@ -30,16 +30,18 @@ class Header extends Component {
       return
     }
 
-    this.setState({ scroll: Math.max(scrollY, 0), hidden })
+    this.setState({ scroll: Math.max(scrollY, 20), hidden })
   }
 
   render() {
-    const { hidden } = this.state
+    const { hidden, scroll } = this.state
 
     return window === window.top ? (
       <header
         ref="header"
-        className={['header', hidden ? 'hidden' : undefined].join(' ')}>
+        className={['header', hidden && 'hidden', scroll > 20 && 'scrolled']
+          .filter(Boolean)
+          .join(' ')}>
         <Link className="logo" to="/">
           Home
         </Link>

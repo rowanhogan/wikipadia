@@ -6,6 +6,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(black, 0);
 
   @media (min-width: 36rem) {
     font-size: 120%;
@@ -18,15 +19,16 @@ body {
 }
 
 a {
-  color: #1565c0;
+  color: hsl(210, 90%, 40%);
+  -webkit-tap-highlight-color: hsla(210, 90%, 40%, 0.25);
 
   &:visited {
-    color: #673ab7;
+    color: hsl(250, 90%, 40%);
   }
 
   &:focus,
   &:active {
-    color: #0d47a1;
+    color: hsl(210, 90%, 20%);
     outline: 0;
   }
 }

@@ -46,35 +46,32 @@ export default class extends Component {
     console.log(content)
 
     return (
-      <div className="container">
+      <div className="media container">
         {loading ? (
-          <Loading title={title} />
+          <Loading title={`File:${title}`} />
         ) : content ? (
-          <div className="media">
+          <div>
             <h1 className="page-title">{title}</h1>
-
-            <div>
-              <a href={content.descriptionshorturl} target="_blank">
-                <img src={content.url} alt={title} />
-              </a>
-              <dl className="media-list">
-                {keys(content.extmetadata).map(key => {
-                  return (
-                    <div key={key}>
-                      <dt>{key}</dt>
-                      <dd
-                        dangerouslySetInnerHTML={{
-                          __html: content.extmetadata[key].value
-                        }}
-                      />
-                    </div>
-                  )
-                })}
-              </dl>
-              <a href={content.descriptionshorturl} target="_blank">
-                View more
-              </a>
-            </div>
+            <a href={content.descriptionshorturl} target="_blank">
+              <img src={content.url} alt={title} />
+            </a>
+            <dl className="media-list">
+              {keys(content.extmetadata).map(key => {
+                return (
+                  <div key={key}>
+                    <dt>{key}</dt>
+                    <dd
+                      dangerouslySetInnerHTML={{
+                        __html: content.extmetadata[key].value
+                      }}
+                    />
+                  </div>
+                )
+              })}
+            </dl>
+            <a href={content.descriptionshorturl} target="_blank">
+              View more
+            </a>
           </div>
         ) : error ? (
           <div>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import debounce from 'lodash/debounce'
+import withClickOutside from 'react-click-outside'
 import { fetchPages } from '../../lib/api'
-
-import OutsideClickHandler from 'react-outside-click-handler'
 
 class Search extends Component {
   constructor(props) {
@@ -79,49 +78,54 @@ class Search extends Component {
       .catch(() => this.setState({ error: true, loading: false }))
   }
 
+  handleClickOutside(event) {
+    if (this.state.open) {
+      event.preventDefault()
+      this.handleClose()
+    }
+  }
+
   render() {
     const { error, loading, open, results, selected } = this.state
 
     return (
-      <OutsideClickHandler onOutsideClick={this.handleClose}>
-        <div className="search">
-          <form className="search-form" onSubmit={e => e.preventDefault()}>
-            <input
-              ref="input"
-              type="search"
-              placeholder="Search..."
-              onKeyDown={this.handleSelection}
-              onKeyUp={e => this.handleSearch(e.which)}
-            />
-          </form>
-          {open && (
-            <div className="search-results">
-              {loading && <div className="spinner">Loading&hellip;</div>}
-              {error && <div className="search-error">No results found</div>}
-              {results.map((result, index) => (
-                <a
-                  href={result.link}
-                  className={[
-                    'search-result',
-                    selected === index ? 'active' : undefined
-                  ].join(' ')}
-                  key={index}>
-                  <h3 className="search-result-title">{result.title}</h3>
-                  <p className="search-result-description">
-                    {result.description}
-                  </p>
-                  <div
-                    className="search-result-thumb"
-                    style={{ backgroundImage: `url(${result.thumb})` }}
-                  />
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-      </OutsideClickHandler>
+      <div className="search">
+        <form className="search-form" onSubmit={e => e.preventDefault()}>
+          <input
+            ref="input"
+            type="search"
+            placeholder="Search..."
+            onKeyDown={this.handleSelection}
+            onKeyUp={e => this.handleSearch(e.which)}
+          />
+        </form>
+        {open && (
+          <div className="search-results">
+            {loading && <div className="spinner">Loading&hellip;</div>}
+            {error && <div className="search-error">No results found</div>}
+            {results.map((result, index) => (
+              <a
+                href={result.link}
+                className={[
+                  'search-result',
+                  selected === index ? 'active' : undefined
+                ].join(' ')}
+                key={index}>
+                <h3 className="search-result-title">{result.title}</h3>
+                <p className="search-result-description">
+                  {result.description}
+                </p>
+                <div
+                  className="search-result-thumb"
+                  style={{ backgroundImage: `url(${result.thumb})` }}
+                />
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     )
   }
 }
 
-export default Search
+export default withClickOutside(Search)
