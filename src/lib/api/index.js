@@ -114,15 +114,17 @@ export const fetchPage = title =>
           title: displaytitle,
           images,
           sections,
-          content: formatHtml(text['*'])
+          content: formatHtml(text['*'], title === 'Main_page')
         })
       }
     })
   )
 
-export const formatHtml = html =>
-  html
-    .replace(/style="[^"]*"/g, '')
+export const formatHtml = (html, stripStyles) => {
+  const formatted = html
     .replace(/href="\/wiki\//g, `href="/`)
     .replace(/width="[^"]*"/g, '')
     .replace(/height="[^"]*"/g, '')
+
+  return stripStyles ? formatted.replace(/style="[^"]*"/g, '') : formatted
+}

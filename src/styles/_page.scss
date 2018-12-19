@@ -65,6 +65,15 @@ $sidebar-width: 20rem;
   }
 }
 
+.quotebox {
+  width: auto !important;
+  max-width: 26rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
 .serif-stack {
   font-family: $serif-stack;
 }
@@ -106,9 +115,12 @@ h2 {
 div.hatnote {
   padding: 0;
   line-height: 1.5em;
+  text-align: center;
 }
 
 table {
+  border: 0 !important;
+
   &.infobox {
     font-size: 90%;
     border: 0;
@@ -117,6 +129,11 @@ table {
     &.vcard,
     &.active {
       max-width: 100%;
+    }
+
+    th,
+    td {
+      background-color: transparent !important;
     }
 
     th[colspan='2'],
