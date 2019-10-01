@@ -1,4 +1,4 @@
-@import 'thumbs';
+@import "thumbs";
 
 $sidebar-width: 20rem;
 
@@ -7,8 +7,17 @@ $sidebar-width: 20rem;
 
   p:first-of-type {
     b {
-      font-family: 'Playfair Display', 'PT Serif', 'Lora', Georgia, serif;
+      font-family: "Playfair Display", "PT Serif", "Lora", Georgia, serif;
     }
+  }
+
+  .mediaContainer {
+    margin: 1rem auto;
+  }
+
+  #coordinates {
+    display: block;
+    text-align: center;
   }
 
   h2 {
@@ -22,14 +31,14 @@ $sidebar-width: 20rem;
       margin: 2em 0;
 
       &:before {
-        content: counter(section) '.';
+        content: counter(section) ".";
         display: block;
         font-size: 75%;
         font-weight: normal;
       }
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -120,6 +129,8 @@ div.hatnote {
 
 table {
   border: 0 !important;
+  background-color: transparent !important;
+  color: inherit !important;
 
   &.infobox {
     font-size: 90%;
@@ -136,7 +147,7 @@ table {
       background-color: transparent !important;
     }
 
-    th[colspan='2'],
+    th[colspan="2"],
     .adr,
     .fn {
       font-weight: bold;
@@ -144,11 +155,11 @@ table {
       padding: 1rem;
     }
 
-    td[colspan='2'] {
+    td[colspan="2"] {
       text-align: center;
     }
 
-    th[scope='row'] {
+    th[scope="row"] {
       text-align: right;
       padding-right: 1.5rem;
     }
@@ -222,7 +233,7 @@ table.mbox-small {
   font-style: italic;
 }
 
-.root > div[style='width:70%'] {
+.root > div[style="width:70%"] {
   width: auto;
 }
 
@@ -315,7 +326,7 @@ pre {
     font-size: 75%;
 
     &:after {
-      content: '. ';
+      content: ". ";
     }
   }
 }

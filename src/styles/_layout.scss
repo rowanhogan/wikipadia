@@ -16,15 +16,15 @@
   height: $header-height;
   text-indent: -9999px;
   overflow: hidden;
-  color: currentColor;
+  color: currentColor !important;
   margin: auto;
 
   &:visited {
-    color: currentColor;
+    color: currentColor !important;
   }
 
   &:before {
-    content: 'W';
+    content: "W";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,7 +40,7 @@
   top: 0;
   height: $header-height;
   background-color: rgba(white, 0.975);
-  border-bottom: thin solid rgba(black, 0.1);
+  border-bottom: thin solid rgba(gray, 0.25);
   transition: all 350ms ease;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@
   padding-right: $header-height - 0.5rem;
 
   &.scrolled {
-    box-shadow: 0 0 1rem rgba(black, 0.1);
+    box-shadow: 0 0 1rem rgba(gray, 0.1);
     border-color: transparent;
   }
 
@@ -57,13 +57,13 @@
     transform: translateY(-100%);
   }
 
-  div {
+  > div {
     flex: 1;
   }
 
   .logo {
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: $header-height / 4;
       right: 0;
@@ -82,6 +82,7 @@
     width: 100%;
     border: 0;
     background: transparent;
+    color: currentColor;
     appearance: none;
     height: $header-height;
     line-height: $header-height / 2;
@@ -100,19 +101,18 @@
   left: 0;
   right: 0;
   background-color: white;
-  border-top: thin solid rgba(black, 0.1);
+  border-top: thin solid rgba(gray, 0.25);
   max-height: calc(100vh - #{$header-height});
   overflow: auto;
   z-index: 2;
-  box-shadow: 0 100vh 0 100vh rgba(black, 0.5),
-    0 0.5rem 0.5rem rgba(black, 0.125);
+  box-shadow: 0 100vh 0 100vh rgba(gray, 0.5), 0 0.5rem 0.5rem rgba(gray, 0.125);
 }
 
 .search-result {
   display: block;
   padding: 1rem;
   line-height: 1;
-  border-top: thin solid rgba(black, 0.1);
+  border-top: thin solid rgba(gray, 0.25);
   color: inherit;
   text-decoration: none;
 
@@ -126,7 +126,7 @@
 
   &:hover,
   &.active {
-    background-color: rgba(black, 0.075);
+    background-color: rgba(gray, 0.075);
   }
 }
 
@@ -185,7 +185,7 @@ $bar-height: 0.166rem;
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -227,7 +227,7 @@ $bar-height: 0.166rem;
   max-width: calc(100vw - 1.5rem);
   max-height: calc(95vh - #{$header-height});
   overflow: auto;
-  box-shadow: 0 0.25rem 2rem rgba(black, 0.125);
+  box-shadow: 0 0.25rem 2rem rgba(gray, 0.125);
   border-radius: 0.25rem;
 
   a {
@@ -236,7 +236,7 @@ $bar-height: 0.166rem;
     font-size: 0.8rem;
     color: currentColor;
     text-decoration: none;
-    border-top: thin solid rgba(black, 0.1);
+    border-top: thin solid rgba(gray, 0.1);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -252,7 +252,7 @@ $bar-height: 0.166rem;
 
     &:hover,
     &:active {
-      background-color: rgba(black, 0.075);
+      background-color: rgba(gray, 0.075);
     }
 
     .section-level {
@@ -290,18 +290,23 @@ $bar-height: 0.166rem;
   padding: 1.5rem 2rem;
   background: white;
   border-radius: 0.25rem;
-  box-shadow: 0 0 0 100vh rgba(black, 0.75);
+  box-shadow: 0 0 0 100vh rgba(gray, 0.75);
   z-index: 1000;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
   overflow: auto;
   text-align: left;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 }
 
 .close {
   position: absolute;
-  top: -0.25rem;
-  right: -0.25rem;
+  top: 0;
+  right: 0;
   width: $header-height;
   height: $header-height;
   text-indent: -9999px;
@@ -315,7 +320,7 @@ $bar-height: 0.166rem;
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -336,18 +341,20 @@ $bar-height: 0.166rem;
 }
 
 .settings-button {
-  padding: 0.5rem 1rem;
-  border: thin solid rgba(black, 0.25);
-  border-radius: 0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.settings {
-  h3 {
-    margin-top: 0;
-    border-bottom: thin solid rgba(black, 0.25);
-    padding-bottom: 0.75rem;
-  }
+  position: relative;
+  width: $header-height;
+  height: $header-height;
+  padding: 0;
+  border: 0;
+  border-right: thin solid rgba(gray, 0.25);
+  margin-right: 0.5rem;
+  text-indent: -9999px;
+  text-align: left;
+  outline: 0;
+  opacity: 0.75;
+  cursor: pointer;
+  background: url(../images/settings.svg) no-repeat center;
+  background-size: 1.25rem;
 }
 
 .settings-hint {
@@ -401,12 +408,12 @@ $bar-height: 0.166rem;
 }
 
 .toggle-ui {
-  background: rgba(black, 0.25);
+  background: rgba(gray, 0.25);
   transition: all 200ms ease;
   pointer-events: none;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 0;

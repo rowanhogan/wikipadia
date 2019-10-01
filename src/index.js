@@ -1,19 +1,20 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import ReactDOM from 'react-dom'
-import configureStore from './store'
-import initReactFastclick from 'react-fastclick'
-import registerServiceWorker from './registerServiceWorker'
-import './styles/styles.css'
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import ReactDOM from "react-dom";
+import configureStore from "./store";
+import initReactFastclick from "react-fastclick";
+import registerServiceWorker from "./registerServiceWorker";
+import "./styles/styles.css";
+import "./lib/favicon";
 
-import App from './routes'
+import App from "./routes";
 
-if ('ontouchstart' in document.documentElement) {
-  document.body.style.cursor = 'pointer'
+if ("ontouchstart" in document.documentElement) {
+  document.body.style.cursor = "pointer";
 }
 
-initReactFastclick()
+initReactFastclick();
 
 ReactDOM.render(
   <Provider store={configureStore()}>
@@ -21,6 +22,6 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
-)
-registerServiceWorker()
+  document.getElementById("root")
+);
+registerServiceWorker();

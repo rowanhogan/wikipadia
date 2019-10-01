@@ -1,7 +1,58 @@
 .lowContrast {
-  opacity: 0.75;
+  &,
+  .header {
+    background: hsl(2000, 10%, 75%);
+    color: #444;
+  }
 
   img {
     opacity: 0.75;
+  }
+}
+
+.darkMode {
+  &,
+  .header {
+    background: black;
+    color: white;
+  }
+
+  &.lowContrast {
+    color: #aaa;
+  }
+
+  .toggle-ui:before,
+  .search-results {
+    background: black;
+  }
+
+  .loading:after {
+    background: linear-gradient(rgba(black, 0), black),
+      linear-gradient(90deg, rgba(black, 0), rgba(black, 0.5));
+  }
+
+  .settings-button {
+    filter: invert(0.9);
+  }
+
+  .modal {
+    background: black;
+    box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.75);
+  }
+
+  a {
+    color: hsl(40, 90%, 40%);
+    -webkit-tap-highlight-color: hsla(40, 90%, 40%, 0.25);
+
+    &:visited {
+      color: hsl(30, 90%, 40%);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: hsl(40, 90%, 30%);
+      outline: 0;
+    }
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import Search from '../search'
+import Settings from '../settings'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -46,6 +48,7 @@ class Header extends Component {
           Home
         </Link>
         <Search />
+        <Settings />
       </header>
     ) : null
   }

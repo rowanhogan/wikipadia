@@ -1,13 +1,12 @@
-$serif-stack: 'PT Serif', 'Lora', Georgia, serif;
-$sans-stack: 'Roboto', 'HelveticaNeue-Light', 'Helvetica Neue Light',
-  'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-$title-stack: 'Playfair Display', $serif-stack;
-$color-dark: #222;
+$serif-stack: "PT Serif", "Lora", Georgia, serif;
+$sans-stack: "Roboto", "HelveticaNeue-Light", "Helvetica Neue Light",
+  "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$title-stack: "Playfair Display", $serif-stack;
 $header-height: 3.25rem;
 
-@import 'typography';
-@import 'layout';
-@import 'home';
-@import 'page';
-@import 'loading';
-@import 'settings';
+@import "typography";
+@import "layout";
+@import "home";
+@import "page";
+@import "loading";
+@import "settings";
