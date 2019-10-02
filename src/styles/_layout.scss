@@ -9,7 +9,7 @@
   }
 }
 
-.logo {
+.header .logo {
   display: block;
   position: relative;
   width: $header-height;
@@ -17,6 +17,7 @@
   text-indent: -9999px;
   overflow: hidden;
   color: currentColor !important;
+  border-right: thin solid rgba(gray, 0.25);
   margin: auto;
 
   &:visited {
@@ -59,18 +60,6 @@
 
   > div {
     flex: 1;
-  }
-
-  .logo {
-    &:after {
-      content: "";
-      position: absolute;
-      top: $header-height / 4;
-      right: 0;
-      border-right: thin solid;
-      height: $header-height / 2;
-      opacity: 0.175;
-    }
   }
 }
 
