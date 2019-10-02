@@ -6,7 +6,7 @@
   }
 
   img {
-    opacity: 0.75;
+    opacity: 0.666;
   }
 }
 
@@ -22,7 +22,8 @@
   }
 
   .toggle-ui:before,
-  .search-results {
+  .search-results,
+  .page-sections-nav {
     background: black;
   }
 
@@ -31,7 +32,8 @@
       linear-gradient(90deg, rgba(black, 0), rgba(black, 0.5));
   }
 
-  .settings-button {
+  .settings-button,
+  .github-link {
     filter: invert(0.9);
   }
 

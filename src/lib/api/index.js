@@ -122,7 +122,7 @@ export const fetchPage = title =>
 
 export const formatHtml = (html, stripStyles) => {
   const formatted = html
-    .replace(/href="\/wiki\//g, `href="/`)
+    .replace(/href="\/wiki\//g, 'href="/')
     .replace(/width="[^"]*"/g, '')
     .replace(/height="[^"]*"/g, '')
 

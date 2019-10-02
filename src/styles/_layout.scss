@@ -9,7 +9,7 @@
   }
 }
 
-.logo {
+.header .logo {
   display: block;
   position: relative;
   width: $header-height;
@@ -17,6 +17,7 @@
   text-indent: -9999px;
   overflow: hidden;
   color: currentColor !important;
+  border-right: thin solid rgba(gray, 0.25);
   margin: auto;
 
   &:visited {
@@ -59,18 +60,6 @@
 
   > div {
     flex: 1;
-  }
-
-  .logo {
-    &:after {
-      content: "";
-      position: absolute;
-      top: $header-height / 4;
-      right: 0;
-      border-right: thin solid;
-      height: $header-height / 2;
-      opacity: 0.175;
-    }
   }
 }
 
@@ -296,10 +285,22 @@ $bar-height: 0.166rem;
   max-height: calc(100vh - 2rem);
   overflow: auto;
   text-align: left;
+  animation: modal 300ms ease forwards;
+  opacity: 0;
 
   h3 {
     margin-top: 0;
     margin-bottom: 2rem;
+  }
+}
+
+@keyframes modal {
+  from {
+    transform: translate(-50%, -75%);
+    opacity: 0;
+  } to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
   }
 }
 

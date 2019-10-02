@@ -4,7 +4,7 @@ import withClickOutside from 'react-click-outside'
 import { fetchPages } from '../../lib/api'
 
 class Search extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.fetchPages = this.fetchPages.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -18,7 +18,7 @@ class Search extends Component {
     }
   }
 
-  handleSelection(event) {
+  handleSelection (event) {
     const key = event.which
     const { results, selected } = this.state
 
@@ -43,7 +43,7 @@ class Search extends Component {
     }
   }
 
-  handleClose() {
+  handleClose () {
     this.setState({
       error: null,
       open: false,
@@ -54,7 +54,7 @@ class Search extends Component {
     this.refs.input.value = ''
   }
 
-  fetchPages(key) {
+  fetchPages (key) {
     const query = this.refs.input.value
 
     if (!query) {
@@ -78,31 +78,31 @@ class Search extends Component {
       .catch(() => this.setState({ error: true, loading: false }))
   }
 
-  handleClickOutside(event) {
+  handleClickOutside (event) {
     if (this.state.open) {
       event.preventDefault()
       this.handleClose()
     }
   }
 
-  render() {
+  render () {
     const { error, loading, open, results, selected } = this.state
 
     return (
-      <div className="search">
-        <form className="search-form" onSubmit={e => e.preventDefault()}>
+      <div className='search'>
+        <form className='search-form' onSubmit={e => e.preventDefault()}>
           <input
-            ref="input"
-            type="search"
-            placeholder="Search..."
+            ref='input'
+            type='search'
+            placeholder='Search...'
             onKeyDown={this.handleSelection}
             onKeyUp={e => this.handleSearch(e.which)}
           />
         </form>
         {open && (
-          <div className="search-results">
-            {loading && <div className="spinner">Loading&hellip;</div>}
-            {error && <div className="search-error">No results found</div>}
+          <div className='search-results'>
+            {loading && <div className='spinner'>Loading&hellip;</div>}
+            {error && <div className='search-error'>No results found</div>}
             {results.map((result, index) => (
               <a
                 href={result.link}
@@ -111,12 +111,12 @@ class Search extends Component {
                   selected === index ? 'active' : undefined
                 ].join(' ')}
                 key={index}>
-                <h3 className="search-result-title">{result.title}</h3>
-                <p className="search-result-description">
+                <h3 className='search-result-title'>{result.title}</h3>
+                <p className='search-result-description'>
                   {result.description}
                 </p>
                 <div
-                  className="search-result-thumb"
+                  className='search-result-thumb'
                   style={{ backgroundImage: `url(${result.thumb})` }}
                 />
               </a>

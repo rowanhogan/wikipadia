@@ -6,9 +6,9 @@ import Loading from '../loading'
 import Sections from '../sections'
 
 class Page extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-
+    this.fetchPage = this.fetchPage.bind(this)
     this.state = {
       loading: false,
       title: '',
@@ -17,12 +17,12 @@ class Page extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { title } = this.props
     return this.fetchPage(title)
   }
 
-  fetchPage = title => {
+  fetchPage (title) {
     this.setState({ loading: true })
 
     return fetchPage(title)
@@ -53,24 +53,24 @@ class Page extends Component {
       )
   }
 
-  render() {
+  render () {
     const { content, error, loading, sections, title } = this.state
 
     return (
-      <div className="container">
+      <div className='container'>
         {sections.length ? <Sections sections={sections} /> : null}
         {loading && <Loading {...this.props} />}
         {content ? (
-          <div className="page">
+          <div className='page'>
             <h1
-              className="page-title"
+              className='page-title'
               dangerouslySetInnerHTML={{ __html: title }}
             />
             <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         ) : error ? (
           <div>
-            <h1 className="page-title">Error</h1>
+            <h1 className='page-title'>Error</h1>
             <div>{error}</div>
           </div>
         ) : null}

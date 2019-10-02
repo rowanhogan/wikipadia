@@ -1,12 +1,38 @@
+.github-link {
+  display: block;
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+  text-align: left;
+  text-indent: -9999px;
+  cursor: pointer;
+  background: url(../images/github.svg) no-repeat center;
+  background-size: 1.25rem;
+}
+
 .home-page {
   .blurb {
     text-align: center;
   }
 
+  .page-title {
+    margin-bottom: 0;
+  }
+
   .container + .container {
     padding-top: 0;
+    margin-top: -1rem;
 
     .page-title {
+      display: none;
+    }
+  }
+
+  .root h2 .mw-headline {
+    margin: 0;
+    font-size: 1.25rem;
+
+    &:after {
       display: none;
     }
   }
@@ -24,6 +50,10 @@
     }
   }
 
+  table img {
+    width: 100%;
+  }
+
   #mp-topbanner {
     > div {
       display: none;
@@ -35,7 +65,7 @@
       text-align: center;
 
       &:before {
-        content: 'Categories';
+        content: "Categories";
         display: block;
         font-family: $title-stack;
         margin-bottom: 1rem;

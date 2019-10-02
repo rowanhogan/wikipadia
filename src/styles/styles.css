@@ -84,7 +84,7 @@ table {
     .container {
       padding: 3rem; } }
 
-.logo {
+.header .logo {
   display: block;
   position: relative;
   width: 3.25rem;
@@ -92,10 +92,11 @@ table {
   text-indent: -9999px;
   overflow: hidden;
   color: currentColor !important;
+  border-right: thin solid rgba(128, 128, 128, 0.25);
   margin: auto; }
-  .logo:visited {
+  .header .logo:visited {
     color: currentColor !important; }
-  .logo:before {
+  .header .logo:before {
     content: "W";
     position: absolute;
     top: 50%;
@@ -124,14 +125,6 @@ table {
     transform: translateY(-100%); }
   .header > div {
     flex: 1; }
-  .header .logo:after {
-    content: "";
-    position: absolute;
-    top: 0.8125rem;
-    right: 0;
-    border-right: thin solid;
-    height: 1.625rem;
-    opacity: 0.175; }
 
 .search-form {
   position: relative; }
@@ -298,10 +291,20 @@ table {
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
   overflow: auto;
-  text-align: left; }
+  text-align: left;
+  animation: modal 300ms ease forwards;
+  opacity: 0; }
   .modal h3 {
     margin-top: 0;
     margin-bottom: 2rem; }
+
+@keyframes modal {
+  from {
+    transform: translate(-50%, -75%);
+    opacity: 0; }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1; } }
 
 .close {
   position: absolute;
@@ -407,12 +410,33 @@ table {
     border-radius: 50%;
     transition: all 200ms ease; }
 
+.github-link {
+  display: block;
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+  text-align: left;
+  text-indent: -9999px;
+  cursor: pointer;
+  background: url(../images/github.svg) no-repeat center;
+  background-size: 1.25rem; }
+
 .home-page .blurb {
   text-align: center; }
 
+.home-page .page-title {
+  margin-bottom: 0; }
+
 .home-page .container + .container {
-  padding-top: 0; }
+  padding-top: 0;
+  margin-top: -1rem; }
   .home-page .container + .container .page-title {
+    display: none; }
+
+.home-page .root h2 .mw-headline {
+  margin: 0;
+  font-size: 1.25rem; }
+  .home-page .root h2 .mw-headline:after {
     display: none; }
 
 .home-page .loading:before, .home-page .loading:after {
@@ -420,6 +444,9 @@ table {
 
 .home-page .page h2 .mw-headline:before {
   display: none; }
+
+.home-page table img {
+  width: 100%; }
 
 .home-page #mp-topbanner > div {
   display: none; }
@@ -429,7 +456,7 @@ table {
   padding: 0;
   text-align: center; }
   .home-page #mp-topbanner ul:before {
-    content: 'Categories';
+    content: "Categories";
     display: block;
     font-family: "Playfair Display", "PT Serif", "Lora", Georgia, serif;
     margin-bottom: 1rem;
@@ -851,7 +878,7 @@ pre {
   color: #444; }
 
 .lowContrast img {
-  opacity: 0.75; }
+  opacity: 0.666; }
 
 .darkMode,
 .darkMode .header {
@@ -862,13 +889,15 @@ pre {
   color: #aaa; }
 
 .darkMode .toggle-ui:before,
-.darkMode .search-results {
+.darkMode .search-results,
+.darkMode .page-sections-nav {
   background: black; }
 
 .darkMode .loading:after {
   background: linear-gradient(rgba(0, 0, 0, 0), black), linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); }
 
-.darkMode .settings-button {
+.darkMode .settings-button,
+.darkMode .github-link {
   filter: invert(0.9); }
 
 .darkMode .modal {
