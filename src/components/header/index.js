@@ -5,7 +5,7 @@ import Settings from '../settings'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.handleScroll = this.handleScroll.bind(this)
     this.state = {
@@ -14,15 +14,15 @@ class Header extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     document.addEventListener('scroll', this.handleScroll)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     document.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll() {
+  handleScroll () {
     const { scrollY } = window
     const { scroll } = this.state
     const searchOpen = this.refs.header.querySelector('.search-results')
@@ -35,16 +35,16 @@ class Header extends Component {
     this.setState({ scroll: Math.max(scrollY, 20), hidden })
   }
 
-  render() {
+  render () {
     const { hidden, scroll } = this.state
 
     return window === window.top ? (
       <header
-        ref="header"
+        ref='header'
         className={['header', hidden && 'hidden', scroll > 20 && 'scrolled']
           .filter(Boolean)
           .join(' ')}>
-        <Link className="logo" to="/">
+        <Link className='logo' to='/'>
           Home
         </Link>
         <Search />

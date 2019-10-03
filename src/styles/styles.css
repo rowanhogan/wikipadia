@@ -291,10 +291,20 @@ table {
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
   overflow: auto;
-  text-align: left; }
+  text-align: left;
+  animation: modal 300ms ease forwards;
+  opacity: 0; }
   .modal h3 {
     margin-top: 0;
     margin-bottom: 2rem; }
+
+@keyframes modal {
+  from {
+    transform: translate(-50%, -75%);
+    opacity: 0; }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1; } }
 
 .close {
   position: absolute;

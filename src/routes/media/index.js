@@ -5,7 +5,7 @@ import { fetchMedia } from '../../lib/api'
 import Loading from '../../components/loading'
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const { match: { params: { title } } } = props
 
@@ -15,11 +15,11 @@ export default class extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     return this.fetchPage(this.state.title)
   }
 
-  fetchPage(title) {
+  fetchPage (title) {
     this.setState({ loading: true })
 
     return fetchMedia(`File:${decodeURIComponent(title)}`)
@@ -40,20 +40,20 @@ export default class extends Component {
       )
   }
 
-  render() {
+  render () {
     const { loading, title, content, error } = this.state
 
     return (
-      <div className="media container">
+      <div className='media container'>
         {loading ? (
           <Loading title={`File:${title}`} />
         ) : content ? (
           <div>
-            <h1 className="page-title">{title}</h1>
-            <a href={content.descriptionshorturl} target="_blank">
+            <h1 className='page-title'>{title}</h1>
+            <a href={content.descriptionshorturl}>
               <img src={content.url} alt={title} />
             </a>
-            <dl className="media-list">
+            <dl className='media-list'>
               {keys(content.extmetadata).map(key => {
                 return (
                   <div key={key}>
@@ -67,7 +67,7 @@ export default class extends Component {
                 )
               })}
             </dl>
-            <a href={content.descriptionshorturl} target="_blank">
+            <a href={content.descriptionshorturl}>
               View more
             </a>
           </div>
