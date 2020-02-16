@@ -16,7 +16,8 @@ const initialState = {
   darkMode: localStorage.getItem('darkMode')
     ? getBooleanValue('darkMode')
     : window.matchMedia('(prefers-color-scheme: dark)').matches,
-  lowContrast: getBooleanValue('lowContrast')
+  lowContrast: getBooleanValue('lowContrast'),
+  sansSerif: getBooleanValue('sansSerif')
 }
 
 export default (state = initialState, action) => {

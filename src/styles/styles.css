@@ -466,7 +466,7 @@ table {
     .home-page #mp-topbanner ul li a {
       padding: 0.25rem; }
 
-@media (min-width: 52rem) {
+@media (min-width: 48rem) {
   .home-page #mp-upper tr {
     display: flex; }
     .home-page #mp-upper tr td {
@@ -541,6 +541,7 @@ table {
   .thumb img {
     display: block;
     min-width: 50%;
+    max-width: 20rem;
     margin: 1rem auto; }
   @media (max-width: 36rem) {
     .infobox :only-child > .image,
@@ -616,7 +617,7 @@ table {
   font-family: "PT Serif", "Lora", Georgia, serif; }
 
 .sans-stack {
-  font-family: "Roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 h1,
 h2,
@@ -712,6 +713,9 @@ table.navbox {
   display: block;
   max-width: 100%;
   width: 100%; }
+  table.wikitable td[style*=background],
+  table.navbox td[style*=background] {
+    opacity: 0.75; }
 
 table.mbox-small {
   background: transparent;
@@ -912,3 +916,8 @@ pre {
   .darkMode a:focus, .darkMode a:hover, .darkMode a:active {
     color: #916308;
     outline: 0; }
+
+.sansSerif {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  .sansSerif h1, .sansSerif h2, .sansSerif h3, .sansSerif h4, .sansSerif h5, .sansSerif h6 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }

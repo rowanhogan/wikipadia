@@ -56,6 +56,13 @@ class Settings extends Component {
           <p className='settings-hint'>
             Reduce eye strain for low-light reading.
           </p>
+
+          <Toggle
+            label={settings.sansSerif ? 'Sans-serif fonts' : 'Serif fonts'}
+            name='sansSerif'
+            checked={settings.sansSerif}
+            onChange={this.props.updateSetting}
+          />
         </Modal>
       </Fragment>
     )

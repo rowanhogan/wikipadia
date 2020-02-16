@@ -225,6 +225,10 @@ table.navbox {
   display: block;
   max-width: 100%;
   width: 100%;
+
+  td[style*=background] {
+    opacity: 0.75;
+  }
 }
 
 table.mbox-small {
