@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Search from '../search'
 import Settings from '../settings'
+import Tabs from '../tabs'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -37,18 +38,22 @@ class Header extends Component {
 
   render () {
     const { hidden, scroll } = this.state
+    const { tabs } = this.props
 
     return window === window.top ? (
       <header
         ref='header'
-        className={['header', hidden && 'hidden', scroll > 20 && 'scrolled']
+        className={['header', hidden && 'hidden', scroll > 20 && 'scrolled', tabs.length && 'header-tabs']
           .filter(Boolean)
           .join(' ')}>
-        <Link className='logo' to='/'>
-          Home
-        </Link>
-        <Search />
-        <Settings />
+        <nav className='header-nav'>
+          <Link className='logo' to='/'>
+            Home
+          </Link>
+          <Search />
+          <Settings />
+        </nav>
+        <Tabs tabs={tabs} />
       </header>
     ) : null
   }

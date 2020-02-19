@@ -20,11 +20,11 @@ class App extends Component {
   }
 
   render () {
-    const { children, classNames } = this.props
+    const { children, classNames, tabs } = this.props
 
     return (
       <div className={`settings-wrapper ${classNames.join(' ')}`}>
-        <Header />
+        <Header tabs={tabs} />
         {children}
         <Footer />
       </div>
@@ -32,9 +32,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ settings }) => ({
+const mapStateToProps = ({ settings, tabs }) => ({
   darkMode: settings.darkMode,
-  classNames: Object.keys(settings).filter(setting => settings[setting])
+  classNames: Object.keys(settings).filter(setting => settings[setting]),
+  tabs: tabs
 })
 
 export default connect(mapStateToProps)(App)
