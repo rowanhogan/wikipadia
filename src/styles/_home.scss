@@ -10,7 +10,7 @@
   background-size: 1.25rem;
 }
 
-.home-page {
+.home-page .root {
   .blurb {
     text-align: center;
   }
@@ -28,7 +28,7 @@
     }
   }
 
-  .root h2 .mw-headline {
+  h2 .mw-headline {
     margin: 0;
     font-size: 1.25rem;
 
@@ -55,14 +55,25 @@
   }
 
   #mp-topbanner {
+    width: auto;
+    min-width: 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    margin-bottom: 1rem;
+
     > div {
       display: none;
     }
 
-    ul {
+    #mp-portals {
+      position: static;
+      width: auto;
       margin: 0;
       padding: 0;
+      min-width: 0;
       text-align: center;
+      white-space: normal;
 
       &:before {
         content: "Categories";
@@ -74,6 +85,7 @@
 
       li {
         display: inline-block;
+        position: static;
 
         a {
           padding: 0.25rem;
@@ -109,8 +121,25 @@
   #mp-upper,
   #mp-lower,
   #mp-upper td,
-  #mp-lower td {
+  #mp-lower td,
+  #mp-dyk,
+  #mp-otd,
+  #mp-other-lower,
+  .itn-special {
     display: block;
+    background: none;
+    color: inherit;
+    border: 0;
+
+    .mp-h2 {
+      background: none;
+      color: inherit;
+      border: 0;
+    }
+  }
+
+  .itn-special {
+    text-align: left;
   }
 
   #mp-otd p:first-child {

@@ -487,16 +487,16 @@ table {
   background: url(../images/github.svg) no-repeat center;
   background-size: 1.25rem; }
 
-.home-page .blurb {
+.home-page .root .blurb {
   text-align: center; }
 
-.home-page .page-title {
+.home-page .root .page-title {
   margin-bottom: 0; }
 
-.home-page .container + .container {
+.home-page .root .container + .container {
   padding-top: 0;
   margin-top: -1rem; }
-  .home-page .container + .container .page-title {
+  .home-page .root .container + .container .page-title {
     display: none; }
 
 .home-page .root h2 .mw-headline {
@@ -505,81 +505,113 @@ table {
   .home-page .root h2 .mw-headline:after {
     display: none; }
 
-.home-page .loading:before, .home-page .loading:after {
+.home-page .root .loading:before, .home-page .root .loading:after {
   top: 0; }
 
-.home-page .page h2 .mw-headline:before {
+.home-page .root .page h2 .mw-headline:before {
   display: none; }
 
-.home-page table img {
+.home-page .root table img {
   width: 100%; }
 
-.home-page #mp-topbanner > div {
-  display: none; }
-
-.home-page #mp-topbanner ul {
-  margin: 0;
-  padding: 0;
-  text-align: center; }
-  .home-page #mp-topbanner ul:before {
-    content: "Categories";
-    display: block;
-    font-family: "Playfair Display", "PT Serif", "Lora", Georgia, serif;
-    margin-bottom: 1rem;
-    font-size: 1.25rem; }
-  .home-page #mp-topbanner ul li {
-    display: inline-block; }
-    .home-page #mp-topbanner ul li a {
-      padding: 0.25rem; }
+.home-page .root #mp-topbanner {
+  width: auto;
+  min-width: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  margin-bottom: 1rem; }
+  .home-page .root #mp-topbanner > div {
+    display: none; }
+  .home-page .root #mp-topbanner #mp-portals {
+    position: static;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    text-align: center;
+    white-space: normal; }
+    .home-page .root #mp-topbanner #mp-portals:before {
+      content: "Categories";
+      display: block;
+      font-family: "Playfair Display", "PT Serif", "Lora", Georgia, serif;
+      margin-bottom: 1rem;
+      font-size: 1.25rem; }
+    .home-page .root #mp-topbanner #mp-portals li {
+      display: inline-block;
+      position: static; }
+      .home-page .root #mp-topbanner #mp-portals li a {
+        padding: 0.25rem; }
 
 @media (min-width: 48rem) {
-  .home-page #mp-upper tr {
+  .home-page .root #mp-upper tr {
     display: flex; }
-    .home-page #mp-upper tr td {
+    .home-page .root #mp-upper tr td {
       flex: 50%; } }
 
-.home-page #mp-left {
+.home-page .root #mp-left {
   padding-right: 1.5rem; }
-  .home-page #mp-left + td {
+  .home-page .root #mp-left + td {
     display: none !important; }
 
-.home-page #mp-right {
+.home-page .root #mp-right {
   padding-left: 1.5rem; }
 
-.home-page #mp-upper,
-.home-page #mp-lower,
-.home-page #mp-upper td,
-.home-page #mp-lower td {
-  display: block; }
+.home-page .root #mp-upper,
+.home-page .root #mp-lower,
+.home-page .root #mp-upper td,
+.home-page .root #mp-lower td,
+.home-page .root #mp-dyk,
+.home-page .root #mp-otd,
+.home-page .root #mp-other-lower,
+.home-page .root .itn-special {
+  display: block;
+  background: none;
+  color: inherit;
+  border: 0; }
+  .home-page .root #mp-upper .mp-h2,
+  .home-page .root #mp-lower .mp-h2,
+  .home-page .root #mp-upper td .mp-h2,
+  .home-page .root #mp-lower td .mp-h2,
+  .home-page .root #mp-dyk .mp-h2,
+  .home-page .root #mp-otd .mp-h2,
+  .home-page .root #mp-other-lower .mp-h2,
+  .home-page .root .itn-special .mp-h2 {
+    background: none;
+    color: inherit;
+    border: 0; }
 
-.home-page #mp-otd p:first-child {
+.home-page .root .itn-special {
+  text-align: left; }
+
+.home-page .root #mp-otd p:first-child {
   text-align: center; }
 
-.home-page #mp-tfa-img img {
+.home-page .root #mp-tfa-img img {
   display: block;
   margin: auto; }
 
-.home-page #mp-tfp img {
+.home-page .root #mp-tfp img {
   width: 100%; }
 
-.home-page #mp-sister-content .plainlinks tbody {
+.home-page .root #mp-sister-content .plainlinks tbody {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   justify-content: center; }
-  .home-page #mp-sister-content .plainlinks tbody tr {
+  .home-page .root #mp-sister-content .plainlinks tbody tr {
     margin: 1rem; }
 
-.home-page #lang > ul {
+.home-page .root #lang > ul {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
   padding: 0; }
-  .home-page #lang > ul li {
+  .home-page .root #lang > ul li {
     display: block;
     margin-right: 1.5rem; }
 
-.home-page #metalink {
+.home-page .root #metalink {
   text-align: center; }
 
 .mp-thumb,
@@ -608,7 +640,8 @@ table {
     display: block;
     min-width: 50%;
     max-width: 20rem;
-    margin: 1rem auto; }
+    margin: 1rem auto;
+    background-color: white; }
   @media (max-width: 36rem) {
     .infobox :only-child > .image,
     .mp-thumb .image,
@@ -967,7 +1000,8 @@ pre {
   background: linear-gradient(rgba(0, 0, 0, 0), black), linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); }
 
 .darkMode .settings-button,
-.darkMode .github-link {
+.darkMode .github-link,
+.darkMode img.mwe-math-fallback-image-inline {
   filter: invert(0.9); }
 
 .darkMode .modal {
