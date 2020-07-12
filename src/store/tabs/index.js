@@ -25,6 +25,11 @@ export default (state = [], action) => {
 
     case 'TABS/REMOVE': {
       const { id } = action.payload
+
+      if (state.length === 2) {
+        return []
+      }
+
       return state.filter(tab => tab.id !== id)
     }
 

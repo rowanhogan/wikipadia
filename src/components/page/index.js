@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { fetchPage } from '../../lib/api'
 import { stripTags } from '../../lib/html'
 import { addTab } from '../../store/tabs'
+import { storePage } from '../../store/pages'
 
 import Loading from '../loading'
 import Sections from '../sections'
@@ -34,18 +35,21 @@ class Page extends Component {
   }
 
   fetchPage (title) {
+    const { pages, storePage } = this.props
+    const pageIsCached = !!pages[title]
+
     this.setState({ loading: true })
 
-    return fetchPage(title)
-      .then(({ title, content, sections }) => {
-        document.title = `${stripTags(title)} - Wikipadia`
+    return Promise.resolve()
+      .then(() => pageIsCached ? pages[title] : fetchPage(title))
+      .then(page => {
+        document.title = `${title} - Wikipadia`
+        storePage(title, page)
 
         this.setState(
           {
             loading: false,
-            title,
-            content,
-            sections
+            ...page
           },
           () => {
             const { location: { hash } } = this.props
@@ -78,7 +82,7 @@ class Page extends Component {
       const url = e.target.href.replace(window.location.origin, '')
 
       if (tabs.length === 0) {
-        this.props.addTab(title, `/${encodeURIComponent(title.replace(/ /g, '_'))}`)
+        this.props.addTab(stripTags(title), `/${encodeURIComponent(stripTags(title).replace(/ /g, '_'))}`)
       }
 
       this.props.addTab(decodeURIComponent(url.split('/')[1].replace(/_/g, ' ')), url)
@@ -114,9 +118,9 @@ class Page extends Component {
   }
 }
 
-const mapStateToProps = ({ tabs }) => ({ tabs })
+const mapStateToProps = ({ pages, tabs }) => ({ pages, tabs })
 
 export default compose(
-  connect(mapStateToProps, { addTab }),
+  connect(mapStateToProps, { addTab, storePage }),
   withRouter
 )(Page)
