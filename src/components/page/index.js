@@ -3,6 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { fetchPage } from '../../lib/api'
+import { stripTags } from '../../lib/html'
 import { addTab } from '../../store/tabs'
 
 import Loading from '../loading'
@@ -37,7 +38,7 @@ class Page extends Component {
 
     return fetchPage(title)
       .then(({ title, content, sections }) => {
-        document.title = `${title} - Wikipadia`
+        document.title = `${stripTags(title)} - Wikipadia`
 
         this.setState(
           {
