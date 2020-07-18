@@ -43,7 +43,7 @@ class Header extends Component {
     return window === window.top ? (
       <header
         ref='header'
-        className={['header', hidden && 'hidden', scroll > 20 && 'scrolled', tabs.length && 'header-tabs']
+        className={['header', hidden && 'hidden', scroll > 20 && 'scrolled', tabs.length > 1 && 'header-tabs']
           .filter(Boolean)
           .join(' ')}>
         <nav className='header-nav'>
@@ -53,7 +53,7 @@ class Header extends Component {
           <Search />
           <Settings />
         </nav>
-        <Tabs tabs={tabs} />
+        <Tabs />
       </header>
     ) : null
   }

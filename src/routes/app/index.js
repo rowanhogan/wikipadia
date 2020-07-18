@@ -35,7 +35,7 @@ class App extends Component {
 const mapStateToProps = ({ settings, tabs }) => ({
   darkMode: settings.darkMode,
   classNames: Object.keys(settings).filter(setting => settings[setting]),
-  tabs: tabs
+  tabs: tabs.items
 })
 
 export default connect(mapStateToProps)(App)

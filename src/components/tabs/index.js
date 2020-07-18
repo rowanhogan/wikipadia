@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { removeTab } from '../../store/tabs'
+import { activateTab, removeTab } from '../../store/tabs'
 
 import { Link } from 'react-router-dom'
 
-const Tabs = ({ tabs, removeTab, history }) => {
-  if (tabs.length) {
-    const [active, setActive] = useState(tabs[0].id)
-
+const Tabs = ({ activateTab, active, pages, tabs, removeTab, history }) => {
+  if (tabs.length > 1) {
     const handleClick = tab => e => {
       window.scrollTo(0, 0)
-      return setActive(tab.id)
+      return activateTab(tab.id)
     }
 
     const handleRemove = tab => e => {
@@ -22,7 +20,7 @@ const Tabs = ({ tabs, removeTab, history }) => {
       const newTab = tabs[currentIndex + 1] || tabs[currentIndex - 1]
 
       if (newTab) {
-        setActive(newTab.id)
+        activateTab(newTab.id)
         window.scrollTo(0, 0)
         history.push(newTab.path)
       }
@@ -34,9 +32,10 @@ const Tabs = ({ tabs, removeTab, history }) => {
       <nav className='tabs'>
         {tabs.map(tab => {
           const isActive = active === tab.id
+          const page = pages[tab.path.substring(1)]
 
           return (
-            <div key={tab.id} className={['tab-link', isActive && 'tab-link-active'].filter(Boolean).join(' ')}>
+            <div key={tab.id} className={['tab-link', isActive && 'tab-link-active', (isActive && !page) && 'tab-link-loading', !page && 'tab-link-inactive'].filter(Boolean).join(' ')}>
               <Link
                 to={tab.path}
                 onClick={handleClick(tab)}
@@ -56,7 +55,15 @@ const Tabs = ({ tabs, removeTab, history }) => {
   return null
 }
 
+const mapStateToProps = ({ pages, tabs }) => ({
+  active: tabs.active,
+  pages,
+  tabs: tabs.items
+})
+
+const mapDispatchToProps = { activateTab, removeTab }
+
 export default compose(
-  connect(null, { removeTab }),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter
 )(Tabs)

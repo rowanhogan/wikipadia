@@ -111,6 +111,25 @@
     border-right-color: rgba(128, 128, 128, 0.25);
     opacity: 1;
   }
+
+  .tab-link.tab-link-loading {
+    opacity: 0.25;
+    animation: blink 2s ease infinite ;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0.25;
+  }
 }
 
 .remove-tab-link {

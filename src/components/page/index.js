@@ -43,7 +43,7 @@ class Page extends Component {
     return Promise.resolve()
       .then(() => pageIsCached ? pages[title] : fetchPage(title))
       .then(page => {
-        document.title = `${title} - Wikipadia`
+        document.title = `${page.title} - Wikipadia`
         storePage(title, page)
 
         this.setState(
@@ -73,19 +73,23 @@ class Page extends Component {
   }
 
   handleClick (e) {
-    const { tabs } = this.props
+    const { storePage, tabs } = this.props
     const { title } = this.state
 
     if (e.target.nodeName === 'A' && this.isWebApp()) {
       e.preventDefault()
 
       const url = e.target.href.replace(window.location.origin, '')
+      const newTitle = decodeURIComponent(url.split('/')[1].replace(/_/g, ' '))
 
       if (tabs.length === 0) {
         this.props.addTab(stripTags(title), `/${encodeURIComponent(stripTags(title).replace(/ /g, '_'))}`)
       }
 
-      this.props.addTab(decodeURIComponent(url.split('/')[1].replace(/_/g, ' ')), url)
+      this.props.addTab(newTitle, url)
+
+      fetchPage(newTitle)
+        .then(page => storePage(newTitle, page))
     }
   }
 
@@ -118,7 +122,10 @@ class Page extends Component {
   }
 }
 
-const mapStateToProps = ({ pages, tabs }) => ({ pages, tabs })
+const mapStateToProps = ({ pages, tabs }) => ({
+  pages,
+  tabs: tabs.items
+})
 
 export default compose(
   connect(mapStateToProps, { addTab, storePage }),

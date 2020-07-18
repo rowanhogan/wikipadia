@@ -1,5 +1,11 @@
 import uuid from 'uuid/v4'
 
+export const activateTab = (id) => dispatch =>
+  dispatch({
+    type: 'TABS/ACTIVATE',
+    payload: { id }
+  })
+
 export const addTab = (name, path) => dispatch =>
   dispatch({
     type: 'TABS/ADD',
@@ -12,25 +18,47 @@ export const removeTab = id => dispatch =>
     payload: { id }
   })
 
-export default (state = [], action) => {
+const defaultState = {
+  active: null,
+  items: []
+}
+
+export default (state = defaultState, action) => {
   switch (action.type) {
+    case 'TABS/ACTIVATE': {
+      const { id } = action.payload
+
+      return {
+        ...state,
+        active: id
+      }
+    }
+
     case 'TABS/ADD': {
       const { name, path } = action.payload
+      const id = uuid()
 
-      return [
+      return {
         ...state,
-        { name, path, id: uuid() }
-      ]
+        active: state.active || id,
+        items: [
+          ...state.items,
+          { name, path, id }
+        ]
+      }
     }
 
     case 'TABS/REMOVE': {
       const { id } = action.payload
 
       if (state.length === 2) {
-        return []
+        return defaultState
       }
 
-      return state.filter(tab => tab.id !== id)
+      return {
+        ...state,
+        items: state.items.filter(tab => tab.id !== id)
+      }
     }
 
     default:
