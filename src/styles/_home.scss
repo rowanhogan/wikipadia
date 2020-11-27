@@ -32,7 +32,7 @@
     margin: 0;
     font-size: 1.25rem;
 
-    &:after {
+    &:before {
       display: none;
     }
   }
@@ -94,28 +94,38 @@
     }
   }
 
+  #mp-upper tr {
+    display: flex;
+    flex-direction: column;
+
+    td {
+      width: 100%;
+    }
+  }
+
   @media (min-width: 48rem) {
     #mp-upper {
       tr {
-        display: flex;
+        flex-direction: row;
 
         td {
+          width: 50%;
           flex: 50%;
         }
       }
     }
-  }
 
-  #mp-left {
-    padding-right: 1.5rem;
+    #mp-left {
+      padding-right: 1.5rem;
 
-    + td {
-      display: none !important;
+      + td {
+        display: none !important;
+      }
     }
-  }
 
-  #mp-right {
-    padding-left: 1.5rem;
+    #mp-right {
+      padding-left: 1.5rem;
+    }
   }
 
   #mp-upper,
@@ -125,6 +135,7 @@
   #mp-dyk,
   #mp-otd,
   #mp-other-lower,
+  #mp-middle,
   .itn-special {
     display: block;
     background: none;

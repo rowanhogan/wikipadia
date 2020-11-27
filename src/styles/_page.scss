@@ -147,6 +147,14 @@ table {
       background-color: transparent !important;
     }
 
+    [style*=background] {
+      background: transparent !important;
+    }
+
+    [style*=color] {
+      color: inherit !important;
+    }
+
     th[colspan="2"],
     .adr,
     .fn {
@@ -260,6 +268,21 @@ pre {
   border-radius: 0.5em;
 }
 
+#portals-browsebar {
+  & ~ [style*=background], & ~ * [style*=background] {
+    background: transparent !important;
+    color: inherit !important;
+  }
+
+  & ~ [style*=color], & ~ * [style*=color] {
+    color: inherit !important;
+  }
+
+  & ~ [style*=border], & ~ * [style*=border] {
+    border: 0 !important;
+  }
+}
+
 #toc {
   // display: none;
   position: fixed;
@@ -351,6 +374,21 @@ pre {
 
 .reflist {
   font-size: 75%;
+
+  & ~ ul { font-size: 80%; }
+
+  &:not(.expanded) {
+    .mw-references-wrap {
+      display: none;
+    }
+
+    &:after {
+      content: 'View references';
+      text-align: center;
+      display: block;
+      font-size: 120%;
+    }
+  }
 
   @media (min-width: 48rem) {
     column-count: 2;

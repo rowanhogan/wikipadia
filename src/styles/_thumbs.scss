@@ -15,6 +15,9 @@
 .thumbinner {
   margin: auto;
   width: auto;
+
+  [style*=width] { width: auto !important }
+  [style*=height] { height: auto !important }
 }
 
 .infobox :only-child > .image,

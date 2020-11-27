@@ -24,6 +24,7 @@ body {
 a {
   color: hsl(210, 90%, 40%);
   -webkit-tap-highlight-color: hsla(210, 90%, 40%, 0.25);
+  word-break: break-word;
 
   &:visited {
     color: hsl(250, 90%, 40%);

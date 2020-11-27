@@ -76,6 +76,10 @@ class Page extends Component {
     const { storePage, tabs } = this.props
     const { title } = this.state
 
+    if (e.target.className === 'reflist') {
+      e.target.classList.add('expanded')
+    }
+
     if (e.target.nodeName === 'A' && this.isWebApp()) {
       e.preventDefault()
 

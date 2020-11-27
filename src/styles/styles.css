@@ -19,7 +19,8 @@ body {
 
 a {
   color: #0a66c2;
-  -webkit-tap-highlight-color: rgba(10, 102, 194, 0.25); }
+  -webkit-tap-highlight-color: rgba(10, 102, 194, 0.25);
+  word-break: break-word; }
   a:visited {
     color: #290ac2; }
   a:focus, a:hover, a:active {
@@ -517,7 +518,7 @@ table {
 .home-page .root h2 .mw-headline {
   margin: 0;
   font-size: 1.25rem; }
-  .home-page .root h2 .mw-headline:after {
+  .home-page .root h2 .mw-headline:before {
     display: none; }
 
 .home-page .root .loading:before, .home-page .root .loading:after {
@@ -558,19 +559,24 @@ table {
       .home-page .root #mp-topbanner #mp-portals li a {
         padding: 0.25rem; }
 
+.home-page .root #mp-upper tr {
+  display: flex;
+  flex-direction: column; }
+  .home-page .root #mp-upper tr td {
+    width: 100%; }
+
 @media (min-width: 48rem) {
   .home-page .root #mp-upper tr {
-    display: flex; }
+    flex-direction: row; }
     .home-page .root #mp-upper tr td {
-      flex: 50%; } }
-
-.home-page .root #mp-left {
-  padding-right: 1.5rem; }
-  .home-page .root #mp-left + td {
-    display: none !important; }
-
-.home-page .root #mp-right {
-  padding-left: 1.5rem; }
+      width: 50%;
+      flex: 50%; }
+  .home-page .root #mp-left {
+    padding-right: 1.5rem; }
+    .home-page .root #mp-left + td {
+      display: none !important; }
+  .home-page .root #mp-right {
+    padding-left: 1.5rem; } }
 
 .home-page .root #mp-upper,
 .home-page .root #mp-lower,
@@ -579,6 +585,7 @@ table {
 .home-page .root #mp-dyk,
 .home-page .root #mp-otd,
 .home-page .root #mp-other-lower,
+.home-page .root #mp-middle,
 .home-page .root .itn-special {
   display: block;
   background: none;
@@ -591,6 +598,7 @@ table {
   .home-page .root #mp-dyk .mp-h2,
   .home-page .root #mp-otd .mp-h2,
   .home-page .root #mp-other-lower .mp-h2,
+  .home-page .root #mp-middle .mp-h2,
   .home-page .root .itn-special .mp-h2 {
     background: none;
     color: inherit;
@@ -644,6 +652,10 @@ table {
 .thumbinner {
   margin: auto;
   width: auto; }
+  .thumbinner [style*=width] {
+    width: auto !important; }
+  .thumbinner [style*=height] {
+    height: auto !important; }
 
 .infobox :only-child > .image,
 .mp-thumb .image,
@@ -776,6 +788,10 @@ table {
     table.infobox th,
     table.infobox td {
       background-color: transparent !important; }
+    table.infobox [style*=background] {
+      background: transparent !important; }
+    table.infobox [style*=color] {
+      color: inherit !important; }
     table.infobox th[colspan="2"],
     table.infobox .adr,
     table.infobox .fn {
@@ -855,6 +871,16 @@ pre {
   border: 0;
   border-radius: 0.5em; }
 
+#portals-browsebar ~ [style*=background], #portals-browsebar ~ * [style*=background] {
+  background: transparent !important;
+  color: inherit !important; }
+
+#portals-browsebar ~ [style*=color], #portals-browsebar ~ * [style*=color] {
+  color: inherit !important; }
+
+#portals-browsebar ~ [style*=border], #portals-browsebar ~ * [style*=border] {
+  border: 0 !important; }
+
 #toc {
   position: fixed;
   top: 0;
@@ -917,6 +943,15 @@ pre {
 
 .reflist {
   font-size: 75%; }
+  .reflist ~ ul {
+    font-size: 80%; }
+  .reflist:not(.expanded) .mw-references-wrap {
+    display: none; }
+  .reflist:not(.expanded):after {
+    content: 'View references';
+    text-align: center;
+    display: block;
+    font-size: 120%; }
   @media (min-width: 48rem) {
     .reflist {
       column-count: 2; } }
