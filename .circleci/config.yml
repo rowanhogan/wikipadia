@@ -1,0 +1,33 @@
+
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+
+jobs:
+  deploy:
+    executor:
+      name: node/default
+      tag: '16.14.2'
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - add_ssh_keys:
+          fingerprints:
+            - "18:d1:2c:07:57:e1:39:5b:f0:79:17:a2:df:f9:06:53"
+      - run:
+          name: Install and configure dependencies
+          command: |
+            git config user.email "ci-build@example.com"
+            git config user.name "ci-build"
+      - run:
+          name: Run GH Pages deploy
+          command: yarn deploy
+workflows:
+  deploy_site:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: main
