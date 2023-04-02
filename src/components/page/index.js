@@ -43,7 +43,7 @@ class Page extends Component {
     return Promise.resolve()
       .then(() => pageIsCached ? pages[title] : fetchPage(title))
       .then(page => {
-        document.title = `${page.title} - Wikipadia`
+        document.title = `${page.title.replace(/(<([^>]+)>)/gi, "")} - Wikipadia`;
         storePage(title, page)
 
         this.setState(
