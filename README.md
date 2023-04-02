@@ -3,9 +3,9 @@ Wikipadia
 
 _Wikipadia_ is a beautiful, minimal [Wikipedia](https://wikipedia.org) reader. It was built specifically for leisurely, late-night reading on an iPad.
 
-![https://travis-ci.org/rowanhogan/wikipadia](https://travis-ci.org/rowanhogan/wikipadia.svg?branch=master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/rowanhogan/wikipadia/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/rowanhogan/wikipadia/tree/main)
 
-#### Try it out at [wikipadia.xyz](http://wikipadia.xyz).
+#### Try it out at [wiki.rowanhogan.com](https://wiki.rowanhogan.com).
 
 ## Running locally
 
