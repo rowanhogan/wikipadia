@@ -83,6 +83,10 @@ $sidebar-width: 20rem;
   border: 0 !important;
 }
 
+.unsolved {
+  border-radius: 4px;
+}
+
 .serif-stack {
   font-family: $serif-stack;
 }
@@ -265,7 +269,7 @@ code,
 pre {
   background-color: whitesmoke;
   border: 0;
-  border-radius: 0.5em;
+  border-radius: 0.25em;
 }
 
 #portals-browsebar {
