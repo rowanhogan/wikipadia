@@ -10,7 +10,13 @@
   }
 }
 
+.settings-wrapper {
+  background-color: white;
+}
+
 .darkMode {
+  background-color: black;
+
   &,
   .header {
     background: black;
@@ -66,6 +72,12 @@
 
   code, pre {
     background-color: #333;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background: black;
   }
 }
 
